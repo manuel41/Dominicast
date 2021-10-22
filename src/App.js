@@ -1,10 +1,11 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import Button from '@mui/material/Button';
-import { Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container } from '@mui/material';
+import { Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Box, Link } from '@mui/material';
 import MovieIcon from '@mui/icons-material/Movie';
 import { typography } from '@mui/system';
 import { useStyles } from './useStyles';
+
 
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -69,16 +70,6 @@ const App = () => {
                 <Toolbar>
                     <MovieIcon className={classes.icon} />
                     <typography variant="h3">Dominicast</typography>
-                    <MovieIcon className={classes.icon} />
-                    <typography variant="h3">Dominicast</typography>
-                    <MovieIcon className={classes.icon} />
-                    <typography variant="h3">Dominicast</typography>
-                    <MovieIcon className={classes.icon} />
-                    <typography variant="h3">Dominicast</typography>
-                    <MovieIcon className={classes.icon} />
-                    <typography variant="h3">Dominicast</typography>
-                    <MovieIcon className={classes.icon} />
-                    <typography variant="h3">Dominicast</typography>
                 </Toolbar>
             </AppBar>
             <main>
@@ -93,7 +84,7 @@ const App = () => {
 
 
                 <Container className={classes.cardGrid} maxWidth="md">
-                    <Grid container spacing={4}>
+                    <Grid container spacing={3}>
                         {messages.map((message) => (
                             <Grid item key="card" xs={12} sm={6} md={4}>
                                 <Card className={classes.card}>
@@ -111,6 +102,41 @@ const App = () => {
 
                 </Container>
             </main>
+            <footer>
+                <Box bgcolor="black" color="white">
+                    <Container maxWidth="lg">
+                        <Grid container spacing={4}>
+                            <Grid item xs={12} sm={2}>
+                                <Box>
+                                    <Link>Inicio</Link>
+                                </Box>
+                            </Grid>
+                            <Grid item xs={12} sm={2}>
+
+                                <Box>
+                                    <Link>Contacto</Link>
+                                </Box>
+                            </Grid>
+
+                            <Grid item xs={12} sm={3}>
+                                <Box>
+                                    <Link>Políticas de Privacidad</Link>
+                                </Box>
+                            </Grid>
+                            <Grid item xs={12} sm={3}>
+                                <Box>
+                                    <Link>Condiciones de uso</Link>
+                                </Box>
+                            </Grid>
+                            <Grid item xs={12} sm={2}>
+                                <Box>2021 ©Dominicast</Box>
+                            </Grid>
+
+
+                        </Grid>
+                    </Container>
+                </Box>
+            </footer>
         </>
     );
 }
