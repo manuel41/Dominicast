@@ -1,0 +1,96 @@
+Persona: {
+  "personaId": int,
+  "user": {
+    "usuarioId": int,
+    "nombreUsuario": string,
+    "contraseña": string,
+    "email": string,
+    "telefono": string,
+    "ciudad": {
+      "ciudadId": int,
+      "nombre": string,
+      "provincia": {
+        "provinciaId": int,
+        "nombre": string
+      }
+    }
+  },
+  "detallePerfil": {
+    "detallesPerfilId": int,
+    "colorPiel": {
+      "colorPielId": int,
+      "color": string
+    },
+    "colorCabello": {
+      "colorCabelloId": int,
+      "color": string
+    },
+    "colorOjos": {
+      "colorOjosId": int,
+      "color": string
+    },
+    "tipoPiel": {
+      "tipoPielId": int,
+      "descripcion": string
+    },
+    "nombre": string,
+    "apellido": string,
+    "genero": string,
+    "foto": binary,
+    "edad": int,
+    "peso": int,
+    "altura": int,
+    "tatuajes": bool,
+    "piercings": bool,
+    "bigote": bool,
+    "barba": bool,
+    "bracers": bool,
+    "lentes": bool,
+    "disposicion": bool
+  },
+  "tipoUsuario": int,
+  "tipoModelos": [
+    {
+      "tipoModeloId": 1,
+      "descripcion": "General"
+    },
+    {
+      "tipoModeloId": 2,
+      "descripcion": "Manos"
+    },
+    {
+      "tipoModeloId": 3,
+      "descripcion": "Piernas/Pies"
+    },
+    {
+      "tipoModeloId": 4,
+      "descripcion": "Dientes"
+    },
+    {
+      "tipoModeloId": 5,
+      "descripcion": "Codos"
+    }
+  ],
+  "tipoActors": [
+    {
+      "tipoActorId": 1,
+      "descripcion": "Cine"
+    },
+    {
+      "tipoActorId": 2,
+      "descripcion": "Teatro"
+    },
+    {
+      "tipoActorId": 3,
+      "descripcion": "Comercial"
+    },
+    {
+      "tipoActorId": 4,
+      "descripcion": "Actor de Voz"
+    }
+  ],
+  "habilidad": {
+    "habilidadId": int,
+    "descripcion": string
+  }
+}
