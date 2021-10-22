@@ -8,11 +8,10 @@ const NavBar = () => {
 
   return (
     <>
-      <CssBaseline />
-      <AppBar position="relative">
+      <AppBar position="fixed">
         <Toolbar>
           <MovieIcon className={classes.icon} />
-          <Typography variant="h3">Dominicast</Typography>
+          <Typography variant="h6">Dominicast</Typography>
         </Toolbar>
       </AppBar>
     </>
