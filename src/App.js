@@ -5,6 +5,8 @@ import { Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBasel
 import MovieIcon from '@mui/icons-material/Movie';
 import { typography } from '@mui/system';
 import { useStyles } from './useStyles';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
 
 
 
