@@ -7,6 +7,8 @@ import { typography } from '@mui/system';
 import { useStyles } from './useStyles';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
+import NavBar from './components/NavBar';
+
 
 
 
@@ -68,12 +70,7 @@ const App = () => {
     return (
         <>
             <CssBaseline />
-            <AppBar position="relative">
-                <Toolbar>
-                    <MovieIcon className={classes.icon} />
-                    <typography variant="h3">Dominicast</typography>
-                </Toolbar>
-            </AppBar>
+            <NavBar />
             <main>
                 <div className={classes.container}>
                     <Container>

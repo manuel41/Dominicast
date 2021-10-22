@@ -1,10 +1,21 @@
 import React from 'react'
+import { AppBar, CssBaseline, Toolbar, Typography } from '@mui/material'
+import MovieIcon from '@mui/icons-material/Movie'
+import { useStyles } from '../useStyles'
 
 const NavBar = () => {
-  return (
-    <div>
+  const classes = useStyles();
 
-    </div>
+  return (
+    <>
+      <CssBaseline />
+      <AppBar position="relative">
+        <Toolbar>
+          <MovieIcon className={classes.icon} />
+          <Typography variant="h3">Dominicast</Typography>
+        </Toolbar>
+      </AppBar>
+    </>
   )
 }
 
