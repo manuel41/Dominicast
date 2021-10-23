@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppBar, CssBaseline, Toolbar, Typography } from '@mui/material'
+import { AppBar, Toolbar, Typography } from '@mui/material'
 import MovieIcon from '@mui/icons-material/Movie'
 import { useStyles } from '../useStyles'
 
