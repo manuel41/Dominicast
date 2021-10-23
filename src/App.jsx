@@ -1,9 +1,7 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import Button from '@mui/material/Button';
-import { Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Box, Link } from '@mui/material';
-import MovieIcon from '@mui/icons-material/Movie';
-import { typography } from '@mui/system';
+import { Typography, Card, CardContent, CardMedia, CssBaseline, Grid, Container, Box, Link } from '@mui/material';
 import { useStyles } from './useStyles';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import NavBar from './components/NavBar';
