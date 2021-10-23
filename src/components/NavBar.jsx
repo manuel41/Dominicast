@@ -3,6 +3,7 @@ import { AppBar, CssBaseline, Toolbar, Typography } from '@mui/material'
 import MovieIcon from '@mui/icons-material/Movie'
 import { useStyles } from '../useStyles'
 
+
 const NavBar = () => {
   const classes = useStyles();
 
@@ -12,7 +13,7 @@ const NavBar = () => {
       <AppBar position="relative">
         <Toolbar>
           <MovieIcon className={classes.icon} />
-          <Typography variant="h3">Dominicast</Typography>
+          <Typography variant="h6">Dominicast</Typography>
         </Toolbar>
       </AppBar>
     </>
