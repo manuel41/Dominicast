@@ -1,6 +1,13 @@
 import React from 'react'
 import { Typography, Grid, Container, Box, Link } from '@mui/material';
-import { useStyles } from '../useStyles'
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles((theme) => ({
+    footerContainer: {
+        padding: theme.spacing(3, 0, 4),
+        marginTop: 'auto'
+    },
+}));
 
 
 

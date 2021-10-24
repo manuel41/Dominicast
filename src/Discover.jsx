@@ -1,7 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Typography, Card, CardContent, CardMedia, CssBaseline, Grid, Container, Box, Link, Pagination } from '@mui/material';
-import { useStyles } from './useStyles';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles((theme) => ({
+    paginationContainer: {
+        padding: theme.spacing(3, 0, 4),
+    },
+    cardGrid: {
+        padding: '20px 0',
+
+    },
+    card: {
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column'
+    },
+    cardMedia: {
+        paddingTop: '56.25%'
+    },
+    cardContent: {
+        flexGrow: '1'
+    },
+}));
 
 
 const Discover = () => {
@@ -33,7 +54,7 @@ const Discover = () => {
 
     return (
         <div>
-            <CssBaseline />
+            {/* <CssBaseline /> */}
             <Container className={classes.cardGrid} maxWidth="md" >
                 <Grid container spacing={3}>
                     {currentPersons.map((person) => (
