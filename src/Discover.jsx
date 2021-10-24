@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Typography, Card, CardContent, CardMedia, CssBaseline, Grid, Container, Box, Link, Pagination } from '@mui/material';
-import FilterButton from './components/FilterButton';
 import ToggleButtonsMultiple from './components/ToggleButtonsMultiple';
 
 import { makeStyles } from '@mui/styles';
@@ -66,7 +65,10 @@ const Discover = () => {
                 <Grid container spacing={3}>
                     {currentPersons
                         .filter((person) => {
-                            if ((person.detallePerfil.barba && filter.includes('sinBarba')) || (!person.detallePerfil.barba && filter.includes('conBarba')) || (person.detallePerfil.barba && filter.includes('sinTatuajes')) || (!person.detallePerfil.barba && filter.includes('conTatuajes')))
+                            if ((person.detallePerfil.tatuajes && filter.includes('sinTatuajes')) ||
+                                (!person.detallePerfil.tatuajes && filter.includes('conTatuajes')) ||
+                                (person.detallePerfil.barba && filter.includes('sinBarba')) ||
+                                (!person.detallePerfil.barba && filter.includes('conBarba')))
                                 return false;
                             else
                                 return true;
