@@ -8,6 +8,7 @@ import NavBar from './components/NavBar';
 import Discover from './Discover';
 import Footer from './components/Footer';
 import Home from './Home';
+import Layout from './components/Layout';
 
 
 const App = () => {
@@ -18,21 +19,21 @@ const App = () => {
     <>
       <CssBaseline />
       <Router>
-        <NavBar />
-        <Switch>
-          <main className={classes.app}>
-            <Route exact path="/" component={Home} />
-            <Route path="/discover" component={Discover} />
-            {/* <div className={classes.container}>
+        <Layout>
+          <Switch>
+            <main>
+              <Route exact path="/" component={Home} />
+              <Route path="/discover" component={Discover} />
+              {/* <div className={classes.container}>
               <Container>
                 <Typography variant="subtitle2" color="textPrimary" >UNA PLATAFORMA PARA EL TALENTO</Typography>
                 <Typography variant="h4" color="textPrimary" >El cine Dominicano está creciendo</Typography>
                 <Typography variant="h5" color="textPrimary" paragraph>Deja que te encuentren</Typography>
               </Container>
             </div> */}
-          </main>
-        </Switch>
-        <Footer />
+            </main>
+          </Switch>
+        </Layout>
       </Router>
     </>
   );
