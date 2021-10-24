@@ -17,6 +17,8 @@ export default function ToggleButtonsMultiple(props) {
 
     return (
         <ToggleButtonGroup
+            size="small"
+            orientation="vertical"
             value={props.filter}
             onChange={handleFormat}
             aria-label="text formatting"
