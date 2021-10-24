@@ -16,10 +16,10 @@ const App = () => {
 
   return (
     <>
-      <NavBar />
-      <main className={classes.app}>
-        <Router>
-          <Switch>
+      <Router>
+        <NavBar />
+        <Switch>
+          <main className={classes.app}>
             <Route exact path="/" component={Home} />
             <Route path="/discover" component={Discover} />
             {/* <div className={classes.container}>
@@ -29,10 +29,10 @@ const App = () => {
                 <Typography variant="h5" color="textPrimary" paragraph>Deja que te encuentren</Typography>
               </Container>
             </div> */}
-          </Switch>
-        </Router>
-      </main>
-      <Footer />
+          </main>
+        </Switch>
+        <Footer />
+      </Router>
     </>
   );
 }
