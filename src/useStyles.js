@@ -30,5 +30,9 @@ export const useStyles = makeStyles((theme) => ({
     cardContent: {
         flexGrow: '1'
     },
+    app: {
+        textAlign: 'center',
+        marginTop: '70px'
+    }
 
 }));
