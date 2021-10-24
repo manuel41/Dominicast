@@ -18,17 +18,20 @@ const App = () => {
     <>
       <Router>
         <NavBar />
+
         <Switch>
           <main className={classes.app}>
             <Route exact path="/" component={Home} />
             <Route path="/discover" component={Discover} />
-            {/* <div className={classes.container}>
+
+            {<div className={classes.container}>
               <Container>
                 <Typography variant="subtitle2" color="textPrimary" >UNA PLATAFORMA PARA EL TALENTO</Typography>
                 <Typography variant="h4" color="textPrimary" >El cine Dominicano está creciendo</Typography>
                 <Typography variant="h5" color="textPrimary" paragraph>Deja que te encuentren</Typography>
               </Container>
-            </div> */}
+            </div>}
+            <Discover />
           </main>
         </Switch>
         <Footer />
