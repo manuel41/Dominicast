@@ -10,6 +10,9 @@ export const useStyles = makeStyles((theme) => ({
     },
     paginationContainer: {
         padding: theme.spacing(3, 0, 4),
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     icon: {
         marginRight: '20px',
