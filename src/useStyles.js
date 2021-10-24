@@ -8,27 +8,9 @@ export const useStyles = makeStyles((theme) => ({
     footerContainer: {
         padding: theme.spacing(3, 0, 4),
     },
-    paginationContainer: {
-        padding: theme.spacing(3, 0, 4),
-    },
     icon: {
         marginRight: '20px',
         marginLeft: '40px'
-    },
-    cardGrid: {
-        padding: '20px 0',
-
-    },
-    card: {
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column'
-    },
-    cardMedia: {
-        paddingTop: '56.25%'
-    },
-    cardContent: {
-        flexGrow: '1'
     },
     app: {
         textAlign: 'center',
