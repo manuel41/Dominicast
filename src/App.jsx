@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import Button from '@mui/material/Button';
-import { Typography, Container } from '@mui/material';
+import { Typography, Container, CssBaseline } from '@mui/material';
 import { useStyles } from './useStyles';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import NavBar from './components/NavBar';
@@ -16,6 +16,7 @@ const App = () => {
 
   return (
     <>
+      <CssBaseline />
       <Router>
         <NavBar />
         <Switch>

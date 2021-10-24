@@ -52,7 +52,7 @@ const Discover = () => {
 
     return (
         <div>
-            <CssBaseline />
+            {/* <CssBaseline /> */}
             <Container className={classes.cardGrid} maxWidth="md" >
                 <Grid container spacing={3}>
                     {currentPosts.map((post) => (
