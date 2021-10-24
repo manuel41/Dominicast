@@ -1,8 +1,14 @@
 import React from 'react'
 import { AppBar, Toolbar, Typography } from '@mui/material'
 import MovieIcon from '@mui/icons-material/Movie'
-import { useStyles } from '../useStyles'
+import { makeStyles } from '@mui/styles';
 
+const useStyles = makeStyles((theme) => ({
+  icon: {
+    marginRight: '20px',
+    marginLeft: '40px'
+  },
+}));
 
 const NavBar = () => {
   const classes = useStyles();
