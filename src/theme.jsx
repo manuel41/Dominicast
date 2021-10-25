@@ -1,7 +1,7 @@
 import { createTheme } from '@mui/material/styles'
 const theme = createTheme({
     typography: {
-        fontFamily: ['"Arima Madurai"', 'Open Sans'].join(',')
+        fontFamily: ['Roboto'].join(',')
     },
     palette: {
         primary: { main: '#003166' },
