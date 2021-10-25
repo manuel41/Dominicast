@@ -68,7 +68,7 @@ const ProfileView = () => {
         <Paper className={classes.paperRoot}>
           <Grid container className={classes.mainProfileDetailsGrid} spacing={2}>
             <Grid item xs={12} md={6} className={classes.imgGrid}>
-              <Box component="img" className={classes.img} src="https://source.unsplash.com/random" />
+              <Box component="img" className={classes.img} src={profileDetails?.detallePerfil.url} />
             </Grid>
             <Grid container item xs={12} md={6} className={classes.mainDetails}>
               <Paper className={classes.paper} elevation={3}>
