@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { MenuItem } from '@mui/material';
+import axios from 'axios';
 
 const genders = [
   {
@@ -30,6 +31,8 @@ const options = [
 
 export default function CreateProfile2() {
 
+  const url = "http://localhost:5000"
+
   const [gender, setGender] = useState('')
   const [tatuajes, setTatuajes] = useState('')
   const [piercings, setPiercings] = useState('')
@@ -38,11 +41,35 @@ export default function CreateProfile2() {
   const [bracers, setBracers] = useState('')
   const [lentes, setLentes] = useState('')
   const [dispocion, setDisposicion] = useState('')
+  const [ojos, setOjos] = useState([])
+  const [ojo, setOjo] = useState('')
+  const [coloresPiel, setColoresPiel] = useState([])
+  const [piel, setPiel] = useState()
+  const [cabellos, setCabellos] = useState([])
+  const [cabello, setCabello] = useState()
 
   const selectGender = (e) => {
     setGender(e.target.value);
   }
 
+  useEffect(() => {
+    fetchOjos();
+    fetchCabellos();
+    fetchPieles();
+  }, [])
+
+  const fetchOjos = async () => {
+    const res = await axios.get(`${url}/ColorOjos`)
+    setOjos(res.data)
+  }
+  const fetchPieles = async () => {
+    const res = await axios.get(`${url}/ColorPiel`)
+    setColoresPiel(res.data)
+  }
+  const fetchCabellos = async () => {
+    const res = await axios.get(`${url}/ColorCabello`)
+    setCabellos(res.data)
+  }
 
 
   return (
@@ -120,6 +147,60 @@ export default function CreateProfile2() {
             fullWidth
             variant="standard"
           />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <TextField
+            required
+            id="ojos"
+            name="ojos"
+            label="Color de ojos"
+            fullWidth
+            select
+            value={ojo}
+            onChange={(e) => { setOjo(e.target.value) }}
+          >
+            {ojos?.map((ojo) => (
+              <MenuItem key={ojo.id} value={ojo.id}>
+                {ojo.nombre}
+              </MenuItem>
+            ))}
+          </TextField>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <TextField
+            required
+            id="piel"
+            name="piel"
+            label="Color de piel"
+            fullWidth
+            select
+            value={piel}
+            onChange={(e) => { setColoresPiel(e.target.value) }}
+          >
+            {coloresPiel?.map((piel) => (
+              <MenuItem key={piel.id} value={piel.id}>
+                {piel.nombre}
+              </MenuItem>
+            ))}
+          </TextField>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <TextField
+            required
+            id="cabello"
+            name="cabello"
+            label="Color de cabello"
+            fullWidth
+            select
+            value={cabello}
+            onChange={(e) => { setCabellos(e.target.value) }}
+          >
+            {coloresPiel?.map((cabello) => (
+              <MenuItem key={cabello.id} value={cabello.id}>
+                {cabello.nombre}
+              </MenuItem>
+            ))}
+          </TextField>
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
