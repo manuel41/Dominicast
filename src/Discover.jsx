@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Typography, Card, CardContent, CardMedia, CssBaseline, Grid, Container, Box, Link, Pagination, TextField } from '@mui/material';
+import { Typography, Card, CardContent, CardMedia, CardActionArea, CssBaseline, Grid, Container, Box, Link, Pagination, TextField } from '@mui/material';
 import ToggleButtonsMultiple from './components/ToggleButtonsMultiple';
+//import { RouterLink } from 'react-router-dom';
 
 import { makeStyles } from '@mui/styles';
 
@@ -100,14 +101,16 @@ const Discover = () => {
                         .map((person) => (
                             <Grid item key={person.id} xs={12} sm={6} md={4}>
                                 <Card className={classes.card}>
-                                    <CardMedia className={classes.cardMedia} image="https://source.unsplash.com/random" title="image title" />
-                                    <CardContent className={classes.cardMedia}>
-                                        <Typography variant="h5">{person.user.nombreUsuario}</Typography>
-                                        <Typography  >Estatura: {person.detallePerfil.altura}</Typography>
-                                        <Typography  >Peso: {person.detallePerfil.peso}</Typography>
-                                        <Typography  >Barba: {person.detallePerfil.barba ? "si" : "no"}</Typography>
-                                        <Typography  >tatuajes: {person.detallePerfil.tatuajes ? "si" : "no"}</Typography>
-                                    </CardContent>
+                                    <CardActionArea href={`/profile/${person.id}`}>
+                                        <CardMedia className={classes.cardMedia} image="https://source.unsplash.com/random" title="image title" />
+                                        <CardContent className={classes.cardMedia}>
+                                            <Typography variant="h5">{person.user.nombreUsuario}</Typography>
+                                            <Typography  >Estatura: {person.detallePerfil.altura}</Typography>
+                                            <Typography  >Peso: {person.detallePerfil.peso}</Typography>
+                                            <Typography  >Barba: {person.detallePerfil.barba ? "si" : "no"}</Typography>
+                                            <Typography  >tatuajes: {person.detallePerfil.tatuajes ? "si" : "no"}</Typography>
+                                        </CardContent>
+                                    </CardActionArea>
                                 </Card>
                             </Grid>
                         ))}
