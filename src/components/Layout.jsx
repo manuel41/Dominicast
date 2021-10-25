@@ -6,7 +6,7 @@ import NavBar from './NavBar'
 const useStyles = makeStyles((theme) => ({
   page: {
     width: '100%',
-    margin: theme.spacing(10, 0, 0),
+    margin: theme.spacing(20, 0, 0),
     minHeight: '100vh'
   },
   root: {

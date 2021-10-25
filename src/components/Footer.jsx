@@ -15,7 +15,7 @@ const Footer = () => {
     const classes = useStyles();
     return (
         <footer>
-            <Box bgcolor="black" color="white">
+            <Box bgcolor="neutral" color="white">
                 <Container maxWidth="lg" className={classes.footerContainer}>
                     <Grid container spacing={4}>
                         <Grid item xs={12} sm={2}>
@@ -41,7 +41,7 @@ const Footer = () => {
                             </Box>
                         </Grid>
                         <Grid item xs={12} sm={2}>
-                            <Box>2021 ©Dominicast</Box>
+                            <Box color='secondary'>2021 ©Dominicast </Box>
                         </Grid>
                     </Grid>
                 </Container>

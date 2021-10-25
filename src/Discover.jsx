@@ -24,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
     cardContent: {
         flexGrow: '1'
     },
+    filter: {
+        position: 'absolute'
+    },
 }));
 
 
@@ -42,10 +45,10 @@ const Discover = () => {
     }
     useEffect(() => {
         const fetchPersons = async () => {
-            setLoading(true);
+            //setLoading(true);
             const res = await axios.get('http://localhost:5000/Persons');
             setPersons(res.data);
-            setLoading(false);
+            //setLoading(false);
         }
         fetchPersons();
     }, []);
@@ -60,7 +63,9 @@ const Discover = () => {
     return (
         <div>
             <CssBaseline />
-            <ToggleButtonsMultiple filter={filter} setFilter={setFilter} />
+            <Container className={classes.filter}>
+                <ToggleButtonsMultiple filter={filter} setFilter={setFilter} />
+            </Container>
             <Container className={classes.cardGrid} maxWidth="md" >
                 <Grid container spacing={3}>
                     {currentPersons
