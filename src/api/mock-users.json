@@ -1,96 +1,484 @@
-Persona: {
-  "personaId": int,
-  "user": {
-    "usuarioId": int,
-    "nombreUsuario": string,
-    "contraseña": string,
-    "email": string,
-    "telefono": string,
-    "ciudad": {
-      "ciudadId": int,
-      "nombre": string,
-      "provincia": {
-        "provinciaId": int,
-        "nombre": string
+{
+  "persons": [
+    {
+      "personaId": 1,
+      "user": {
+        "usuarioId": 1,
+        "nombreUsuario": "Luis Perez",
+        "contraseña": "123456",
+        "email": "lperez@mockdata.com",
+        "telefono": "8091111111",
+        "ciudad": {
+          "ciudadId": 1,
+          "nombre": "Santo Domingo",
+          "provincia": {
+            "provinciaId": 1,
+            "nombre": "Santiago"
+          }
+        }
+      },
+      "detallePerfil": {
+        "detallesPerfilId": 1,
+        "colorPiel": {
+          "colorPielId": 1,
+          "color": "blanco"
+        },
+        "colorCabello": {
+          "colorCabelloId": 1,
+          "color": "negro"
+        },
+        "colorOjos": {
+          "colorOjosId": 1,
+          "color": "marron"
+        },
+        "tipoPiel": {
+          "tipoPielId": 1,
+          "descripcion": "string"
+        },
+        "nombre": "Luis",
+        "apellido": "Perez",
+        "genero": "string",
+        "foto": "binary",
+        "edad": 18,
+        "peso": 200,
+        "altura": 185,
+        "tatuajes": false,
+        "piercings": false,
+        "bigote": false,
+        "barba": false,
+        "bracers": false,
+        "lentes": false,
+        "disposicion": false
+      },
+      "tipoUsuario": 1,
+      "tipoModelos": [
+        {
+          "tipoModeloId": 1,
+          "descripcion": "General"
+        },
+        {
+          "tipoModeloId": 2,
+          "descripcion": "Manos"
+        },
+        {
+          "tipoModeloId": 3,
+          "descripcion": "Piernas/Pies"
+        },
+        {
+          "tipoModeloId": 4,
+          "descripcion": "Dientes"
+        },
+        {
+          "tipoModeloId": 5,
+          "descripcion": "Codos"
+        }
+      ],
+      "tipoActors": [
+        {
+          "tipoActorId": 1,
+          "descripcion": "Cine"
+        },
+        {
+          "tipoActorId": 2,
+          "descripcion": "Teatro"
+        },
+        {
+          "tipoActorId": 3,
+          "descripcion": "Comercial"
+        },
+        {
+          "tipoActorId": 4,
+          "descripcion": "Actor de Voz"
+        }
+      ],
+      "habilidad": {
+        "habilidadId": 1,
+        "descripcion": "string"
+      }
+    },
+    {
+      "personaId": 2,
+      "user": {
+        "usuarioId": 1,
+        "nombreUsuario": "Raul Jose",
+        "contraseña": "123456",
+        "email": "lperez@mockdata.com",
+        "telefono": "8091111111",
+        "ciudad": {
+          "ciudadId": 1,
+          "nombre": "Santo Domingo",
+          "provincia": {
+            "provinciaId": 1,
+            "nombre": "Santiago"
+          }
+        }
+      },
+      "detallePerfil": {
+        "detallesPerfilId": 1,
+        "colorPiel": {
+          "colorPielId": 1,
+          "color": "blanco"
+        },
+        "colorCabello": {
+          "colorCabelloId": 1,
+          "color": "negro"
+        },
+        "colorOjos": {
+          "colorOjosId": 1,
+          "color": "marron"
+        },
+        "tipoPiel": {
+          "tipoPielId": 1,
+          "descripcion": "string"
+        },
+        "nombre": "Luis",
+        "apellido": "Perez",
+        "genero": "string",
+        "foto": "binary",
+        "edad": 18,
+        "peso": 200,
+        "altura": 185,
+        "tatuajes": true,
+        "piercings": false,
+        "bigote": false,
+        "barba": false,
+        "bracers": false,
+        "lentes": false,
+        "disposicion": false
+      },
+      "tipoUsuario": 1,
+      "tipoModelos": [
+        {
+          "tipoModeloId": 1,
+          "descripcion": "General"
+        },
+        {
+          "tipoModeloId": 2,
+          "descripcion": "Manos"
+        },
+        {
+          "tipoModeloId": 3,
+          "descripcion": "Piernas/Pies"
+        },
+        {
+          "tipoModeloId": 4,
+          "descripcion": "Dientes"
+        },
+        {
+          "tipoModeloId": 5,
+          "descripcion": "Codos"
+        }
+      ],
+      "tipoActors": [
+        {
+          "tipoActorId": 1,
+          "descripcion": "Cine"
+        },
+        {
+          "tipoActorId": 2,
+          "descripcion": "Teatro"
+        },
+        {
+          "tipoActorId": 3,
+          "descripcion": "Comercial"
+        },
+        {
+          "tipoActorId": 4,
+          "descripcion": "Actor de Voz"
+        }
+      ],
+      "habilidad": {
+        "habilidadId": 1,
+        "descripcion": "string"
+      }
+    },
+    {
+      "personaId": 3,
+      "user": {
+        "usuarioId": 1,
+        "nombreUsuario": "Manuel Gonzales",
+        "contraseña": "123456",
+        "email": "lperez@mockdata.com",
+        "telefono": "8091111111",
+        "ciudad": {
+          "ciudadId": 1,
+          "nombre": "Santo Domingo",
+          "provincia": {
+            "provinciaId": 1,
+            "nombre": "Santiago"
+          }
+        }
+      },
+      "detallePerfil": {
+        "detallesPerfilId": 1,
+        "colorPiel": {
+          "colorPielId": 1,
+          "color": "blanco"
+        },
+        "colorCabello": {
+          "colorCabelloId": 1,
+          "color": "negro"
+        },
+        "colorOjos": {
+          "colorOjosId": 1,
+          "color": "marron"
+        },
+        "tipoPiel": {
+          "tipoPielId": 1,
+          "descripcion": "string"
+        },
+        "nombre": "Luis",
+        "apellido": "Perez",
+        "genero": "string",
+        "foto": "binary",
+        "edad": 18,
+        "peso": 200,
+        "altura": 185,
+        "tatuajes": true,
+        "piercings": false,
+        "bigote": false,
+        "barba": true,
+        "bracers": false,
+        "lentes": false,
+        "disposicion": false
+      },
+      "tipoUsuario": 1,
+      "tipoModelos": [
+        {
+          "tipoModeloId": 1,
+          "descripcion": "General"
+        },
+        {
+          "tipoModeloId": 2,
+          "descripcion": "Manos"
+        },
+        {
+          "tipoModeloId": 3,
+          "descripcion": "Piernas/Pies"
+        },
+        {
+          "tipoModeloId": 4,
+          "descripcion": "Dientes"
+        },
+        {
+          "tipoModeloId": 5,
+          "descripcion": "Codos"
+        }
+      ],
+      "tipoActors": [
+        {
+          "tipoActorId": 1,
+          "descripcion": "Cine"
+        },
+        {
+          "tipoActorId": 2,
+          "descripcion": "Teatro"
+        },
+        {
+          "tipoActorId": 3,
+          "descripcion": "Comercial"
+        },
+        {
+          "tipoActorId": 4,
+          "descripcion": "Actor de Voz"
+        }
+      ],
+      "habilidad": {
+        "habilidadId": 1,
+        "descripcion": "string"
+      }
+    },
+    {
+      "personaId": 4,
+      "user": {
+        "usuarioId": 1,
+        "nombreUsuario": "Luis Perez",
+        "contraseña": "123456",
+        "email": "lperez@mockdata.com",
+        "telefono": "8091111111",
+        "ciudad": {
+          "ciudadId": 1,
+          "nombre": "Santo Domingo",
+          "provincia": {
+            "provinciaId": 1,
+            "nombre": "Santiago"
+          }
+        }
+      },
+      "detallePerfil": {
+        "detallesPerfilId": 1,
+        "colorPiel": {
+          "colorPielId": 1,
+          "color": "blanco"
+        },
+        "colorCabello": {
+          "colorCabelloId": 1,
+          "color": "negro"
+        },
+        "colorOjos": {
+          "colorOjosId": 1,
+          "color": "marron"
+        },
+        "tipoPiel": {
+          "tipoPielId": 1,
+          "descripcion": "string"
+        },
+        "nombre": "Luis",
+        "apellido": "Perez",
+        "genero": "string",
+        "foto": "binary",
+        "edad": 18,
+        "peso": 200,
+        "altura": 185,
+        "tatuajes": false,
+        "piercings": false,
+        "bigote": false,
+        "barba": false,
+        "bracers": false,
+        "lentes": false,
+        "disposicion": false
+      },
+      "tipoUsuario": 1,
+      "tipoModelos": [
+        {
+          "tipoModeloId": 1,
+          "descripcion": "General"
+        },
+        {
+          "tipoModeloId": 2,
+          "descripcion": "Manos"
+        },
+        {
+          "tipoModeloId": 3,
+          "descripcion": "Piernas/Pies"
+        },
+        {
+          "tipoModeloId": 4,
+          "descripcion": "Dientes"
+        },
+        {
+          "tipoModeloId": 5,
+          "descripcion": "Codos"
+        }
+      ],
+      "tipoActors": [
+        {
+          "tipoActorId": 1,
+          "descripcion": "Cine"
+        },
+        {
+          "tipoActorId": 2,
+          "descripcion": "Teatro"
+        },
+        {
+          "tipoActorId": 3,
+          "descripcion": "Comercial"
+        },
+        {
+          "tipoActorId": 4,
+          "descripcion": "Actor de Voz"
+        }
+      ],
+      "habilidad": {
+        "habilidadId": 1,
+        "descripcion": "string"
+      }
+    },
+    {
+      "personaId": 5,
+      "user": {
+        "usuarioId": 1,
+        "nombreUsuario": "Luis Perez",
+        "contraseña": "123456",
+        "email": "lperez@mockdata.com",
+        "telefono": "8091111111",
+        "ciudad": {
+          "ciudadId": 1,
+          "nombre": "Santo Domingo",
+          "provincia": {
+            "provinciaId": 1,
+            "nombre": "Santiago"
+          }
+        }
+      },
+      "detallePerfil": {
+        "detallesPerfilId": 1,
+        "colorPiel": {
+          "colorPielId": 1,
+          "color": "blanco"
+        },
+        "colorCabello": {
+          "colorCabelloId": 1,
+          "color": "negro"
+        },
+        "colorOjos": {
+          "colorOjosId": 1,
+          "color": "marron"
+        },
+        "tipoPiel": {
+          "tipoPielId": 1,
+          "descripcion": "string"
+        },
+        "nombre": "Luis",
+        "apellido": "Perez",
+        "genero": "string",
+        "foto": "binary",
+        "edad": 18,
+        "peso": 200,
+        "altura": 185,
+        "tatuajes": true,
+        "piercings": false,
+        "bigote": false,
+        "barba": false,
+        "bracers": false,
+        "lentes": false,
+        "disposicion": false
+      },
+      "tipoUsuario": 1,
+      "tipoModelos": [
+        {
+          "tipoModeloId": 1,
+          "descripcion": "General"
+        },
+        {
+          "tipoModeloId": 2,
+          "descripcion": "Manos"
+        },
+        {
+          "tipoModeloId": 3,
+          "descripcion": "Piernas/Pies"
+        },
+        {
+          "tipoModeloId": 4,
+          "descripcion": "Dientes"
+        },
+        {
+          "tipoModeloId": 5,
+          "descripcion": "Codos"
+        }
+      ],
+      "tipoActors": [
+        {
+          "tipoActorId": 1,
+          "descripcion": "Cine"
+        },
+        {
+          "tipoActorId": 2,
+          "descripcion": "Teatro"
+        },
+        {
+          "tipoActorId": 3,
+          "descripcion": "Comercial"
+        },
+        {
+          "tipoActorId": 4,
+          "descripcion": "Actor de Voz"
+        }
+      ],
+      "habilidad": {
+        "habilidadId": 1,
+        "descripcion": "string"
       }
     }
-  },
-  "detallePerfil": {
-    "detallesPerfilId": int,
-    "colorPiel": {
-      "colorPielId": int,
-      "color": string
-    },
-    "colorCabello": {
-      "colorCabelloId": int,
-      "color": string
-    },
-    "colorOjos": {
-      "colorOjosId": int,
-      "color": string
-    },
-    "tipoPiel": {
-      "tipoPielId": int,
-      "descripcion": string
-    },
-    "nombre": string,
-    "apellido": string,
-    "genero": string,
-    "foto": binary,
-    "edad": int,
-    "peso": int,
-    "altura": int,
-    "tatuajes": bool,
-    "piercings": bool,
-    "bigote": bool,
-    "barba": bool,
-    "bracers": bool,
-    "lentes": bool,
-    "disposicion": bool
-  },
-  "tipoUsuario": int,
-  "tipoModelos": [
-    {
-      "tipoModeloId": 1,
-      "descripcion": "General"
-    },
-    {
-      "tipoModeloId": 2,
-      "descripcion": "Manos"
-    },
-    {
-      "tipoModeloId": 3,
-      "descripcion": "Piernas/Pies"
-    },
-    {
-      "tipoModeloId": 4,
-      "descripcion": "Dientes"
-    },
-    {
-      "tipoModeloId": 5,
-      "descripcion": "Codos"
-    }
-  ],
-  "tipoActors": [
-    {
-      "tipoActorId": 1,
-      "descripcion": "Cine"
-    },
-    {
-      "tipoActorId": 2,
-      "descripcion": "Teatro"
-    },
-    {
-      "tipoActorId": 3,
-      "descripcion": "Comercial"
-    },
-    {
-      "tipoActorId": 4,
-      "descripcion": "Actor de Voz"
-    }
-  ],
-  "habilidad": {
-    "habilidadId": int,
-    "descripcion": string
-  }
+  ]
 }
