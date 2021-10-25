@@ -301,10 +301,28 @@
           "descripcion": "Actor de Voz"
         }
       ],
-      "habilidad": {
-        "habilidadId": 1,
-        "descripcion": "string"
-      }
+      "habilidad": [
+        {
+          "habilidadId": 1,
+          "descripcion": "canto"
+        },
+        {
+          "habilidadId": 2,
+          "descripcion": "baile"
+        },
+        {
+          "habilidadId": 3,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 4,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 5,
+          "descripcion": "string"
+        }
+      ]
     },
     {
       "id": 4,
@@ -398,10 +416,28 @@
           "descripcion": "Actor de Voz"
         }
       ],
-      "habilidad": {
-        "habilidadId": 1,
-        "descripcion": "string"
-      }
+      "habilidad": [
+        {
+          "habilidadId": 1,
+          "descripcion": "canto"
+        },
+        {
+          "habilidadId": 2,
+          "descripcion": "baile"
+        },
+        {
+          "habilidadId": 3,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 4,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 5,
+          "descripcion": "string"
+        }
+      ]
     },
     {
       "id": 6,
@@ -495,10 +531,28 @@
           "descripcion": "Actor de Voz"
         }
       ],
-      "habilidad": {
-        "habilidadId": 1,
-        "descripcion": "string"
-      }
+      "habilidad": [
+        {
+          "habilidadId": 1,
+          "descripcion": "canto"
+        },
+        {
+          "habilidadId": 2,
+          "descripcion": "baile"
+        },
+        {
+          "habilidadId": 3,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 4,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 5,
+          "descripcion": "string"
+        }
+      ]
     },
     {
       "id": 7,
@@ -592,10 +646,28 @@
           "descripcion": "Actor de Voz"
         }
       ],
-      "habilidad": {
-        "habilidadId": 1,
-        "descripcion": "string"
-      }
+      "habilidad": [
+        {
+          "habilidadId": 1,
+          "descripcion": "canto"
+        },
+        {
+          "habilidadId": 2,
+          "descripcion": "baile"
+        },
+        {
+          "habilidadId": 3,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 4,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 5,
+          "descripcion": "string"
+        }
+      ]
     },
     {
       "id": 8,
@@ -689,10 +761,28 @@
           "descripcion": "Actor de Voz"
         }
       ],
-      "habilidad": {
-        "habilidadId": 1,
-        "descripcion": "string"
-      }
+      "habilidad": [
+        {
+          "habilidadId": 1,
+          "descripcion": "canto"
+        },
+        {
+          "habilidadId": 2,
+          "descripcion": "baile"
+        },
+        {
+          "habilidadId": 3,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 4,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 5,
+          "descripcion": "string"
+        }
+      ]
     },
     {
       "id": 9,
@@ -786,10 +876,28 @@
           "descripcion": "Actor de Voz"
         }
       ],
-      "habilidad": {
-        "habilidadId": 1,
-        "descripcion": "string"
-      }
+      "habilidad": [
+        {
+          "habilidadId": 1,
+          "descripcion": "canto"
+        },
+        {
+          "habilidadId": 2,
+          "descripcion": "baile"
+        },
+        {
+          "habilidadId": 3,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 4,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 5,
+          "descripcion": "string"
+        }
+      ]
     },
     {
       "id": 10,
@@ -883,10 +991,28 @@
           "descripcion": "Actor de Voz"
         }
       ],
-      "habilidad": {
-        "habilidadId": 1,
-        "descripcion": "string"
-      }
+      "habilidad": [
+        {
+          "habilidadId": 1,
+          "descripcion": "canto"
+        },
+        {
+          "habilidadId": 2,
+          "descripcion": "baile"
+        },
+        {
+          "habilidadId": 3,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 4,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 5,
+          "descripcion": "string"
+        }
+      ]
     },
     {
       "id": 11,
@@ -980,10 +1106,28 @@
           "descripcion": "Actor de Voz"
         }
       ],
-      "habilidad": {
-        "habilidadId": 1,
-        "descripcion": "string"
-      }
+      "habilidad": [
+        {
+          "habilidadId": 1,
+          "descripcion": "canto"
+        },
+        {
+          "habilidadId": 2,
+          "descripcion": "baile"
+        },
+        {
+          "habilidadId": 3,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 4,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 5,
+          "descripcion": "string"
+        }
+      ]
     },
     {
       "id": 12,
@@ -1077,10 +1221,28 @@
           "descripcion": "Actor de Voz"
         }
       ],
-      "habilidad": {
-        "habilidadId": 1,
-        "descripcion": "string"
-      }
+      "habilidad": [
+        {
+          "habilidadId": 1,
+          "descripcion": "canto"
+        },
+        {
+          "habilidadId": 2,
+          "descripcion": "baile"
+        },
+        {
+          "habilidadId": 3,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 4,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 5,
+          "descripcion": "string"
+        }
+      ]
     }
   ],
   "Ciudades": [
