@@ -24,8 +24,8 @@ const NavBar = () => {
           <Toolbar>
             <Stack direction="row" spacing={{ xs: 1, sm: 2, md: 8 }}>
               <img src={logo} width="200" />
-              <Button size='large' color="primary">Inicio</Button>
-              <Button size='large' color="primary">Explorar</Button>
+              <Button size='large' color="primary" href="/Home">Inicio</Button>
+              <Button size='large' color="primary" href="/Discover">Explorar</Button>
               <Button size='large' color="primary">Nosotros</Button>
             </Stack>
           </Toolbar>

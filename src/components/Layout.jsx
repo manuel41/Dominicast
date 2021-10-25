@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: '#d8d8d8'
+    backgroundColor: '#f5f5f5 '
   }
 }));
 
