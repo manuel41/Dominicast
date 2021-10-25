@@ -495,5 +495,129 @@
         "descripcion": "string"
       }
     }
+  ],
+  "Ciudades": [
+    {
+      "id": 1,
+      "nombre": "Santiago"
+    },
+    {
+      "id": 2,
+      "nombre": "Distrito Nacional"
+    },
+    {
+      "id": 3,
+      "nombre": "Punta Cana"
+    }
+  ],
+  "Provincias": [
+    {
+      "id": 1,
+      "nombre": "Santiago"
+    },
+    {
+      "id": 2,
+      "nombre": "Santo Domingo"
+    },
+    {
+      "id": 3,
+      "nombre": "La Altagracia"
+    }
+  ],
+  "ColorPiel": [
+    {
+      "id": 1,
+      "nombre": "Blanco"
+    },
+    {
+      "id": 2,
+      "nombre": "Negro"
+    },
+    {
+      "id": 3,
+      "nombre": "Mestizo"
+    }
+  ],
+  "ColorCabello": [
+    {
+      "id": 1,
+      "nombre": "Negro"
+    },
+    {
+      "id": 2,
+      "nombre": "Rojo"
+    },
+    {
+      "id": 3,
+      "nombre": "Marron"
+    }
+  ],
+  "ColorOjos": [
+    {
+      "id": 1,
+      "nombre": "Marron"
+    },
+    {
+      "id": 2,
+      "nombre": "Verde"
+    },
+    {
+      "id": 3,
+      "nombre": "Azul"
+    }
+  ],
+  "TipoModelos": [
+    {
+      "id": 1,
+      "nombre": "General"
+    },
+    {
+      "id": 2,
+      "nombre": "Manos"
+    },
+    {
+      "id": 3,
+      "nombre": "Piernas/Pies"
+    },
+    {
+      "id": 4,
+      "nombre": "Dientes"
+    },
+    {
+      "id": 5,
+      "nombre": "Codos"
+    }
+  ],
+  "TipoActores": [
+    {
+      "id": 1,
+      "nombre": "Cine"
+    },
+    {
+      "id": 2,
+      "nombre": "Teatro"
+    },
+    {
+      "id": 3,
+      "nombre": "Comercial"
+    },
+    {
+      "id": 4,
+      "nombre": "Actor de Voz"
+    }
+  ],
+  "Habilidades": [
+    {
+      "id": 1,
+      "nombre": "Canto"
+    },
+    {
+      "id": 2,
+      "nombre": "Baile"
+    },
+    {
+      "id": 3,
+      "nombre": "Maestro de Cartas"
+    }
   ]
 }
