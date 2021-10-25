@@ -6,6 +6,18 @@ import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import theme from '../theme';
+import { makeStyles } from '@mui/styles';
+
+
+const useStyles = makeStyles((theme) => ({
+    filters: {
+        marginBottom: '20px',
+    },
+}));
+
+
+
 
 export default function ToggleButtonsMultiple(props) {
 
@@ -18,10 +30,13 @@ export default function ToggleButtonsMultiple(props) {
     return (
         <ToggleButtonGroup
             size="small"
-            orientation="vertical"
+            orientation="horizontal"
             value={props.filter}
             onChange={handleFormat}
             aria-label="text formatting"
+            sx='object'
+            className='filters'
+            fullWidth
         >
             <ToggleButton value="Limpiar">
                 Limpiar

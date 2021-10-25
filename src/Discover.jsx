@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Typography, Card, CardContent, CardMedia, CssBaseline, Grid, Container, Box, Link, Pagination } from '@mui/material';
+import { Typography, Card, CardContent, CardMedia, CssBaseline, Grid, Container, Box, Link, Pagination, TextField } from '@mui/material';
 import ToggleButtonsMultiple from './components/ToggleButtonsMultiple';
 
 import { makeStyles } from '@mui/styles';
@@ -8,7 +8,11 @@ import { makeStyles } from '@mui/styles';
 const useStyles = makeStyles((theme) => ({
     paginationContainer: {
         padding: theme.spacing(3, 0, 4),
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
+
     cardGrid: {
         padding: '20px 0',
 
@@ -36,6 +40,8 @@ const Discover = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [personsPerPage, setPersonsPerPage] = useState(9);
     const [filter, setFilter] = useState([]);
+    const [searchTerm, setSearhTerm] = useState("");
+
 
     const totalPages = Math.ceil(persons.length / personsPerPage);
 
@@ -63,12 +69,25 @@ const Discover = () => {
     return (
         <div>
             <CssBaseline />
+
             <Container className={classes.filter}>
-                <ToggleButtonsMultiple filter={filter} setFilter={setFilter} />
             </Container>
+
             <Container className={classes.cardGrid} maxWidth="md" >
+
+                <TextField fullWidth id="outlined-search" margin="normal" label="Buscar" type="search" color='secondary' onChange={(event) => {
+                    setSearhTerm(event.target.value);
+                }} />
+                <ToggleButtonsMultiple filter={filter} setFilter={setFilter} />
+
                 <Grid container spacing={3}>
                     {currentPersons
+                        .filter((person => {
+                            if (searchTerm === "")
+                                return person;
+                            else if (person.user.nombreUsuario.toLowerCase().includes(searchTerm.toLowerCase()))
+                                return person;
+                        }))
                         .filter((person) => {
                             if ((person.detallePerfil.tatuajes && filter.includes('sinTatuajes')) ||
                                 (!person.detallePerfil.tatuajes && filter.includes('conTatuajes')) ||
@@ -93,7 +112,9 @@ const Discover = () => {
                             </Grid>
                         ))}
                 </Grid>
-                <Pagination count={totalPages} className={classes.paginationContainer} onChange={paginate} />
+                <Container className={classes.paginationContainer}>
+                    <Pagination count={totalPages} className={classes.paginationContainer} onChange={paginate} />
+                </Container>
             </Container>
         </div>
     )

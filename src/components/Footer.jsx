@@ -15,7 +15,7 @@ const Footer = () => {
     const classes = useStyles();
     return (
         <footer>
-            <Box bgcolor="neutral" color="white">
+            <Box bgcolor="primary">
                 <Container maxWidth="lg" className={classes.footerContainer}>
                     <Grid container spacing={4}>
                         <Grid item xs={12} sm={2}>
