@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ProfileView = () => {
   const classes = useStyles()
-  const url = "http://localhost:5000/Persons/"
+  const url = "http://localhost:5000/Persons"
   let { id } = useParams();
 
   const [profileDetails, setProfileDetails] = useState()
