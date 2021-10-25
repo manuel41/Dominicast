@@ -5,7 +5,7 @@ import { makeStyles } from '@mui/styles';
 const useStyles = makeStyles((theme) => ({
     footerContainer: {
         padding: theme.spacing(3, 0, 4),
-        marginTop: 'auto'
+        margin: theme.spacing(5, 0, 0)
     },
 }));
 

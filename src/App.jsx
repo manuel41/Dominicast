@@ -8,6 +8,7 @@ import NavBar from './components/NavBar';
 import Discover from './Discover';
 import Footer from './components/Footer';
 import Home from './Home';
+import ProfileView from './ProfileView'
 import Layout from './components/Layout';
 
 
@@ -24,6 +25,7 @@ const App = () => {
             <main>
               <Route exact path="/" component={Home} />
               <Route path="/discover" component={Discover} />
+              <Route path="/profile/:id" children={<ProfileView />} />
               {/* <div className={classes.container}>
               <Container>
                 <Typography variant="subtitle2" color="textPrimary" >UNA PLATAFORMA PARA EL TALENTO</Typography>
