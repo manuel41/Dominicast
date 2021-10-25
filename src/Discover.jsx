@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column'
     },
     cardMedia: {
-        paddingTop: '56.25%'
+        paddingTop: '80.25%'
     },
     cardContent: {
         flexGrow: '1'
@@ -102,7 +102,7 @@ const Discover = () => {
                             <Grid item key={person.id} xs={12} sm={6} md={4}>
                                 <Card className={classes.card}>
                                     <CardActionArea href={`/profile/${person.id}`}>
-                                        <CardMedia className={classes.cardMedia} image="https://source.unsplash.com/random" title="image title" />
+                                        <CardMedia className={classes.cardMedia} image={person.detallePerfil.url} title="image title" />
                                         <CardContent className={classes.cardMedia}>
                                             <Typography variant="h5">{person.user.nombreUsuario}</Typography>
                                             <Typography  >Estatura: {person.detallePerfil.altura}</Typography>
