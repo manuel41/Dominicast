@@ -27,6 +27,7 @@ const NavBar = () => {
               <Button size='large' color="primary" href="/Home">Inicio</Button>
               <Button size='large' color="primary" href="/Discover">Explorar</Button>
               <Button size='large' color="primary">Nosotros</Button>
+              <Button size='large' color="primary" href="create-profile">Registrarse</Button>
             </Stack>
           </Toolbar>
         </Container>
