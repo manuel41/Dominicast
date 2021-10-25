@@ -4,6 +4,7 @@ import { Container, Divider, Grid, Typography } from '@mui/material'
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles'
+import { useParams } from 'react-router';
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -43,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
 const ProfileView = () => {
   const classes = useStyles()
   const url = "http://localhost:5000/Persons/"
+  let { id } = useParams();
 
   const [profileDetails, setProfileDetails] = useState()
   const [loading, setLoading] = useState(false)
@@ -50,10 +52,8 @@ const ProfileView = () => {
 
   useEffect(() => {
     const fetchProfileDetail = async () => {
-      const res = await axios.get('http://localhost:5000/Persons/1');
+      const res = await axios.get(`${url}/${id}`);
       setProfileDetails(res.data);
-      console.log("Fetched")
-      console.log(profileDetails)
     }
     fetchProfileDetail();
   }, [])
