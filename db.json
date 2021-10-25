@@ -48,7 +48,8 @@
         "barba": false,
         "bracers": false,
         "lentes": false,
-        "disposicion": false
+        "disposicion": false,
+        "url": "https://bit.ly/ryan-florence"
       },
       "tipoUsuario": 1,
       "tipoModelos": [
@@ -141,7 +142,8 @@
         "barba": false,
         "bracers": false,
         "lentes": false,
-        "disposicion": false
+        "disposicion": false,
+        "url": "https://bit.ly/sage-adebayo"
       },
       "tipoUsuario": 3,
       "tipoModelos": [
@@ -255,7 +257,8 @@
         "barba": true,
         "bracers": false,
         "lentes": false,
-        "disposicion": false
+        "disposicion": false,
+        "url": "https://bit.ly/kent-c-dodds"
       },
       "tipoUsuario": 1,
       "tipoModelos": [
@@ -298,16 +301,34 @@
           "descripcion": "Actor de Voz"
         }
       ],
-      "habilidad": {
-        "habilidadId": 1,
-        "descripcion": "string"
-      }
+      "habilidad": [
+        {
+          "habilidadId": 1,
+          "descripcion": "canto"
+        },
+        {
+          "habilidadId": 2,
+          "descripcion": "baile"
+        },
+        {
+          "habilidadId": 3,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 4,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 5,
+          "descripcion": "string"
+        }
+      ]
     },
     {
       "id": 4,
       "user": {
         "usuarioId": 1,
-        "nombreUsuario": "Luis Perez",
+        "nombreUsuario": "Marcos Perez",
         "contraseña": "123456",
         "email": "lperez@mockdata.com",
         "telefono": "8091111111",
@@ -338,7 +359,7 @@
           "tipoPielId": 1,
           "descripcion": "string"
         },
-        "nombre": "Luis",
+        "nombre": "Marcos",
         "apellido": "Perez",
         "genero": "string",
         "foto": "binary",
@@ -351,7 +372,8 @@
         "barba": false,
         "bracers": false,
         "lentes": false,
-        "disposicion": false
+        "disposicion": false,
+        "url": "https://bit.ly/prosper-baba"
       },
       "tipoUsuario": 1,
       "tipoModelos": [
@@ -394,16 +416,34 @@
           "descripcion": "Actor de Voz"
         }
       ],
-      "habilidad": {
-        "habilidadId": 1,
-        "descripcion": "string"
-      }
+      "habilidad": [
+        {
+          "habilidadId": 1,
+          "descripcion": "canto"
+        },
+        {
+          "habilidadId": 2,
+          "descripcion": "baile"
+        },
+        {
+          "habilidadId": 3,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 4,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 5,
+          "descripcion": "string"
+        }
+      ]
     },
     {
-      "id": 5,
+      "id": 6,
       "user": {
         "usuarioId": 1,
-        "nombreUsuario": "Luis Perez",
+        "nombreUsuario": "Luisa Morillo",
         "contraseña": "123456",
         "email": "lperez@mockdata.com",
         "telefono": "8091111111",
@@ -434,8 +474,8 @@
           "tipoPielId": 1,
           "descripcion": "string"
         },
-        "nombre": "Luis",
-        "apellido": "Perez",
+        "nombre": "Luisa",
+        "apellido": "Morillo",
         "genero": "string",
         "foto": "binary",
         "edad": 18,
@@ -447,7 +487,8 @@
         "barba": false,
         "bracers": false,
         "lentes": false,
-        "disposicion": false
+        "disposicion": false,
+        "url": "https://bit.ly/code-beast"
       },
       "tipoUsuario": 1,
       "tipoModelos": [
@@ -490,10 +531,718 @@
           "descripcion": "Actor de Voz"
         }
       ],
-      "habilidad": {
-        "habilidadId": 1,
-        "descripcion": "string"
-      }
+      "habilidad": [
+        {
+          "habilidadId": 1,
+          "descripcion": "canto"
+        },
+        {
+          "habilidadId": 2,
+          "descripcion": "baile"
+        },
+        {
+          "habilidadId": 3,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 4,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 5,
+          "descripcion": "string"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "user": {
+        "usuarioId": 1,
+        "nombreUsuario": "Lucas Suriel",
+        "contraseña": "123456",
+        "email": "lperez@mockdata.com",
+        "telefono": "8091111111",
+        "ciudad": {
+          "ciudadId": 1,
+          "nombre": "Santo Domingo",
+          "provincia": {
+            "provinciaId": 1,
+            "nombre": "Santiago"
+          }
+        }
+      },
+      "detallePerfil": {
+        "detallesPerfilId": 1,
+        "colorPiel": {
+          "colorPielId": 1,
+          "color": "blanco"
+        },
+        "colorCabello": {
+          "colorCabelloId": 1,
+          "color": "negro"
+        },
+        "colorOjos": {
+          "colorOjosId": 1,
+          "color": "marron"
+        },
+        "tipoPiel": {
+          "tipoPielId": 1,
+          "descripcion": "string"
+        },
+        "nombre": ":Lucas",
+        "apellido": "Suriel",
+        "genero": "string",
+        "foto": "binary",
+        "edad": 18,
+        "peso": 200,
+        "altura": 185,
+        "tatuajes": true,
+        "piercings": false,
+        "bigote": false,
+        "barba": false,
+        "bracers": false,
+        "lentes": false,
+        "disposicion": false,
+        "url": "https://bit.ly/ryan-florence"
+      },
+      "tipoUsuario": 1,
+      "tipoModelos": [
+        {
+          "tipoModeloId": 1,
+          "descripcion": "General"
+        },
+        {
+          "tipoModeloId": 2,
+          "descripcion": "Manos"
+        },
+        {
+          "tipoModeloId": 3,
+          "descripcion": "Piernas/Pies"
+        },
+        {
+          "tipoModeloId": 4,
+          "descripcion": "Dientes"
+        },
+        {
+          "tipoModeloId": 5,
+          "descripcion": "Codos"
+        }
+      ],
+      "tipoActors": [
+        {
+          "tipoActorId": 1,
+          "descripcion": "Cine"
+        },
+        {
+          "tipoActorId": 2,
+          "descripcion": "Teatro"
+        },
+        {
+          "tipoActorId": 3,
+          "descripcion": "Comercial"
+        },
+        {
+          "tipoActorId": 4,
+          "descripcion": "Actor de Voz"
+        }
+      ],
+      "habilidad": [
+        {
+          "habilidadId": 1,
+          "descripcion": "canto"
+        },
+        {
+          "habilidadId": 2,
+          "descripcion": "baile"
+        },
+        {
+          "habilidadId": 3,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 4,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 5,
+          "descripcion": "string"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "user": {
+        "usuarioId": 1,
+        "nombreUsuario": "Miguel Angel",
+        "contraseña": "123456",
+        "email": "lperez@mockdata.com",
+        "telefono": "8091111111",
+        "ciudad": {
+          "ciudadId": 1,
+          "nombre": "Santo Domingo",
+          "provincia": {
+            "provinciaId": 1,
+            "nombre": "Santiago"
+          }
+        }
+      },
+      "detallePerfil": {
+        "detallesPerfilId": 1,
+        "colorPiel": {
+          "colorPielId": 1,
+          "color": "blanco"
+        },
+        "colorCabello": {
+          "colorCabelloId": 1,
+          "color": "negro"
+        },
+        "colorOjos": {
+          "colorOjosId": 1,
+          "color": "marron"
+        },
+        "tipoPiel": {
+          "tipoPielId": 1,
+          "descripcion": "string"
+        },
+        "nombre": "Miguel",
+        "apellido": "Batista",
+        "genero": "string",
+        "foto": "binary",
+        "edad": 18,
+        "peso": 200,
+        "altura": 185,
+        "tatuajes": true,
+        "piercings": false,
+        "bigote": false,
+        "barba": false,
+        "bracers": false,
+        "lentes": false,
+        "disposicion": false,
+        "url": "https://bit.ly/sage-adebayo"
+      },
+      "tipoUsuario": 1,
+      "tipoModelos": [
+        {
+          "tipoModeloId": 1,
+          "descripcion": "General"
+        },
+        {
+          "tipoModeloId": 2,
+          "descripcion": "Manos"
+        },
+        {
+          "tipoModeloId": 3,
+          "descripcion": "Piernas/Pies"
+        },
+        {
+          "tipoModeloId": 4,
+          "descripcion": "Dientes"
+        },
+        {
+          "tipoModeloId": 5,
+          "descripcion": "Codos"
+        }
+      ],
+      "tipoActors": [
+        {
+          "tipoActorId": 1,
+          "descripcion": "Cine"
+        },
+        {
+          "tipoActorId": 2,
+          "descripcion": "Teatro"
+        },
+        {
+          "tipoActorId": 3,
+          "descripcion": "Comercial"
+        },
+        {
+          "tipoActorId": 4,
+          "descripcion": "Actor de Voz"
+        }
+      ],
+      "habilidad": [
+        {
+          "habilidadId": 1,
+          "descripcion": "canto"
+        },
+        {
+          "habilidadId": 2,
+          "descripcion": "baile"
+        },
+        {
+          "habilidadId": 3,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 4,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 5,
+          "descripcion": "string"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "user": {
+        "usuarioId": 1,
+        "nombreUsuario": "Isabel Aquino",
+        "contraseña": "123456",
+        "email": "lperez@mockdata.com",
+        "telefono": "8091111111",
+        "ciudad": {
+          "ciudadId": 1,
+          "nombre": "Santo Domingo",
+          "provincia": {
+            "provinciaId": 1,
+            "nombre": "Santiago"
+          }
+        }
+      },
+      "detallePerfil": {
+        "detallesPerfilId": 1,
+        "colorPiel": {
+          "colorPielId": 1,
+          "color": "blanco"
+        },
+        "colorCabello": {
+          "colorCabelloId": 1,
+          "color": "negro"
+        },
+        "colorOjos": {
+          "colorOjosId": 1,
+          "color": "marron"
+        },
+        "tipoPiel": {
+          "tipoPielId": 1,
+          "descripcion": "string"
+        },
+        "nombre": "Isabel",
+        "apellido": "Aquino",
+        "genero": "string",
+        "foto": "binary",
+        "edad": 18,
+        "peso": 200,
+        "altura": 185,
+        "tatuajes": true,
+        "piercings": false,
+        "bigote": false,
+        "barba": false,
+        "bracers": false,
+        "lentes": false,
+        "disposicion": false,
+        "url": "https://bit.ly/kent-c-dodds"
+      },
+      "tipoUsuario": 1,
+      "tipoModelos": [
+        {
+          "tipoModeloId": 1,
+          "descripcion": "General"
+        },
+        {
+          "tipoModeloId": 2,
+          "descripcion": "Manos"
+        },
+        {
+          "tipoModeloId": 3,
+          "descripcion": "Piernas/Pies"
+        },
+        {
+          "tipoModeloId": 4,
+          "descripcion": "Dientes"
+        },
+        {
+          "tipoModeloId": 5,
+          "descripcion": "Codos"
+        }
+      ],
+      "tipoActors": [
+        {
+          "tipoActorId": 1,
+          "descripcion": "Cine"
+        },
+        {
+          "tipoActorId": 2,
+          "descripcion": "Teatro"
+        },
+        {
+          "tipoActorId": 3,
+          "descripcion": "Comercial"
+        },
+        {
+          "tipoActorId": 4,
+          "descripcion": "Actor de Voz"
+        }
+      ],
+      "habilidad": [
+        {
+          "habilidadId": 1,
+          "descripcion": "canto"
+        },
+        {
+          "habilidadId": 2,
+          "descripcion": "baile"
+        },
+        {
+          "habilidadId": 3,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 4,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 5,
+          "descripcion": "string"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "user": {
+        "usuarioId": 1,
+        "nombreUsuario": "Laisa Torres",
+        "contraseña": "123456",
+        "email": "lperez@mockdata.com",
+        "telefono": "8091111111",
+        "ciudad": {
+          "ciudadId": 1,
+          "nombre": "Santo Domingo",
+          "provincia": {
+            "provinciaId": 1,
+            "nombre": "Santiago"
+          }
+        }
+      },
+      "detallePerfil": {
+        "detallesPerfilId": 1,
+        "colorPiel": {
+          "colorPielId": 1,
+          "color": "blanco"
+        },
+        "colorCabello": {
+          "colorCabelloId": 1,
+          "color": "negro"
+        },
+        "colorOjos": {
+          "colorOjosId": 1,
+          "color": "marron"
+        },
+        "tipoPiel": {
+          "tipoPielId": 1,
+          "descripcion": "string"
+        },
+        "nombre": "Laisa",
+        "apellido": "Torres",
+        "genero": "string",
+        "foto": "binary",
+        "edad": 18,
+        "peso": 200,
+        "altura": 185,
+        "tatuajes": true,
+        "piercings": false,
+        "bigote": false,
+        "barba": false,
+        "bracers": false,
+        "lentes": false,
+        "disposicion": false,
+        "url": "https://bit.ly/prosper-baba"
+      },
+      "tipoUsuario": 1,
+      "tipoModelos": [
+        {
+          "tipoModeloId": 1,
+          "descripcion": "General"
+        },
+        {
+          "tipoModeloId": 2,
+          "descripcion": "Manos"
+        },
+        {
+          "tipoModeloId": 3,
+          "descripcion": "Piernas/Pies"
+        },
+        {
+          "tipoModeloId": 4,
+          "descripcion": "Dientes"
+        },
+        {
+          "tipoModeloId": 5,
+          "descripcion": "Codos"
+        }
+      ],
+      "tipoActors": [
+        {
+          "tipoActorId": 1,
+          "descripcion": "Cine"
+        },
+        {
+          "tipoActorId": 2,
+          "descripcion": "Teatro"
+        },
+        {
+          "tipoActorId": 3,
+          "descripcion": "Comercial"
+        },
+        {
+          "tipoActorId": 4,
+          "descripcion": "Actor de Voz"
+        }
+      ],
+      "habilidad": [
+        {
+          "habilidadId": 1,
+          "descripcion": "canto"
+        },
+        {
+          "habilidadId": 2,
+          "descripcion": "baile"
+        },
+        {
+          "habilidadId": 3,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 4,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 5,
+          "descripcion": "string"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "user": {
+        "usuarioId": 1,
+        "nombreUsuario": "Masiel Cuello",
+        "contraseña": "123456",
+        "email": "lperez@mockdata.com",
+        "telefono": "8091111111",
+        "ciudad": {
+          "ciudadId": 1,
+          "nombre": "Santo Domingo",
+          "provincia": {
+            "provinciaId": 1,
+            "nombre": "Santiago"
+          }
+        }
+      },
+      "detallePerfil": {
+        "detallesPerfilId": 1,
+        "colorPiel": {
+          "colorPielId": 1,
+          "color": "blanco"
+        },
+        "colorCabello": {
+          "colorCabelloId": 1,
+          "color": "negro"
+        },
+        "colorOjos": {
+          "colorOjosId": 1,
+          "color": "marron"
+        },
+        "tipoPiel": {
+          "tipoPielId": 1,
+          "descripcion": "string"
+        },
+        "nombre": "Masiel",
+        "apellido": "Cuello",
+        "genero": "string",
+        "foto": "binary",
+        "edad": 18,
+        "peso": 200,
+        "altura": 185,
+        "tatuajes": true,
+        "piercings": false,
+        "bigote": false,
+        "barba": false,
+        "bracers": false,
+        "lentes": false,
+        "disposicion": false,
+        "url": "https://bit.ly/code-beast"
+      },
+      "tipoUsuario": 1,
+      "tipoModelos": [
+        {
+          "tipoModeloId": 1,
+          "descripcion": "General"
+        },
+        {
+          "tipoModeloId": 2,
+          "descripcion": "Manos"
+        },
+        {
+          "tipoModeloId": 3,
+          "descripcion": "Piernas/Pies"
+        },
+        {
+          "tipoModeloId": 4,
+          "descripcion": "Dientes"
+        },
+        {
+          "tipoModeloId": 5,
+          "descripcion": "Codos"
+        }
+      ],
+      "tipoActors": [
+        {
+          "tipoActorId": 1,
+          "descripcion": "Cine"
+        },
+        {
+          "tipoActorId": 2,
+          "descripcion": "Teatro"
+        },
+        {
+          "tipoActorId": 3,
+          "descripcion": "Comercial"
+        },
+        {
+          "tipoActorId": 4,
+          "descripcion": "Actor de Voz"
+        }
+      ],
+      "habilidad": [
+        {
+          "habilidadId": 1,
+          "descripcion": "canto"
+        },
+        {
+          "habilidadId": 2,
+          "descripcion": "baile"
+        },
+        {
+          "habilidadId": 3,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 4,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 5,
+          "descripcion": "string"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "user": {
+        "usuarioId": 1,
+        "nombreUsuario": "Kiko Quinonez",
+        "contraseña": "123456",
+        "email": "lperez@mockdata.com",
+        "telefono": "8091111111",
+        "ciudad": {
+          "ciudadId": 1,
+          "nombre": "Santo Domingo",
+          "provincia": {
+            "provinciaId": 1,
+            "nombre": "Santiago"
+          }
+        }
+      },
+      "detallePerfil": {
+        "detallesPerfilId": 1,
+        "colorPiel": {
+          "colorPielId": 1,
+          "color": "blanco"
+        },
+        "colorCabello": {
+          "colorCabelloId": 1,
+          "color": "negro"
+        },
+        "colorOjos": {
+          "colorOjosId": 1,
+          "color": "marron"
+        },
+        "tipoPiel": {
+          "tipoPielId": 1,
+          "descripcion": "string"
+        },
+        "nombre": "Kiko",
+        "apellido": "Quinonez",
+        "genero": "string",
+        "foto": "binary",
+        "edad": 18,
+        "peso": 200,
+        "altura": 185,
+        "tatuajes": true,
+        "piercings": false,
+        "bigote": true,
+        "barba": true,
+        "bracers": false,
+        "lentes": false,
+        "disposicion": false,
+        "url": "https://bit.ly/ryan-florence"
+      },
+      "tipoUsuario": 1,
+      "tipoModelos": [
+        {
+          "tipoModeloId": 1,
+          "descripcion": "General"
+        },
+        {
+          "tipoModeloId": 2,
+          "descripcion": "Manos"
+        },
+        {
+          "tipoModeloId": 3,
+          "descripcion": "Piernas/Pies"
+        },
+        {
+          "tipoModeloId": 4,
+          "descripcion": "Dientes"
+        },
+        {
+          "tipoModeloId": 5,
+          "descripcion": "Codos"
+        }
+      ],
+      "tipoActors": [
+        {
+          "tipoActorId": 1,
+          "descripcion": "Cine"
+        },
+        {
+          "tipoActorId": 2,
+          "descripcion": "Teatro"
+        },
+        {
+          "tipoActorId": 3,
+          "descripcion": "Comercial"
+        },
+        {
+          "tipoActorId": 4,
+          "descripcion": "Actor de Voz"
+        }
+      ],
+      "habilidad": [
+        {
+          "habilidadId": 1,
+          "descripcion": "canto"
+        },
+        {
+          "habilidadId": 2,
+          "descripcion": "baile"
+        },
+        {
+          "habilidadId": 3,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 4,
+          "descripcion": "string"
+        },
+        {
+          "habilidadId": 5,
+          "descripcion": "string"
+        }
+      ]
     }
   ],
   "Ciudades": [

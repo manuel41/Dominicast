@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column'
     },
     cardMedia: {
-        paddingTop: '56.25%'
+        paddingTop: '80.25%'
     },
     cardContent: {
         flexGrow: '1'
@@ -80,41 +80,42 @@ const Discover = () => {
                     setSearhTerm(event.target.value);
                 }} />
                 <ToggleButtonsMultiple filter={filter} setFilter={setFilter} />
-
-                <Grid container spacing={3}>
-                    {currentPersons
-                        .filter((person => {
-                            if (searchTerm === "")
-                                return person;
-                            else if (person.user.nombreUsuario.toLowerCase().includes(searchTerm.toLowerCase()))
-                                return person;
-                        }))
-                        .filter((person) => {
-                            if ((person.detallePerfil.tatuajes && filter.includes('sinTatuajes')) ||
-                                (!person.detallePerfil.tatuajes && filter.includes('conTatuajes')) ||
-                                (person.detallePerfil.barba && filter.includes('sinBarba')) ||
-                                (!person.detallePerfil.barba && filter.includes('conBarba')))
-                                return false;
-                            else
-                                return true;
-                        })
-                        .map((person) => (
-                            <Grid item key={person.id} xs={12} sm={6} md={4}>
-                                <Card className={classes.card}>
-                                    <CardActionArea href={`/profile/${person.id}`}>
-                                        <CardMedia className={classes.cardMedia} image="https://source.unsplash.com/random" title="image title" />
-                                        <CardContent className={classes.cardMedia}>
-                                            <Typography variant="h5">{person.user.nombreUsuario}</Typography>
-                                            <Typography  >Estatura: {person.detallePerfil.altura}</Typography>
-                                            <Typography  >Peso: {person.detallePerfil.peso}</Typography>
-                                            <Typography  >Barba: {person.detallePerfil.barba ? "si" : "no"}</Typography>
-                                            <Typography  >tatuajes: {person.detallePerfil.tatuajes ? "si" : "no"}</Typography>
-                                        </CardContent>
-                                    </CardActionArea>
-                                </Card>
-                            </Grid>
-                        ))}
-                </Grid>
+                <Container disableGutters="true" className={classes.paginationContainer}>
+                    <Grid container spacing={3}>
+                        {currentPersons
+                            .filter((person => {
+                                if (searchTerm === "")
+                                    return person;
+                                else if (person.user.nombreUsuario.toLowerCase().includes(searchTerm.toLowerCase()))
+                                    return person;
+                            }))
+                            .filter((person) => {
+                                if ((person.detallePerfil.tatuajes && filter.includes('sinTatuajes')) ||
+                                    (!person.detallePerfil.tatuajes && filter.includes('conTatuajes')) ||
+                                    (person.detallePerfil.barba && filter.includes('sinBarba')) ||
+                                    (!person.detallePerfil.barba && filter.includes('conBarba')))
+                                    return false;
+                                else
+                                    return true;
+                            })
+                            .map((person) => (
+                                <Grid item key={person.id} xs={12} sm={6} md={4}>
+                                    <Card className={classes.card}>
+                                        <CardActionArea href={`/profile/${person.id}`}>
+                                            <CardMedia className={classes.cardMedia} image={person.detallePerfil.url} title="image title" />
+                                            <CardContent className={classes.cardMedia}>
+                                                <Typography variant="h5">{person.user.nombreUsuario}</Typography>
+                                                <Typography  >Estatura: {person.detallePerfil.altura}</Typography>
+                                                <Typography  >Peso: {person.detallePerfil.peso}</Typography>
+                                                <Typography  >Barba: {person.detallePerfil.barba ? "si" : "no"}</Typography>
+                                                <Typography  >tatuajes: {person.detallePerfil.tatuajes ? "si" : "no"}</Typography>
+                                            </CardContent>
+                                        </CardActionArea>
+                                    </Card>
+                                </Grid>
+                            ))}
+                    </Grid>
+                </Container>
                 <Container className={classes.paginationContainer}>
                     <Pagination count={totalPages} className={classes.paginationContainer} onChange={paginate} />
                 </Container>
