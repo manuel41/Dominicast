@@ -10,7 +10,7 @@ import Footer from './components/Footer';
 import Home from './Home';
 import ProfileView from './ProfileView'
 import Layout from './components/Layout';
-
+import CreateProfile from './CreateProfile';
 
 const App = () => {
 
@@ -26,13 +26,7 @@ const App = () => {
               <Route exact path="/" component={Home} />
               <Route path="/discover" component={Discover} />
               <Route path="/profile/:id" children={<ProfileView />} />
-              {/* <div className={classes.container}>
-              <Container>
-                <Typography variant="subtitle2" color="textPrimary" >UNA PLATAFORMA PARA EL TALENTO</Typography>
-                <Typography variant="h4" color="textPrimary" >El cine Dominicano está creciendo</Typography>
-                <Typography variant="h5" color="textPrimary" paragraph>Deja que te encuentren</Typography>
-              </Container>
-            </div> */}
+              <Route path="/create-profile" component={CreateProfile} />
             </main>
           </Switch>
         </Layout>
