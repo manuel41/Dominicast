@@ -16,12 +16,10 @@ const App = () => {
       <Router>
         <Layout>
           <Switch>
-            <main>
-              <Route exact path="/" component={Home} />
-              <Route path="/discover" component={Discover} />
-              <Route path="/profile/:id" children={<ProfileView />} />
-              <Route path="/create-profile" component={CreateProfile} />
-            </main>
+            <Route exact path="/" component={Home} />
+            <Route path="/discover" component={Discover} />
+            <Route path="/profile/:id" children={<ProfileView />} />
+            <Route path="/create-profile" component={CreateProfile} />
           </Switch>
         </Layout>
       </Router>
