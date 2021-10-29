@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, Grid, Container, Box, Link } from '@mui/material';
+import { Grid, Container, Box, Link } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({

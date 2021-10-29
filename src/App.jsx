@@ -1,12 +1,7 @@
 import * as React from 'react';
-import ReactDOM from 'react-dom';
-import Button from '@mui/material/Button';
-import { Typography, Container, CssBaseline } from '@mui/material';
-import { useStyles } from './useStyles';
+import { CssBaseline } from '@mui/material';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import NavBar from './components/NavBar';
 import Discover from './Discover';
-import Footer from './components/Footer';
 import Home from './Home';
 import ProfileView from './ProfileView'
 import Layout from './components/Layout';
@@ -14,7 +9,6 @@ import CreateProfile from './CreateProfile';
 
 const App = () => {
 
-  const classes = useStyles();
 
   return (
     <>

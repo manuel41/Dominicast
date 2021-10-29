@@ -1,6 +1,5 @@
 import React from 'react'
-import { AppBar, Toolbar, Typography, Stack, Button, Container } from '@mui/material'
-import MovieIcon from '@mui/icons-material/Movie'
+import { AppBar, Toolbar, Stack, Button, Container } from '@mui/material'
 import { makeStyles } from '@mui/styles';
 import logo from './logo.png';
 

@@ -47,8 +47,8 @@ const ProfileView = () => {
   let { id } = useParams();
 
   const [profileDetails, setProfileDetails] = useState()
-  const [loading, setLoading] = useState(false)
-  let persona1 = {}
+  // const [loading, setLoading] = useState(false)
+  // let persona1 = {}
 
   useEffect(() => {
     const fetchProfileDetail = async () => {
@@ -56,7 +56,7 @@ const ProfileView = () => {
       setProfileDetails(res.data);
     }
     fetchProfileDetail();
-  }, [])
+  }, [id])
 
   return (
     <>

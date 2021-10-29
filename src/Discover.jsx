@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Typography, Card, CardContent, CardMedia, CardActionArea, CssBaseline, Grid, Container, Box, Link, Pagination, TextField } from '@mui/material';
+import { Typography, Card, CardContent, CardMedia, CardActionArea, CssBaseline, Grid, Container, Pagination, TextField } from '@mui/material';
 import ToggleButtonsMultiple from './components/ToggleButtonsMultiple';
 //import { RouterLink } from 'react-router-dom';
 
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Discover = () => {
     const [persons, setPersons] = useState([]);
-    const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [personsPerPage, setPersonsPerPage] = useState(9);
     const [filter, setFilter] = useState([]);

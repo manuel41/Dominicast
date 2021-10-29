@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { FormControl, FormLabel, FormGroup, FormControlLabel, Checkbox, FormHelperText } from '@mui/material';
 import Typography from '@mui/material/Typography';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
 
 export default function DetallesPerfil() {
@@ -49,7 +46,7 @@ export default function DetallesPerfil() {
   const { cine, teatro, comercial, voz } = tipoActor;
   const { general, manos, piernas, dientes, codos } = tipoModelo;
   const { canto, baile, cartas } = habilidades;
-  const error = [cine, teatro, comercial, voz].filter((v) => v).length !== 2;
+  // const error = [cine, teatro, comercial, voz].filter((v) => v).length !== 2;
 
 
 

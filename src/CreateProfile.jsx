@@ -1,7 +1,6 @@
-import { Container, Divider, Grid, Typography, Paper, Box, Button, StepLabel, Stepper, Step } from "@mui/material"
+import { Container, Typography, Paper, Box, Button, StepLabel, Stepper, Step } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import CreateProfile2 from "./components/CreateProfile2";
 import DetallesPerfil from "./components/DetallesPerfil";
 import RegisterUser from "./components/RegisterUser";
@@ -44,7 +43,7 @@ function getStepContent(step) {
 }
 
 const CreateProfile = () => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
