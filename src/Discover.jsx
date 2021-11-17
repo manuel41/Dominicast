@@ -74,7 +74,7 @@ const Discover = () => {
             <Container className={classes.filter}>
             </Container>
 
-            <Container className={classes.cardGrid} maxWidth="md" >
+            <Container className={classes.cardGrid} maxWidth="lg" >
 
                 <TextField fullWidth id="outlined-search" margin="normal" label="Buscar" type="search" color='secondary' onChange={(event) => {
                     setSearhTerm(event.target.value);
@@ -99,7 +99,7 @@ const Discover = () => {
                                     return true;
                             })
                             .map((person) => (
-                                <Grid item key={person.id} xs={12} sm={6} md={4}>
+                                <Grid item key={person.id} xs={12} sm={6} md={4} lg={3}>
                                     <Card className={classes.card}>
                                         <CardActionArea href={`/profile/${person.id}`}>
                                             <CardMedia className={classes.cardMedia} image={person.detallePerfil.url} title="image title" />
