@@ -19,14 +19,15 @@ const NavBar = () => {
   return (
     <>
       <AppBar position='fixed' color='neutral'>
-        <Container maxWidth="md" >
+        <Container maxWidth="lg" >
           <Toolbar>
             <Stack direction="row" spacing={{ xs: 1, sm: 2, md: 8 }}>
               <img src={logo} width="200" />
               <Button size='large' color="primary" href="/">Inicio</Button>
               <Button size='large' color="primary" href="/Discover">Explorar</Button>
               <Button size='large' color="primary">Nosotros</Button>
-              <Button size='large' color="primary" href="create-profile">Registrarse</Button>
+              <Button disableElevation size='large' color="primary" href="create-profile">Crear_cuenta</Button>
+              <Button disableElevation size='large' color="primary" href="">Iniciar_sesión</Button>
             </Stack>
           </Toolbar>
         </Container>
