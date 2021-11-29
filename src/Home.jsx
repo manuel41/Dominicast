@@ -1,5 +1,5 @@
 import { Typography, Container, Grid, Box, Paper, Link, Button } from '@mui/material'
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@mui/styles';
 import FeaturedPost from './components/FeaturedPost';
 import Main from './components/Main';
@@ -8,9 +8,6 @@ import post2 from './assests/blog-post.2.md';
 import post3 from './assests/blog-post.3.md';
 
 
-
-
-console.log(post1)
 
 const useStyles = makeStyles((theme) => ({
   home: {
@@ -38,11 +35,27 @@ const featuredPosts = [
   },
 ];
 
-const posts = [post1, post2, post3];
-console.log(posts)
+//const posts = [ post2, post3];
+//console.log(posts)
 
 const Home = () => {
   const clasess = useStyles();
+
+  const file_name = 'blog-post.1.md';
+  const [post1, setPost1] = useState('');
+
+  useEffect(() => {
+    import(`./assests/${file_name}`)
+      .then(res => {
+        fetch(res.default)
+          .then(res => res.text())
+          .then(res => setPost1(res))
+          .catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
+  });
+
+  const posts = [post1]
 
   return (
     <div>
@@ -100,7 +113,7 @@ const Home = () => {
             <FeaturedPost key={post.title} post={post} />
           ))}
         </Grid>
-        <Main title="From the firehose" posts={posts} />
+        <Main title="Mensajes del equipo" posts={posts} />
 
 
       </Container>
