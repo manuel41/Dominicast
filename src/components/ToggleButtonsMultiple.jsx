@@ -53,6 +53,21 @@ export default function ToggleButtonsMultiple(props) {
             <ToggleButton value="conTatuajes">
                 Con Tatuajes
             </ToggleButton>
+            <ToggleButton value="Menor">
+                Menor de edad
+            </ToggleButton>
+            <ToggleButton value="edad18a25">
+                18 a 25 años
+            </ToggleButton>
+            <ToggleButton value="edad26a45">
+                26 a 45 años
+            </ToggleButton>
+            <ToggleButton value="edad46a60">
+                46 a 60 años
+            </ToggleButton>
+            <ToggleButton value="edad60+">
+                60+ años
+            </ToggleButton>
         </ToggleButtonGroup>
     );
 }
