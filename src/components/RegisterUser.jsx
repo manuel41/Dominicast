@@ -4,9 +4,13 @@ import { useUser, useUserUpdate } from './UserContext';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 // import FormControlLabel from '@mui/material/FormControlLabel';
 // import Checkbox from '@mui/material/Checkbox';
-import { MenuItem } from '@mui/material';
+import { FormControl, Input, InputLabel, MenuItem, OutlinedInput } from '@mui/material';
 import axios from 'axios';
 
 const RegisterUser = () => {
@@ -17,6 +21,7 @@ const RegisterUser = () => {
   const url = "http://localhost:5000"
   const [ciudades, setCiudades] = useState([])
   const [provincias, setProvincias] = useState([])
+  const [showPassword, setShowPassword] = useState(false)
 
   useEffect(() => {
     fetchCities();
@@ -32,6 +37,13 @@ const RegisterUser = () => {
     const res = await axios.get(`${url}/Provincias`)
     setProvincias(res.data)
   }
+
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword)
+  }
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   return (
     <React.Fragment>
@@ -53,18 +65,33 @@ const RegisterUser = () => {
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="contraseña"
-            name="contraseña"
-            label="Contraseña"
-            fullWidth
-            autoComplete="current-password"
-            type="password"
-            variant="standard"
-            value={user.contraseña}
-            onChange={onChangeUser}
-          />
+          <FormControl variant="standard">
+            <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+            <Input
+              required
+              id="contraseña"
+              name="contraseña"
+              label="Contraseña"
+              fullWidth
+              autoComplete="current-password"
+              type="password"
+              variant="standard"
+              value={user.contraseña}
+              onChange={onChangeUser}
+              type={showPassword ? 'text' : 'password'}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+          </FormControl>
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
