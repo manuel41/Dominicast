@@ -1,9 +1,10 @@
 import { Container, Typography, Paper, Box, Button, StepLabel, Stepper, Step } from "@mui/material"
 import { makeStyles } from "@mui/styles"
-import { useState } from "react";
+import { useState, useContext } from "react";
 import CreateProfile2 from "./components/CreateProfile2";
 import DetallesPerfil from "./components/DetallesPerfil";
 import RegisterUser from "./components/RegisterUser";
+import UserProvider from "./components/UserContext";
 
 const useStyles = makeStyles((theme) => ({
   paperRoot: {
@@ -55,7 +56,7 @@ const CreateProfile = () => {
   };
 
   return (
-    <>
+    <UserProvider>
       {/* <Container>
         <Paper className={classes.paperRoot}>
           <Grid container className={classes.mainGrid}>
@@ -108,7 +109,7 @@ const CreateProfile = () => {
         </Paper>
         {/* <Copyright /> */}
       </Container>
-    </>
+    </UserProvider>
   )
 }
 
