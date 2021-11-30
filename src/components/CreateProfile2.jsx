@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
+import { useUser, useUserUpdate } from './UserContext';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import { MenuItem } from '@mui/material';
+import { Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, MenuItem, Radio, RadioGroup } from '@mui/material';
 import axios from 'axios';
 
 const genders = [
@@ -29,26 +30,14 @@ const options = [
 
 export default function CreateProfile2() {
 
+  const { detallesPerfil } = useUser()
+  const { onChangeDetallesPerfil, onChangeDetallesPerfilCheckbox } = useUserUpdate()
+
   const url = "http://localhost:5000"
 
-  const [gender, setGender] = useState('')
-  const [tatuajes, setTatuajes] = useState('')
-  const [piercings, setPiercings] = useState('')
-  const [bigote, setBigote] = useState('')
-  const [barba, setBarba] = useState('')
-  const [bracers, setBracers] = useState('')
-  const [lentes, setLentes] = useState('')
-  const [dispocion, setDisposicion] = useState('')
   const [ojos, setOjos] = useState([])
-  const [ojo, setOjo] = useState('')
   const [coloresPiel, setColoresPiel] = useState([])
-  const [piel, setPiel] = useState()
   const [cabellos, setCabellos] = useState([])
-  const [cabello, setCabello] = useState()
-
-  const selectGender = (e) => {
-    setGender(e.target.value);
-  }
 
   useEffect(() => {
     fetchOjos();
@@ -79,42 +68,28 @@ export default function CreateProfile2() {
         <Grid item xs={12} md={6}>
           <TextField
             required
-            id="nombres"
-            name="nombres"
+            id="nombre"
+            name="nombre"
             label="Nombres"
             fullWidth
             autoComplete="given-name"
             variant="standard"
+            value={detallesPerfil.nombre}
+            onChange={onChangeDetallesPerfil}
           />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
             required
-            id="apellidos"
-            name="apellidos"
+            id="apellido"
+            name="apellido"
             label="Apellidos"
             fullWidth
             autoComplete="family-name"
             variant="standard"
+            value={detallesPerfil.apellido}
+            onChange={onChangeDetallesPerfil}
           />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="genero"
-            name="genero"
-            label="Genero"
-            fullWidth
-            select
-            value={gender}
-            onChange={selectGender}
-          >
-            {genders.map((gender) => (
-              <MenuItem key={gender.id} value={gender.id}>
-                {gender.description}
-              </MenuItem>
-            ))}
-          </TextField>
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
@@ -124,6 +99,8 @@ export default function CreateProfile2() {
             label="Edad"
             fullWidth
             variant="standard"
+            value={detallesPerfil.edad || ""}
+            onChange={onChangeDetallesPerfil}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -134,6 +111,8 @@ export default function CreateProfile2() {
             label="Peso"
             fullWidth
             variant="standard"
+            value={detallesPerfil.peso || ""}
+            onChange={onChangeDetallesPerfil}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -144,189 +123,119 @@ export default function CreateProfile2() {
             label="Altura"
             fullWidth
             variant="standard"
+            value={detallesPerfil.altura || ""}
+            onChange={onChangeDetallesPerfil}
           />
         </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="ojos"
-            name="ojos"
-            label="Color de ojos"
-            fullWidth
-            select
-            value={ojo}
-            onChange={(e) => { setOjo(e.target.value) }}
-          >
-            {ojos?.map((ojo) => (
-              <MenuItem key={ojo.id} value={ojo.id}>
-                {ojo.nombre}
-              </MenuItem>
-            ))}
-          </TextField>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="piel"
-            name="piel"
-            label="Color de piel"
-            fullWidth
-            select
-            value={piel}
-            onChange={(e) => { setColoresPiel(e.target.value) }}
-          >
-            {coloresPiel?.map((piel) => (
-              <MenuItem key={piel.id} value={piel.id}>
-                {piel.nombre}
-              </MenuItem>
-            ))}
-          </TextField>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="cabello"
-            name="cabello"
-            label="Color de cabello"
-            fullWidth
-            select
-            value={cabello}
-            onChange={(e) => { setCabellos(e.target.value) }}
-          >
-            {coloresPiel?.map((cabello) => (
-              <MenuItem key={cabello.id} value={cabello.id}>
-                {cabello.nombre}
-              </MenuItem>
-            ))}
-          </TextField>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="tatuajes"
-            name="tatuajes"
-            label="Tiene Tatuajes?"
-            fullWidth
-            select
-            value={tatuajes}
-            onChange={(e) => { setTatuajes(e.target.value) }}
-          >
-            {options.map((option) => (
-              <MenuItem key={option.id} value={option.id}>
-                {option.description}
-              </MenuItem>
-            ))}
-          </TextField>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="piercings"
-            name="piercings"
-            label="Tiene Piercings?"
-            fullWidth
-            select
-            value={piercings}
-            onChange={(e) => { setPiercings(e.target.value) }}
-          >
-            {options.map((option) => (
-              <MenuItem key={option.id} value={option.id}>
-                {option.description}
-              </MenuItem>
-            ))}
-          </TextField>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="bigote"
-            name="bigote"
-            label="Tiene bigote?"
-            fullWidth
-            select
-            value={bigote}
-            onChange={(e) => { setBigote(e.target.value) }}
-          >
-            {options.map((option) => (
-              <MenuItem key={option.id} value={option.id}>
-                {option.description}
-              </MenuItem>
-            ))}
-          </TextField>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="barba"
-            name="barba"
-            label="Tiene barba?"
-            fullWidth
-            select
-            value={barba}
-            onChange={(e) => { setBarba(e.target.value) }}
-          >
-            {options.map((option) => (
-              <MenuItem key={option.id} value={option.id}>
-                {option.description}
-              </MenuItem>
-            ))}
-          </TextField>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="bracers"
-            name="bracers"
-            label="Tiene bracers?"
-            fullWidth
-            select
-            value={bracers}
-            onChange={(e) => { setBracers(e.target.value) }}
-          >
-            {options.map((option) => (
-              <MenuItem key={option.id} value={option.id}>
-                {option.description}
-              </MenuItem>
-            ))}
-          </TextField>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="lentes"
-            name="lentes"
-            label="Tiene lentes?"
-            fullWidth
-            select
-            value={lentes}
-            onChange={(e) => { setLentes(e.target.value) }}
-          >
-            {options.map((option) => (
-              <MenuItem key={option.id} value={option.id}>
-                {option.description}
-              </MenuItem>
-            ))}
-          </TextField>
+        <Grid item xs={12}>
+          <FormControl component="fieldset">
+            <FormLabel component="legend">Genero</FormLabel>
+            <RadioGroup
+              aria-label="gender"
+              name="genero"
+              value={detallesPerfil.genero}
+              onChange={onChangeDetallesPerfil}
+            >
+              <FormControlLabel value="Hombre" control={<Radio />} label="Hombre" />
+              <FormControlLabel value="Mujer" control={<Radio />} label="Mujer" />
+            </RadioGroup>
+          </FormControl>
         </Grid>
         <Grid item xs={12}>
-          <TextField
-            required
-            id="disposicion"
-            name="disposicion"
-            label="Está dispuesto a cambios de apariencia rádicales?"
-            fullWidth
-            select
-            value={dispocion}
-            onChange={(e) => { setDisposicion(e.target.value) }}
-          >
-            {options.map((option) => (
-              <MenuItem key={option.id} value={option.id}>
-                {option.description}
-              </MenuItem>
-            ))}
-          </TextField>
+          <FormControl component="fieldset">
+            <FormLabel component="legend">Color de Ojos</FormLabel>
+            <RadioGroup
+              aria-label="eyes"
+              name="colorOjosId"
+              value={detallesPerfil.colorOjosId || ""}
+              onChange={onChangeDetallesPerfil}
+            >
+              {ojos?.map((option) => (
+                <FormControlLabel key={option.id} value={option.id} control={<Radio />} label={option.nombre} />
+              ))}
+            </RadioGroup>
+          </FormControl>
+        </Grid>
+        <Grid item xs={12}>
+          <FormControl component="fieldset">
+            <FormLabel component="legend">Color de piel</FormLabel>
+            <RadioGroup
+              aria-label="eyes"
+              name="colorPielId"
+              value={detallesPerfil.colorPielId || ""}
+              onChange={onChangeDetallesPerfil}
+            >
+              {coloresPiel?.map((option) => (
+                <FormControlLabel key={option.id} value={option.id} control={<Radio />} label={option.nombre} />
+              ))}
+            </RadioGroup>
+          </FormControl>
+        </Grid>
+        <Grid item xs={12}>
+          <FormControl component="fieldset">
+            <FormLabel component="legend">Color de cabello</FormLabel>
+            <RadioGroup
+              aria-label="eyes"
+              name="colorCabelloId"
+              value={detallesPerfil.colorCabelloId || ""}
+              onChange={onChangeDetallesPerfil}
+            >
+              {cabellos?.map((option) => (
+                <FormControlLabel key={option.id} value={option.id} control={<Radio />} label={option.nombre} />
+              ))}
+            </RadioGroup>
+          </FormControl>
+        </Grid>
+        <Grid item xs={12}>
+          <FormControl component="fieldset" variant="standard">
+            <FormLabel component="legend">Elija todos los que apliquen</FormLabel>
+            <FormGroup>
+              <FormControlLabel
+                control={
+                  <Checkbox checked={detallesPerfil.tatuajes} onChange={onChangeDetallesPerfilCheckbox} name="tatuajes" />
+                }
+                label="Tatuajes"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox checked={detallesPerfil.piercings} onChange={onChangeDetallesPerfilCheckbox} name="piercings" />
+                }
+                label="Piercings"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox checked={detallesPerfil.bigote} onChange={onChangeDetallesPerfilCheckbox} name="bigote" />
+                }
+                label="Bigote"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox checked={detallesPerfil.barba} onChange={onChangeDetallesPerfilCheckbox} name="barba" />
+                }
+                label="Barba"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox checked={detallesPerfil.bracers} onChange={onChangeDetallesPerfilCheckbox} name="bracers" />
+                }
+                label="Bracers"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox checked={detallesPerfil.lentes} onChange={onChangeDetallesPerfilCheckbox} name="lentes" />
+                }
+                label="Lentes"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox checked={detallesPerfil.disposicion} onChange={onChangeDetallesPerfilCheckbox} name="disposicion" />
+                }
+                label="Disposicion a cambios radicales de apariencia"
+              />
+            </FormGroup>
+          </FormControl>
         </Grid>
       </Grid>
-    </React.Fragment>
+    </React.Fragment >
   );
 }

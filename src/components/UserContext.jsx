@@ -31,20 +31,6 @@ const UserProvider = ({ children }) => {
         tipoPielId: 0,
         descripcion: ""
       },
-      nombre: "",
-      apellido: "",
-      genero: "",
-      foto: "",
-      edad: 0,
-      peso: 0,
-      altura: 0,
-      tatuajes: false,
-      piercings: false,
-      bigote: false,
-      barba: false,
-      bracers: false,
-      lentes: false,
-      disposicion: false,
       url: "https://bit.ly/ryan-florence"
     },
     tipoUsuario: 1,
@@ -61,16 +47,32 @@ const UserProvider = ({ children }) => {
   })
 
   const [ciudad, setCiudad] = useState({
-    ciudadId: 0,
-    nombre: ""
+    ciudadId: undefined
   })
 
   const [provincia, setProvincia] = useState({
-    provinciaId: 0,
-    nombreProvincia: ""
+    provinciaId: undefined
   })
 
-  const [detallesPerfil, setDetallesPerfil] = useState()
+  const [detallesPerfil, setDetallesPerfil] = useState({
+    nombre: "",
+    apellido: "",
+    genero: "",
+    foto: "",
+    colorOjosId: undefined,
+    colorCabelloId: undefined,
+    colorPielId: undefined,
+    edad: undefined,
+    peso: undefined,
+    altura: undefined,
+    tatuajes: false,
+    piercings: false,
+    bigote: false,
+    barba: false,
+    bracers: false,
+    lentes: false,
+    disposicion: false,
+  })
 
   const onChangeUser = (e) => {
     const { id, value } = e.target
@@ -85,7 +87,6 @@ const UserProvider = ({ children }) => {
       ...ciudad,
       [name]: value
     });
-    console.log(ciudad)
   }
   const onChangeProvincia = (e) => {
     const { name, value } = e.target
@@ -94,10 +95,24 @@ const UserProvider = ({ children }) => {
       [name]: value
     });
   }
+  const onChangeDetallesPerfil = (e) => {
+    const { name, value } = e.target
+    setDetallesPerfil({
+      ...detallesPerfil,
+      [name]: value
+    });
+  }
+  const onChangeDetallesPerfilCheckbox = (e) => {
+    const { name, checked } = e.target
+    setDetallesPerfil({
+      ...detallesPerfil,
+      [name]: checked
+    });
+  }
 
   return (
-    <UserContext.Provider value={{ user, ciudad, provincia }}>
-      <UserUpdateContext.Provider value={{ onChangeUser, onChangeCiudad, onChangeProvincia }}>
+    <UserContext.Provider value={{ user, ciudad, provincia, detallesPerfil }}>
+      <UserUpdateContext.Provider value={{ onChangeUser, onChangeCiudad, onChangeProvincia, onChangeDetallesPerfil, onChangeDetallesPerfilCheckbox }}>
         {children}
       </UserUpdateContext.Provider>
     </UserContext.Provider>
