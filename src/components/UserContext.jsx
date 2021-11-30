@@ -13,26 +13,6 @@ export function useUserUpdate() {
 const UserProvider = ({ children }) => {
 
   const [newUser, setNewUser] = useState({
-    detallePerfil: {
-      detallesPerfilId: 0,
-      colorPiel: {
-        colorPielId: 0,
-        color: ""
-      },
-      colorCabello: {
-        colorCabelloId: 0,
-        color: ""
-      },
-      colorOjos: {
-        colorOjosId: 0,
-        color: ""
-      },
-      tipoPiel: {
-        tipoPielId: 0,
-        descripcion: ""
-      },
-      url: "https://bit.ly/ryan-florence"
-    },
     tipoUsuario: 1,
     tipoModelos: [],
     tipoActors: [],
@@ -74,6 +54,12 @@ const UserProvider = ({ children }) => {
     disposicion: false,
   })
 
+  const [tipoModelo, setTipoModelo] = useState([])
+
+  const [tipoActor, setTipoActor] = useState([])
+
+  const [habilidades, setHabilidades] = useState([])
+
   const onChangeUser = (e) => {
     const { id, value } = e.target
     setUser({
@@ -106,6 +92,27 @@ const UserProvider = ({ children }) => {
     const { name, checked } = e.target
     setDetallesPerfil({
       ...detallesPerfil,
+      [name]: checked
+    });
+  }
+  const onChangeTipoActorCheckbox = (e) => {
+    const { name, checked } = e.target
+    setTipoActor({
+      ...tipoActor,
+      [name]: checked
+    });
+  }
+  const onChangeTipoModeloCheckbox = (e) => {
+    const { name, checked } = e.target
+    setTipoModelo({
+      ...tipoModelo,
+      [name]: checked
+    });
+  }
+  const onChangeHabilidadesCheckbox = (e) => {
+    const { name, checked } = e.target
+    setHabilidades({
+      ...habilidades,
       [name]: checked
     });
   }
