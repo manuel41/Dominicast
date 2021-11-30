@@ -31,7 +31,7 @@ const UserProvider = ({ children }) => {
         tipoPielId: 0,
         descripcion: ""
       },
-      nombre: "Robert",
+      nombre: "",
       apellido: "",
       genero: "",
       foto: "",
@@ -69,6 +69,8 @@ const UserProvider = ({ children }) => {
     provinciaId: 0,
     nombreProvincia: ""
   })
+
+  const [detallesPerfil, setDetallesPerfil] = useState()
 
   const onChangeUser = (e) => {
     const { id, value } = e.target

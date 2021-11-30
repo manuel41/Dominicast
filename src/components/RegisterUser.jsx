@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
+import { useUser, useUserUpdate } from './UserContext';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
@@ -10,10 +11,11 @@ import axios from 'axios';
 
 const RegisterUser = () => {
 
+  const { user, ciudad, provincia } = useUser()
+  const { onChangeUser, onChangeCiudad, onChangeProvincia } = useUserUpdate()
+
   const url = "http://localhost:5000"
   const [ciudades, setCiudades] = useState([])
-  const [ciudad, setCiudad] = useState('')
-  const [provincia, setProvincia] = useState('')
   const [provincias, setProvincias] = useState([])
 
   useEffect(() => {
@@ -31,17 +33,6 @@ const RegisterUser = () => {
     setProvincias(res.data)
   }
 
-
-  const selectCity = (e) => {
-    setCiudad(e.target.value)
-  }
-
-  const selectProvince = (e) => {
-    setProvincia(e.target.value)
-  }
-
-
-
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -51,12 +42,14 @@ const RegisterUser = () => {
         <Grid item xs={12} sm={6}>
           <TextField
             required
-            id="user"
-            name="user"
+            id="nombreUsuario"
+            name="nombreUsuario"
             label="Usuario"
             fullWidth
             autoComplete="username"
             variant="standard"
+            value={user.nombreUsuario}
+            onChange={onChangeUser}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -69,17 +62,21 @@ const RegisterUser = () => {
             autoComplete="current-password"
             type="password"
             variant="standard"
+            value={user.contraseña}
+            onChange={onChangeUser}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
             required
-            id="correo"
-            name="correo"
+            id="email"
+            name="email"
             label="Correo"
             fullWidth
             autoComplete="email"
             variant="standard"
+            value={user.email}
+            onChange={onChangeUser}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -90,6 +87,8 @@ const RegisterUser = () => {
             fullWidth
             autoComplete="tel"
             variant="standard"
+            value={user.telefono}
+            onChange={onChangeUser}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -97,14 +96,14 @@ const RegisterUser = () => {
             id="ciudad"
             select
             fullWidth
-            name="ciudad"
+            name="ciudadId"
             label="Ciudad"
-            value={ciudad}
-            onChange={selectCity}
+            value={ciudad.ciudadId || ""}
+            onChange={onChangeCiudad}
           >
-            {ciudades?.map((ciudad) => (
-              <MenuItem key={ciudad.id} value={ciudad.id}>
-                {ciudad.nombre}
+            {ciudades?.map((option) => (
+              <MenuItem key={option.id} value={option.id}>
+                {option.nombre}
               </MenuItem>
             ))}
           </TextField>
@@ -112,16 +111,17 @@ const RegisterUser = () => {
         <Grid item xs={12} sm={6}>
           <TextField
             id="provincia"
-            name="provincia"
+            name="provinciaId"
             label="Provincia"
             fullWidth
             select
-            value={provincia}
-            onChange={selectProvince}
+            // value={provincia.provinciaId}
+            value={provincia.provinciaId || ""}
+            onChange={onChangeProvincia}
           >
-            {provincias?.map((provincia) => (
-              <MenuItem key={provincia.id} value={provincia.id}>
-                {provincia.nombre}
+            {provincias?.map((option) => (
+              <MenuItem key={option.id} value={option.id}>
+                {option.nombre}
               </MenuItem>
             ))}
           </TextField>
