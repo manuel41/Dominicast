@@ -7,26 +7,6 @@ import TextField from '@mui/material/TextField';
 import { Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, MenuItem, Radio, RadioGroup } from '@mui/material';
 import axios from 'axios';
 
-const genders = [
-  {
-    id: 1,
-    description: "Hombre"
-  },
-  {
-    id: 2,
-    description: "Mujer"
-  }
-]
-const options = [
-  {
-    id: 1,
-    description: "Si"
-  },
-  {
-    id: 2,
-    description: "No"
-  }
-]
 
 export default function CreateProfile2() {
 
@@ -109,6 +89,7 @@ export default function CreateProfile2() {
             id="peso"
             name="peso"
             label="Peso"
+            helperText="En libras"
             fullWidth
             variant="standard"
             value={detallesPerfil.peso || ""}
@@ -121,6 +102,7 @@ export default function CreateProfile2() {
             id="altura"
             name="altura"
             label="Altura"
+            helperText="En centimetros"
             fullWidth
             variant="standard"
             value={detallesPerfil.altura || ""}
