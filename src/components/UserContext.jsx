@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react'
+import axios from 'axios'
+import React, { useContext, useEffect, useState } from 'react'
 
 const UserContext = React.createContext()
 const UserUpdateContext = React.createContext()
@@ -11,7 +12,49 @@ export function useUserUpdate() {
 }
 
 const UserProvider = ({ children }) => {
-  //tipoUsuario
+  const usuarioExistente = undefined
+
+  const url = "http://localhost:5000"
+
+  useEffect(() => {
+    const fetchExistingUser = async () => {
+      const res = await axios.get(`${url}/Persons/${usuarioExistente}`);
+      setDatosUsuario(res.data)
+    }
+    if (usuarioExistente) {
+      fetchExistingUser();
+    }
+
+  }, [usuarioExistente])
+
+
+
+  const [datosUsuario, setDatosUsuario] = useState({})
+  const [usuario, setUsuario] = useState({})
+
+  const registerNewUser = async () => {
+    const newUser = {
+      user: {
+        ...user,
+        ciudad: {
+          ...ciudad,
+          provincia: { ...provincia }
+        }
+      },
+      detallePerfil: {
+        ...detallesPerfil,
+        colorPiel: { colorPielId: detallesPerfil.colorPielId },
+        colorCabello: { colorCabelloId: detallesPerfil.colorCabelloId },
+        colorOjos: { colorOjosId: detallesPerfil.colorOjosId },
+      }
+    }
+    const res = await axios.post(`${url}/Persons`, newUser)
+  }
+
+  // const determineTipoUsuario = (params) => {
+
+  // }
+
 
   const [user, setUser] = useState({
     nombreUsuario: "",
@@ -129,7 +172,7 @@ const UserProvider = ({ children }) => {
       <UserUpdateContext.Provider value={{
         onChangeUser, onChangeCiudad, onChangeProvincia
         , onChangeDetallesPerfil, onChangeDetallesPerfilCheckbox, onChangeTipoActorCheckbox,
-        onChangeTipoModeloCheckbox, onChangeHabilidadesCheckbox
+        onChangeTipoModeloCheckbox, onChangeHabilidadesCheckbox, registerNewUser
       }}>
         {children}
       </UserUpdateContext.Provider>

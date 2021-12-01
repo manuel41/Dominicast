@@ -4,7 +4,7 @@ import { useState, useContext } from "react";
 import CreateProfile2 from "./components/CreateProfile2";
 import DetallesPerfil from "./components/DetallesPerfil";
 import RegisterUser from "./components/RegisterUser";
-import UserProvider from "./components/UserContext";
+import UserProvider, { useUserUpdate } from "./components/UserContext";
 
 const useStyles = makeStyles((theme) => ({
   paperRoot: {
@@ -45,10 +45,15 @@ function getStepContent(step) {
 
 const CreateProfile = () => {
   // const classes = useStyles();
+  const { registerNewUser } = useUserUpdate()
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
+    console.log(activeStep);
+    if (activeStep === 2) {
+      registerNewUser()
+    }
   };
 
   const handleBack = () => {
@@ -56,7 +61,7 @@ const CreateProfile = () => {
   };
 
   return (
-    <UserProvider>
+    <>
       {/* <Container>
         <Paper className={classes.paperRoot}>
           <Grid container className={classes.mainGrid}>
@@ -109,7 +114,7 @@ const CreateProfile = () => {
         </Paper>
         {/* <Copyright /> */}
       </Container>
-    </UserProvider>
+    </>
   )
 }
 
