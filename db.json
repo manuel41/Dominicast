@@ -1243,6 +1243,67 @@
           "descripcion": "string"
         }
       ]
+    },
+    {
+      "user": {
+        "nombreUsuario": "manuel",
+        "contraseña": "fdsaf",
+        "email": "fdsfa",
+        "telefono": "fdsafads",
+        "ciudad": {
+          "ciudadId": 1,
+          "provincia": {
+            "provinciaId": 2
+          }
+        }
+      },
+      "detallePerfil": {
+        "nombre": "fdasfdas",
+        "apellido": "fdsafas",
+        "genero": "Hombre",
+        "foto": "",
+        "colorOjosId": "2",
+        "colorCabelloId": "1",
+        "colorPielId": "1",
+        "edad": "22",
+        "peso": "218",
+        "altura": "176",
+        "tatuajes": false,
+        "piercings": false,
+        "bigote": true,
+        "barba": true,
+        "bracers": false,
+        "lentes": false,
+        "disposicion": false,
+        "colorPiel": {
+          "colorPielId": "1"
+        },
+        "colorCabello": {
+          "colorCabelloId": "1"
+        },
+        "colorOjos": {
+          "colorOjosId": "2"
+        }
+      },
+      "tipoActor": {
+        "cine": true,
+        "teatro": true,
+        "comercial": true,
+        "voz": true
+      },
+      "tipoModelo": {
+        "general": true,
+        "manos": true,
+        "piernas": true,
+        "dientes": true,
+        "codos": true
+      },
+      "habilidades": {
+        "canto": true,
+        "baile": true,
+        "cartas": true
+      },
+      "id": 13
     }
   ],
   "Ciudades": [

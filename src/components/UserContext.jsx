@@ -46,6 +46,15 @@ const UserProvider = ({ children }) => {
         colorPiel: { colorPielId: detallesPerfil.colorPielId },
         colorCabello: { colorCabelloId: detallesPerfil.colorCabelloId },
         colorOjos: { colorOjosId: detallesPerfil.colorOjosId },
+      },
+      tipoActor: {
+        ...tipoActor
+      },
+      tipoModelo: {
+        ...tipoModelo
+      },
+      habilidades: {
+        ...habilidades
       }
     }
     const res = await axios.post(`${url}/Persons`, newUser)
