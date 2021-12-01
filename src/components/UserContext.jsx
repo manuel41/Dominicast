@@ -118,8 +118,12 @@ const UserProvider = ({ children }) => {
   }
 
   return (
-    <UserContext.Provider value={{ user, ciudad, provincia, detallesPerfil }}>
-      <UserUpdateContext.Provider value={{ onChangeUser, onChangeCiudad, onChangeProvincia, onChangeDetallesPerfil, onChangeDetallesPerfilCheckbox }}>
+    <UserContext.Provider value={{ user, ciudad, provincia, detallesPerfil, tipoActor, tipoModelo, habilidades }}>
+      <UserUpdateContext.Provider value={{
+        onChangeUser, onChangeCiudad, onChangeProvincia
+        , onChangeDetallesPerfil, onChangeDetallesPerfilCheckbox, onChangeTipoActorCheckbox,
+        onChangeTipoModeloCheckbox, onChangeHabilidadesCheckbox
+      }}>
         {children}
       </UserUpdateContext.Provider>
     </UserContext.Provider>
