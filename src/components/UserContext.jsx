@@ -11,13 +11,7 @@ export function useUserUpdate() {
 }
 
 const UserProvider = ({ children }) => {
-
-  const [newUser, setNewUser] = useState({
-    tipoUsuario: 1,
-    tipoModelos: [],
-    tipoActors: [],
-    habilidad: []
-  })
+  //tipoUsuario
 
   const [user, setUser] = useState({
     nombreUsuario: "",
@@ -54,11 +48,24 @@ const UserProvider = ({ children }) => {
     disposicion: false,
   })
 
-  const [tipoModelo, setTipoModelo] = useState([])
-
-  const [tipoActor, setTipoActor] = useState([])
-
-  const [habilidades, setHabilidades] = useState([])
+  const [tipoActor, setTipoActor] = useState({
+    cine: false,
+    teatro: false,
+    comercial: false,
+    voz: false,
+  });
+  const [tipoModelo, setTipoModelo] = useState({
+    general: false,
+    manos: false,
+    piernas: false,
+    dientes: false,
+    codos: false,
+  });
+  const [habilidades, setHabilidades] = useState({
+    canto: false,
+    baile: false,
+    cartas: false,
+  });
 
   const onChangeUser = (e) => {
     const { id, value } = e.target
