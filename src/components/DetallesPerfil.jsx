@@ -1,57 +1,17 @@
-import * as React from 'react';
+import React from 'react';
 import { FormControl, FormLabel, FormGroup, FormControlLabel, Checkbox, FormHelperText } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
+import { useUser, useUserUpdate } from './UserContext';
 
 export default function DetallesPerfil() {
 
-  const [tipoActor, setTipoActor] = React.useState({
-    cine: false,
-    teatro: false,
-    comercial: false,
-    voz: false,
-  });
-  const [tipoModelo, setTipoModelo] = React.useState({
-    general: false,
-    manos: false,
-    piernas: false,
-    dientes: false,
-    codos: false,
-  });
-  const [habilidades, setHabilidades] = React.useState({
-    canto: false,
-    baile: false,
-    cartas: false,
-  });
-
-  const handleChange = (event) => {
-    setTipoActor({
-      ...tipoActor,
-      [event.target.name]: event.target.checked,
-    });
-  };
-  const handleChange2 = (event) => {
-    setTipoModelo({
-      ...tipoModelo,
-      [event.target.name]: event.target.checked,
-    });
-  };
-  const handleChange3 = (event) => {
-    setHabilidades({
-      ...habilidades,
-      [event.target.name]: event.target.checked,
-    });
-  };
-
-  const { cine, teatro, comercial, voz } = tipoActor;
-  const { general, manos, piernas, dientes, codos } = tipoModelo;
-  const { canto, baile, cartas } = habilidades;
-  // const error = [cine, teatro, comercial, voz].filter((v) => v).length !== 2;
-
+  const { tipoActor, tipoModelo, habilidades } = useUser()
+  const { onChangeTipoActorCheckbox, onChangeTipoModeloCheckbox, onChangeHabilidadesCheckbox } = useUserUpdate()
 
 
   return (
-    <React.Fragment>
+    <>
       <Typography variant="h6" gutterBottom>
         Detalles de Perfil
       </Typography>
@@ -62,25 +22,25 @@ export default function DetallesPerfil() {
             <FormGroup>
               <FormControlLabel
                 control={
-                  <Checkbox checked={cine} onChange={handleChange} name="cine" />
+                  <Checkbox checked={tipoActor.cine} onChange={onChangeTipoActorCheckbox} name="cine" />
                 }
                 label="Cine"
               />
               <FormControlLabel
                 control={
-                  <Checkbox checked={teatro} onChange={handleChange} name="teatro" />
+                  <Checkbox checked={tipoActor.teatro} onChange={onChangeTipoActorCheckbox} name="teatro" />
                 }
                 label="Teatro"
               />
               <FormControlLabel
                 control={
-                  <Checkbox checked={comercial} onChange={handleChange} name="comercial" />
+                  <Checkbox checked={tipoActor.comercial} onChange={onChangeTipoActorCheckbox} name="comercial" />
                 }
                 label="Comercial"
               />
               <FormControlLabel
                 control={
-                  <Checkbox checked={voz} onChange={handleChange} name="voz" />
+                  <Checkbox checked={tipoActor.voz} onChange={onChangeTipoActorCheckbox} name="voz" />
                 }
                 label="Actor de Voz"
               />
@@ -94,31 +54,31 @@ export default function DetallesPerfil() {
             <FormGroup>
               <FormControlLabel
                 control={
-                  <Checkbox checked={general} onChange={handleChange2} name="general" />
+                  <Checkbox checked={tipoModelo.general} onChange={onChangeTipoModeloCheckbox} name="general" />
                 }
                 label="General"
               />
               <FormControlLabel
                 control={
-                  <Checkbox checked={manos} onChange={handleChange2} name="manos" />
+                  <Checkbox checked={tipoModelo.manos} onChange={onChangeTipoModeloCheckbox} name="manos" />
                 }
                 label="Manos"
               />
               <FormControlLabel
                 control={
-                  <Checkbox checked={piernas} onChange={handleChange2} name="piernas" />
+                  <Checkbox checked={tipoModelo.piernas} onChange={onChangeTipoModeloCheckbox} name="piernas" />
                 }
                 label="Piernas/Pies"
               />
               <FormControlLabel
                 control={
-                  <Checkbox checked={dientes} onChange={handleChange2} name="dientes" />
+                  <Checkbox checked={tipoModelo.dientes} onChange={onChangeTipoModeloCheckbox} name="dientes" />
                 }
                 label="Dientes"
               />
               <FormControlLabel
                 control={
-                  <Checkbox checked={codos} onChange={handleChange2} name="codos" />
+                  <Checkbox checked={tipoModelo.codos} onChange={onChangeTipoModeloCheckbox} name="codos" />
                 }
                 label="Codos"
               />
@@ -132,19 +92,19 @@ export default function DetallesPerfil() {
             <FormGroup>
               <FormControlLabel
                 control={
-                  <Checkbox checked={canto} onChange={handleChange3} name="canto" />
+                  <Checkbox checked={habilidades.canto} onChange={onChangeHabilidadesCheckbox} name="canto" />
                 }
                 label="Canto"
               />
               <FormControlLabel
                 control={
-                  <Checkbox checked={baile} onChange={handleChange3} name="baile" />
+                  <Checkbox checked={habilidades.baile} onChange={onChangeHabilidadesCheckbox} name="baile" />
                 }
                 label="Baile"
               />
               <FormControlLabel
                 control={
-                  <Checkbox checked={cartas} onChange={handleChange3} name="cartas" />
+                  <Checkbox checked={habilidades.cartas} onChange={onChangeHabilidadesCheckbox} name="cartas" />
                 }
                 label="Maestro de cartas"
               />
@@ -154,6 +114,6 @@ export default function DetallesPerfil() {
         </Grid>
       </Grid>
 
-    </React.Fragment>
+    </>
   );
 }
