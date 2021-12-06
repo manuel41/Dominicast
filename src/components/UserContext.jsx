@@ -30,6 +30,7 @@ const UserProvider = ({ children }) => {
     fetchTipoModelos();
     fetchTipoActores();
     fetchHabilidades();
+    console.log(listaHabilidades);
   }, [usuarioExistente])
 
   const fetchTipoActores = async () => {
@@ -65,6 +66,8 @@ const UserProvider = ({ children }) => {
     })
     setListaHabilidades(resArray);
   }
+
+
 
   const [datosUsuario, setDatosUsuario] = useState({})
   const [usuario, setUsuario] = useState({})
@@ -192,25 +195,22 @@ const UserProvider = ({ children }) => {
     });
   }
   const onChangeTipoActorCheckbox = (e) => {
-    const { name, checked } = e.target
-    setTipoActor({
-      ...tipoActor,
-      [name]: checked
-    });
+    const { id, checked } = e.target
+    let lista = [...listaTipoActores];
+    lista[Number(id) - 1].isChecked = checked;
+    setListaTipoActores(lista);
   }
   const onChangeTipoModeloCheckbox = (e) => {
-    const { name, checked } = e.target
-    setTipoModelo({
-      ...tipoModelo,
-      [name]: checked
-    });
+    const { id, checked } = e.target
+    let lista = [...listaTipoModelos];
+    lista[Number(id) - 1].isChecked = checked;
+    setListaTipoModelos(lista);
   }
   const onChangeHabilidadesCheckbox = (e) => {
-    const { name, checked } = e.target
-    setHabilidades({
-      ...habilidades,
-      [name]: checked
-    });
+    const { id, checked } = e.target
+    let lista = [...listaHabilidades];
+    lista[Number(id) - 1].isChecked = checked;
+    setListaHabilidades(lista);
   }
 
   return (

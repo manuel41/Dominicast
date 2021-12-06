@@ -25,7 +25,7 @@ export default function DetallesPerfil() {
                 listaTipoActores?.map((option) => (
                   <FormControlLabel
                     control={
-                      <Checkbox checked={option.isChecked} onChange={onChangeTipoActorCheckbox} name={option.nombre} />
+                      <Checkbox checked={option.isChecked} onChange={onChangeTipoActorCheckbox} name={option.nombre} id={option.id.toString()} />
                     }
                     label={option.nombre}
                     key={option.id}
@@ -44,7 +44,7 @@ export default function DetallesPerfil() {
                 listaTipoModelos?.map((option) => (
                   <FormControlLabel
                     control={
-                      <Checkbox checked={option.isChecked} onChange={onChangeTipoModeloCheckbox} name={option.nombre} />
+                      <Checkbox checked={option.isChecked} onChange={onChangeTipoModeloCheckbox} name={option.nombre} id={option.id.toString()} />
                     }
                     label={option.nombre}
                     key={option.id}
@@ -63,7 +63,7 @@ export default function DetallesPerfil() {
                 listaHabilidades?.map((option) => (
                   <FormControlLabel
                     control={
-                      <Checkbox checked={option.isChecked} onChange={onChangeTipoModeloCheckbox} name={option.nombre} />
+                      <Checkbox checked={option.isChecked} onChange={onChangeHabilidadesCheckbox} name={option.nombre} id={option.id.toString()} />
                     }
                     label={option.nombre}
                     key={option.id}
