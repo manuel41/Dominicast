@@ -30,7 +30,6 @@ const UserProvider = ({ children }) => {
     fetchTipoModelos();
     fetchTipoActores();
     fetchHabilidades();
-    console.log(listaHabilidades);
   }, [usuarioExistente])
 
   const fetchTipoActores = async () => {
@@ -87,15 +86,10 @@ const UserProvider = ({ children }) => {
         colorCabello: { colorCabelloId: detallesPerfil.colorCabelloId },
         colorOjos: { colorOjosId: detallesPerfil.colorOjosId },
       },
-      tipoActor: {
-        ...tipoActor
-      },
-      tipoModelo: {
-        ...tipoModelo
-      },
-      habilidades: {
-        ...habilidades
-      }
+      tipoUsuario: 3,
+      tipoActor: addTipoActores(),
+      tipoModelo: addTipoModelos(),
+      habilidades: addHabilidades()
     }
     const res = await axios.post(`${url}/Persons`, newUser)
   }
@@ -103,6 +97,22 @@ const UserProvider = ({ children }) => {
   // const determineTipoUsuario = (params) => {
 
   // }
+
+
+  const [tipoActor, setTipoActor] = useState([]);
+  const [tipoModelo, setTipoModelo] = useState([]);
+  const [habilidades, setHabilidades] = useState([]);
+
+  const addTipoActores = () => {
+    return listaTipoActores.filter((type) => type.isChecked)
+  }
+  const addTipoModelos = () => {
+    return listaTipoModelos.filter((type) => type.isChecked)
+  }
+  const addHabilidades = () => {
+    return listaHabilidades.filter((type) => type.isChecked)
+  }
+
 
 
   const [user, setUser] = useState({
@@ -139,25 +149,6 @@ const UserProvider = ({ children }) => {
     lentes: false,
     disposicion: false,
   })
-
-  const [tipoActor, setTipoActor] = useState({
-    cine: false,
-    teatro: false,
-    comercial: false,
-    voz: false,
-  });
-  const [tipoModelo, setTipoModelo] = useState({
-    general: false,
-    manos: false,
-    piernas: false,
-    dientes: false,
-    codos: false,
-  });
-  const [habilidades, setHabilidades] = useState({
-    canto: false,
-    baile: false,
-    cartas: false,
-  });
 
   const onChangeUser = (e) => {
     const { id, value } = e.target
