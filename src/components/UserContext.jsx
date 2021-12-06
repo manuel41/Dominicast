@@ -13,6 +13,9 @@ export function useUserUpdate() {
 
 const UserProvider = ({ children }) => {
   const usuarioExistente = undefined
+  const [listaTipoActores, setListaTipoActores] = useState([])
+  const [listaTipoModelos, setListaTipoModelos] = useState([])
+  const [listaHabilidades, setListaHabilidades] = useState([])
 
   const url = "http://localhost:5000"
 
@@ -24,10 +27,44 @@ const UserProvider = ({ children }) => {
     if (usuarioExistente) {
       fetchExistingUser();
     }
-
+    fetchTipoModelos();
+    fetchTipoActores();
+    fetchHabilidades();
   }, [usuarioExistente])
 
-
+  const fetchTipoActores = async () => {
+    const res = await axios.get(`${url}/TipoActores`);
+    let resArray = res.data;
+    resArray = resArray.map((obj) => {
+      return {
+        ...obj,
+        isChecked: false
+      }
+    })
+    setListaTipoActores(resArray)
+  }
+  const fetchTipoModelos = async () => {
+    const res = await axios.get(`${url}/TipoModelos`);
+    let resArray = res.data;
+    resArray = resArray.map((obj) => {
+      return {
+        ...obj,
+        isChecked: false
+      }
+    })
+    setListaTipoModelos(resArray)
+  }
+  const fetchHabilidades = async () => {
+    const res = await axios.get(`${url}/Habilidades`);
+    let resArray = res.data;
+    resArray = resArray.map((obj) => {
+      return {
+        ...obj,
+        isChecked: false
+      }
+    })
+    setListaHabilidades(resArray);
+  }
 
   const [datosUsuario, setDatosUsuario] = useState({})
   const [usuario, setUsuario] = useState({})
@@ -177,7 +214,10 @@ const UserProvider = ({ children }) => {
   }
 
   return (
-    <UserContext.Provider value={{ user, ciudad, provincia, detallesPerfil, tipoActor, tipoModelo, habilidades }}>
+    <UserContext.Provider value={{
+      user, ciudad, provincia,
+      detallesPerfil, listaTipoActores, listaTipoModelos, listaHabilidades
+    }}>
       <UserUpdateContext.Provider value={{
         onChangeUser, onChangeCiudad, onChangeProvincia
         , onChangeDetallesPerfil, onChangeDetallesPerfilCheckbox, onChangeTipoActorCheckbox,

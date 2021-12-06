@@ -1,61 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { FormControl, FormLabel, FormGroup, FormControlLabel, Checkbox, FormHelperText } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { useUser, useUserUpdate } from './UserContext';
-import axios from 'axios';
 
 export default function DetallesPerfil() {
 
   const url = "http://localhost:5000"
 
-  useEffect(() => {
-    fetchTipoModelos();
-    fetchTipoActores();
-    fetchHabilidades();
-  }, [])
-
-  const [listaTipoActores, setListaTipoActores] = useState([])
-  const [listaTipoModelos, setListaTipoModelos] = useState([])
-  const [listaHabilidades, setListaHabilidades] = useState([])
-
-  const { tipoActor, tipoModelo, habilidades } = useUser()
+  const { listaTipoActores, listaTipoModelos, listaHabilidades } = useUser()
   const { onChangeTipoActorCheckbox, onChangeTipoModeloCheckbox, onChangeHabilidadesCheckbox } = useUserUpdate()
-
-  const fetchTipoActores = async () => {
-    const res = await axios.get(`${url}/TipoActores`);
-    let resArray = res.data;
-    resArray = resArray.map((obj) => {
-      return {
-        ...obj,
-        isChecked: false
-      }
-    })
-    setListaTipoActores(resArray)
-  }
-  const fetchTipoModelos = async () => {
-    const res = await axios.get(`${url}/TipoModelos`);
-    let resArray = res.data;
-    resArray = resArray.map((obj) => {
-      return {
-        ...obj,
-        isChecked: false
-      }
-    })
-    setListaTipoModelos(resArray)
-  }
-  const fetchHabilidades = async () => {
-    const res = await axios.get(`${url}/Habilidades`);
-    let resArray = res.data;
-    resArray = resArray.map((obj) => {
-      return {
-        ...obj,
-        isChecked: false
-      }
-    })
-    setListaHabilidades(resArray);
-  }
-
 
   return (
     <>
@@ -71,9 +25,10 @@ export default function DetallesPerfil() {
                 listaTipoActores?.map((option) => (
                   <FormControlLabel
                     control={
-                      <Checkbox checked={option.isChecked} onChange={onChangeTipoActorCheckbox} key={option.id} name={option.nombre} />
+                      <Checkbox checked={option.isChecked} onChange={onChangeTipoActorCheckbox} name={option.nombre} />
                     }
                     label={option.nombre}
+                    key={option.id}
                   />
                 ))
               }
@@ -89,9 +44,10 @@ export default function DetallesPerfil() {
                 listaTipoModelos?.map((option) => (
                   <FormControlLabel
                     control={
-                      <Checkbox checked={option.isChecked} onChange={onChangeTipoModeloCheckbox} key={option.id} name={option.nombre} />
+                      <Checkbox checked={option.isChecked} onChange={onChangeTipoModeloCheckbox} name={option.nombre} />
                     }
                     label={option.nombre}
+                    key={option.id}
                   />
                 ))
               }
@@ -107,9 +63,10 @@ export default function DetallesPerfil() {
                 listaHabilidades?.map((option) => (
                   <FormControlLabel
                     control={
-                      <Checkbox checked={option.isChecked} onChange={onChangeTipoModeloCheckbox} key={option.id} name={option.nombre} />
+                      <Checkbox checked={option.isChecked} onChange={onChangeTipoModeloCheckbox} name={option.nombre} />
                     }
                     label={option.nombre}
+                    key={option.id}
                   />
                 ))
               }
