@@ -93,7 +93,12 @@ const Discover = () => {
                                 if ((person.detallePerfil.tatuajes && filter.includes('sinTatuajes')) ||
                                     (!person.detallePerfil.tatuajes && filter.includes('conTatuajes')) ||
                                     (person.detallePerfil.barba && filter.includes('sinBarba')) ||
-                                    (!person.detallePerfil.barba && filter.includes('conBarba')))
+                                    (!person.detallePerfil.barba && filter.includes('conBarba')) ||
+                                    (!(person.detallePerfil.edad < 18) && filter.includes('Menor')) ||
+                                    (!(person.detallePerfil.edad >= 18 && person.detallePerfil.edad <= 25) && filter.includes('edad18a25')) ||
+                                    (!(person.detallePerfil.edad >= 26 && person.detallePerfil.edad <= 45) && filter.includes('edad26a45')) ||
+                                    (!(person.detallePerfil.edad >= 46 && person.detallePerfil.edad <= 60) && filter.includes('edad46a60')) ||
+                                    (!(person.detallePerfil.edad >= 60) && filter.includes('edad60+')))
                                     return false;
                                 else
                                     return true;

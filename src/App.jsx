@@ -7,6 +7,7 @@ import Home from './Home';
 import ProfileView from './ProfileView'
 import Layout from './components/Layout';
 import CreateProfile from './CreateProfile';
+import SignIn from './SignIn';
 
 const App = () => {
 
@@ -23,6 +24,7 @@ const App = () => {
             <UserProvider>
               <Route path="/create-profile" component={CreateProfile} />
             </UserProvider>
+            <Route path="/sign-in" component={SignIn} />
           </Switch>
         </Layout>
       </Router>
