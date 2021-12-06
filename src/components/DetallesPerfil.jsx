@@ -11,11 +11,8 @@ export default function DetallesPerfil() {
 
   useEffect(() => {
     fetchTipoModelos();
-    console.log(listaTipoModelos);
     fetchTipoActores();
-    console.log(listaTipoActores);
     fetchHabilidades();
-    console.log(listaHabilidades);
   }, [])
 
   const [listaTipoActores, setListaTipoActores] = useState([])
@@ -57,7 +54,6 @@ export default function DetallesPerfil() {
       }
     })
     setListaHabilidades(resArray);
-    // console.log(listaHabilidades);
   }
 
 
@@ -71,30 +67,16 @@ export default function DetallesPerfil() {
           <FormControl component="fieldset" variant="standard">
             <FormLabel component="legend">Detalles de actor</FormLabel>
             <FormGroup>
-              <FormControlLabel
-                control={
-                  <Checkbox checked={tipoActor.cine} onChange={onChangeTipoActorCheckbox} name="cine" />
-                }
-                label="Cine"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox checked={tipoActor.teatro} onChange={onChangeTipoActorCheckbox} name="teatro" />
-                }
-                label="Teatro"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox checked={tipoActor.comercial} onChange={onChangeTipoActorCheckbox} name="comercial" />
-                }
-                label="Comercial"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox checked={tipoActor.voz} onChange={onChangeTipoActorCheckbox} name="voz" />
-                }
-                label="Actor de Voz"
-              />
+              {
+                listaTipoActores?.map((option) => (
+                  <FormControlLabel
+                    control={
+                      <Checkbox checked={option.isChecked} onChange={onChangeTipoActorCheckbox} key={option.id} name={option.nombre} />
+                    }
+                    label={option.nombre}
+                  />
+                ))
+              }
             </FormGroup>
             <FormHelperText>Elija todos los que apliquen</FormHelperText>
           </FormControl>
@@ -103,36 +85,16 @@ export default function DetallesPerfil() {
           <FormControl component="fieldset" variant="standard">
             <FormLabel component="legend">Detalles de modelaje</FormLabel>
             <FormGroup>
-              <FormControlLabel
-                control={
-                  <Checkbox checked={tipoModelo.general} onChange={onChangeTipoModeloCheckbox} name="general" />
-                }
-                label="General"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox checked={tipoModelo.manos} onChange={onChangeTipoModeloCheckbox} name="manos" />
-                }
-                label="Manos"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox checked={tipoModelo.piernas} onChange={onChangeTipoModeloCheckbox} name="piernas" />
-                }
-                label="Piernas/Pies"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox checked={tipoModelo.dientes} onChange={onChangeTipoModeloCheckbox} name="dientes" />
-                }
-                label="Dientes"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox checked={tipoModelo.codos} onChange={onChangeTipoModeloCheckbox} name="codos" />
-                }
-                label="Codos"
-              />
+              {
+                listaTipoModelos?.map((option) => (
+                  <FormControlLabel
+                    control={
+                      <Checkbox checked={option.isChecked} onChange={onChangeTipoModeloCheckbox} key={option.id} name={option.nombre} />
+                    }
+                    label={option.nombre}
+                  />
+                ))
+              }
             </FormGroup>
             <FormHelperText>Elija todos los que apliquen</FormHelperText>
           </FormControl>
@@ -141,24 +103,16 @@ export default function DetallesPerfil() {
           <FormControl component="fieldset" variant="standard">
             <FormLabel component="legend">Habilidades</FormLabel>
             <FormGroup>
-              <FormControlLabel
-                control={
-                  <Checkbox checked={habilidades.canto} onChange={onChangeHabilidadesCheckbox} name="canto" />
-                }
-                label="Canto"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox checked={habilidades.baile} onChange={onChangeHabilidadesCheckbox} name="baile" />
-                }
-                label="Baile"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox checked={habilidades.cartas} onChange={onChangeHabilidadesCheckbox} name="cartas" />
-                }
-                label="Maestro de cartas"
-              />
+              {
+                listaHabilidades?.map((option) => (
+                  <FormControlLabel
+                    control={
+                      <Checkbox checked={option.isChecked} onChange={onChangeTipoModeloCheckbox} key={option.id} name={option.nombre} />
+                    }
+                    label={option.nombre}
+                  />
+                ))
+              }
             </FormGroup>
             <FormHelperText>Elija todos los que apliquen</FormHelperText>
           </FormControl>
