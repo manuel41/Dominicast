@@ -1,13 +1,64 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FormControl, FormLabel, FormGroup, FormControlLabel, Checkbox, FormHelperText } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { useUser, useUserUpdate } from './UserContext';
+import axios from 'axios';
 
 export default function DetallesPerfil() {
 
+  const url = "http://localhost:5000"
+
+  useEffect(() => {
+    fetchTipoModelos();
+    console.log(listaTipoModelos);
+    fetchTipoActores();
+    console.log(listaTipoActores);
+    fetchHabilidades();
+    console.log(listaHabilidades);
+  }, [])
+
+  const [listaTipoActores, setListaTipoActores] = useState([])
+  const [listaTipoModelos, setListaTipoModelos] = useState([])
+  const [listaHabilidades, setListaHabilidades] = useState([])
+
   const { tipoActor, tipoModelo, habilidades } = useUser()
   const { onChangeTipoActorCheckbox, onChangeTipoModeloCheckbox, onChangeHabilidadesCheckbox } = useUserUpdate()
+
+  const fetchTipoActores = async () => {
+    const res = await axios.get(`${url}/TipoActores`);
+    let resArray = res.data;
+    resArray = resArray.map((obj) => {
+      return {
+        ...obj,
+        isChecked: false
+      }
+    })
+    setListaTipoActores(resArray)
+  }
+  const fetchTipoModelos = async () => {
+    const res = await axios.get(`${url}/TipoModelos`);
+    let resArray = res.data;
+    resArray = resArray.map((obj) => {
+      return {
+        ...obj,
+        isChecked: false
+      }
+    })
+    setListaTipoModelos(resArray)
+  }
+  const fetchHabilidades = async () => {
+    const res = await axios.get(`${url}/Habilidades`);
+    let resArray = res.data;
+    resArray = resArray.map((obj) => {
+      return {
+        ...obj,
+        isChecked: false
+      }
+    })
+    setListaHabilidades(resArray);
+    // console.log(listaHabilidades);
+  }
 
 
   return (
