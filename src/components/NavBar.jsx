@@ -25,9 +25,9 @@ const NavBar = () => {
               <img src={logo} width="200" />
               <Button size='large' color="primary" href="/">Inicio</Button>
               <Button size='large' color="primary" href="/Discover">Explorar</Button>
-              <Button size='large' color="primary">Nosotros</Button>
-              <Button disableElevation size='large' color="primary" href="create-profile">Regístrate</Button>
-              <Button disableElevation size='large' color="primary" href="/sign-in">Login</Button>
+              <Button size='large' color="primary" href="/">Nosotros</Button>
+              <Button size='large' color="primary" href="create-profile">Regístrate</Button>
+              <Button size='large' color="primary" href="login">Login</Button>
             </Stack>
           </Toolbar>
         </Container>
