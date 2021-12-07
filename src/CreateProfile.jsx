@@ -1,19 +1,19 @@
 import { Container, Typography, Paper, Box, Button, StepLabel, Stepper, Step } from "@mui/material"
-import { makeStyles } from "@mui/styles"
-import { useState, useContext } from "react";
+// import { makeStyles } from "@mui/styles"
+import { useState } from "react";
 import CreateProfile2 from "./components/CreateProfile2";
 import DetallesPerfil from "./components/DetallesPerfil";
 import RegisterUser from "./components/RegisterUser";
-import UserProvider, { useUserUpdate } from "./components/UserContext";
+import { useUserUpdate } from "./components/UserContext";
 
-const useStyles = makeStyles((theme) => ({
-  paperRoot: {
-    padding: theme.spacing(3)
-  },
-  mainGrid: {
-    marginBottom: theme.spacing(3),
-  }
-}))
+// const useStyles = makeStyles((theme) => ({
+//   paperRoot: {
+//     padding: theme.spacing(3)
+//   },
+//   mainGrid: {
+//     marginBottom: theme.spacing(3),
+//   }
+// }))
 
 // function Copyright() {
 //   return (

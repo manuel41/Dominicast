@@ -10,7 +10,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 // import FormControlLabel from '@mui/material/FormControlLabel';
 // import Checkbox from '@mui/material/Checkbox';
-import { FormControl, Input, InputLabel, MenuItem, OutlinedInput } from '@mui/material';
+import { FormControl, Input, InputLabel, MenuItem } from '@mui/material';
 import axios from 'axios';
 
 const RegisterUser = () => {
@@ -74,7 +74,6 @@ const RegisterUser = () => {
               label="Contraseña"
               fullWidth
               autoComplete="current-password"
-              type="password"
               variant="standard"
               value={user.contraseña}
               onChange={onChangeUser}

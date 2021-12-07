@@ -166,7 +166,6 @@ const UserProvider = ({ children }) => {
     bracers: false,
     lentes: false,
     disposicion: false,
-    url: ""
   })
 
   const [colorOjos, setColorOjos] = useState({

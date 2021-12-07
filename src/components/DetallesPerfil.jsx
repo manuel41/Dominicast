@@ -6,8 +6,6 @@ import { useUser, useUserUpdate } from './UserContext';
 
 export default function DetallesPerfil() {
 
-  const url = "http://localhost:5000"
-
   const { listaTipoActores, listaTipoModelos, listaHabilidades } = useUser()
   const { onChangeTipoActorCheckbox, onChangeTipoModeloCheckbox, onChangeHabilidadesCheckbox } = useUserUpdate()
 

@@ -1,20 +1,20 @@
 import React from 'react'
 import { AppBar, Toolbar, Stack, Button, Container } from '@mui/material'
-import { makeStyles } from '@mui/styles';
+// import { makeStyles } from '@mui/styles';
 import logo from './logo.png';
 
 
 
 
 
-const useStyles = makeStyles((theme) => ({
-  icon: {
-    marginRight: '20px',
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   icon: {
+//     marginRight: '20px',
+//   },
+// }));
 
 const NavBar = () => {
-  const classes = useStyles();
+  // const classes = useStyles();
 
   return (
     <>

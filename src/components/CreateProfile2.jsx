@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
 import { useUser, useUserUpdate } from './UserContext';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import { Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, MenuItem, Radio, RadioGroup } from '@mui/material';
-import axios from 'axios';
+import { Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Radio, RadioGroup } from '@mui/material';
 
 
 export default function CreateProfile2() {

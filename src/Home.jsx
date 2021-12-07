@@ -8,14 +8,6 @@ import post2 from './assests/blog-post.2.md';
 import post3 from './assests/blog-post.3.md';
 
 
-
-const useStyles = makeStyles((theme) => ({
-  home: {
-
-  }
-}));
-
-
 const featuredPosts = [
   {
     title: 'Dominicast en version alpha',
@@ -39,7 +31,6 @@ const featuredPosts = [
 //console.log(posts)
 
 const Home = () => {
-  const clasess = useStyles();
 
   const file_name = 'blog-post.1.md';
   const [post1, setPost1] = useState('');
