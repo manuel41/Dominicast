@@ -5,6 +5,7 @@ import ToggleButtonsMultiple from './components/ToggleButtonsMultiple';
 //import { RouterLink } from 'react-router-dom';
 
 import { makeStyles } from '@mui/styles';
+import { ReduceCapacityRounded } from '@mui/icons-material';
 
 const useStyles = makeStyles((theme) => ({
     paginationContainer: {
@@ -39,7 +40,7 @@ const Discover = () => {
     const [persons, setPersons] = useState([]);
     // const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [personsPerPage, setPersonsPerPage] = useState(9);
+    const [personsPerPage, setPersonsPerPage] = useState(12);
     const [filter, setFilter] = useState([]);
     const [searchTerm, setSearhTerm] = useState("");
 
@@ -84,9 +85,20 @@ const Discover = () => {
                     <Grid container spacing={3}>
                         {currentPersons
                             .filter((person => {
+                                let isHabilityFound = false;
+                                isHabilityFound = person.habilidad.find((habilidad) => {
+                                    if (habilidad.descripcion === searchTerm.toLowerCase())
+                                        return true;
+                                })
                                 if (searchTerm === "")
                                     return person;
                                 else if (person.user.nombreUsuario.toLowerCase().includes(searchTerm.toLowerCase()))
+                                    return person;
+                                else if (person.detallePerfil.nombre.toLowerCase().includes(searchTerm.toLowerCase()))
+                                    return person;
+                                else if (person.detallePerfil.apellido.toLowerCase().includes(searchTerm.toLowerCase()))
+                                    return person;
+                                else if (isHabilityFound)
                                     return person;
                             }))
                             .filter((person) => {
@@ -98,7 +110,12 @@ const Discover = () => {
                                     (!(person.detallePerfil.edad >= 18 && person.detallePerfil.edad <= 25) && filter.includes('edad18a25')) ||
                                     (!(person.detallePerfil.edad >= 26 && person.detallePerfil.edad <= 45) && filter.includes('edad26a45')) ||
                                     (!(person.detallePerfil.edad >= 46 && person.detallePerfil.edad <= 60) && filter.includes('edad46a60')) ||
-                                    (!(person.detallePerfil.edad >= 60) && filter.includes('edad60+')))
+                                    (!(person.detallePerfil.edad >= 60) && filter.includes('edad60+')) ||
+                                    (!(person.detallePerfil.altura < 150) && filter.includes('150cm')) ||
+                                    (!(person.detallePerfil.altura >= 151 && person.detallePerfil.altura <= 170) && filter.includes('151a170cm')) ||
+                                    (!(person.detallePerfil.altura >= 171 && person.detallePerfil.altura <= 190) && filter.includes('171a190cm')) ||
+                                    (!(person.detallePerfil.altura >= 210 && person.detallePerfil.altura <= 230) && filter.includes('210a230cm')) ||
+                                    (!(person.detallePerfil.altura >= 231) && filter.includes('231cm+')))
                                     return false;
                                 else
                                     return true;
@@ -109,11 +126,7 @@ const Discover = () => {
                                         <CardActionArea href={`/profile/${person.id}`}>
                                             <CardMedia className={classes.cardMedia} image={person.detallePerfil.url} title="image title" />
                                             <CardContent className={classes.cardMedia}>
-                                                <Typography variant="h5">{person.user.nombreUsuario}</Typography>
-                                                <Typography  >Estatura: {person.detallePerfil.altura}</Typography>
-                                                <Typography  >Peso: {person.detallePerfil.peso}</Typography>
-                                                <Typography  >Barba: {person.detallePerfil.barba ? "si" : "no"}</Typography>
-                                                <Typography  >tatuajes: {person.detallePerfil.tatuajes ? "si" : "no"}</Typography>
+                                                <Typography align="center" variant="h5">{`${person.detallePerfil.nombre} ${person.detallePerfil.apellido}`}</Typography>
                                             </CardContent>
                                         </CardActionArea>
                                     </Card>
