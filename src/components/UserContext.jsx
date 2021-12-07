@@ -16,6 +16,9 @@ const UserProvider = ({ children }) => {
   const [listaTipoActores, setListaTipoActores] = useState([])
   const [listaTipoModelos, setListaTipoModelos] = useState([])
   const [listaHabilidades, setListaHabilidades] = useState([])
+  const [ojos, setOjos] = useState([])
+  const [coloresPiel, setColoresPiel] = useState([])
+  const [cabellos, setCabellos] = useState([])
 
   const url = "http://localhost:5000"
 
@@ -30,6 +33,9 @@ const UserProvider = ({ children }) => {
     fetchTipoModelos();
     fetchTipoActores();
     fetchHabilidades();
+    fetchOjos();
+    fetchCabellos();
+    fetchPieles();
   }, [usuarioExistente])
 
   const fetchTipoActores = async () => {
@@ -66,6 +72,19 @@ const UserProvider = ({ children }) => {
     setListaHabilidades(resArray);
   }
 
+  const fetchOjos = async () => {
+    const res = await axios.get(`${url}/ColorOjos`)
+    setOjos(res.data)
+  }
+  const fetchPieles = async () => {
+    const res = await axios.get(`${url}/ColorPiel`)
+    setColoresPiel(res.data)
+  }
+  const fetchCabellos = async () => {
+    const res = await axios.get(`${url}/ColorCabello`)
+    setCabellos(res.data)
+  }
+
 
 
   const [datosUsuario, setDatosUsuario] = useState({})
@@ -83,13 +102,13 @@ const UserProvider = ({ children }) => {
       detallePerfil: {
         ...detallesPerfil,
         colorPiel: { ...colorPiel },
-        colorCabello: { colorCabello },
-        colorOjos: { colorOjos },
+        colorCabello: { ...colorCabello },
+        colorOjos: { ...colorOjos },
       },
       tipoUsuario: 3,
-      tipoActor: addTipoActores(),
-      tipoModelo: addTipoModelos(),
-      habilidades: addHabilidades()
+      tipoActors: addTipoActores(),
+      tipoModelos: addTipoModelos(),
+      habilidad: addHabilidades()
     }
     const res = await axios.post(`${url}/Persons`, newUser)
   }
@@ -192,24 +211,24 @@ const UserProvider = ({ children }) => {
     });
   }
   const onChangeColorOjos = (e) => {
-    const { name, value, label } = e.target
+    const { name, value } = e.target
     setColorOjos({
       [name]: value,
-      color: label
+      color: ojos[value - 1].nombre
     });
   }
   const onChangeColorPiel = (e) => {
-    const { name, value, label } = e.target
+    const { name, value } = e.target
     setColorPiel({
       [name]: value,
-      color: label
+      color: coloresPiel[value - 1].nombre
     });
   }
   const onChangeColorCabello = (e) => {
-    const { name, value, label } = e.target
+    const { name, value } = e.target
     setColorCabello({
       [name]: value,
-      color: label
+      color: cabellos[value - 1].nombre
     });
   }
   const onChangeDetallesPerfilCheckbox = (e) => {
@@ -241,7 +260,8 @@ const UserProvider = ({ children }) => {
   return (
     <UserContext.Provider value={{
       user, ciudad, provincia, colorOjos, colorPiel, colorCabello,
-      detallesPerfil, listaTipoActores, listaTipoModelos, listaHabilidades
+      detallesPerfil, listaTipoActores, listaTipoModelos, listaHabilidades,
+      ojos, coloresPiel, cabellos
     }}>
       <UserUpdateContext.Provider value={{
         onChangeUser, onChangeCiudad, onChangeProvincia, onChangeColorOjos, onChangeColorPiel, onChangeColorCabello

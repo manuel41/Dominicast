@@ -10,34 +10,8 @@ import axios from 'axios';
 
 export default function CreateProfile2() {
 
-  const { detallesPerfil, colorOjos, colorPiel, colorCabello } = useUser()
+  const { detallesPerfil, colorOjos, colorPiel, colorCabello, ojos, coloresPiel, cabellos } = useUser()
   const { onChangeDetallesPerfil, onChangeDetallesPerfilCheckbox, onChangeColorOjos, onChangeColorPiel, onChangeColorCabello } = useUserUpdate()
-
-  const url = "http://localhost:5000"
-
-  const [ojos, setOjos] = useState([])
-  const [coloresPiel, setColoresPiel] = useState([])
-  const [cabellos, setCabellos] = useState([])
-
-  useEffect(() => {
-    fetchOjos();
-    fetchCabellos();
-    fetchPieles();
-  }, [])
-
-  const fetchOjos = async () => {
-    const res = await axios.get(`${url}/ColorOjos`)
-    setOjos(res.data)
-  }
-  const fetchPieles = async () => {
-    const res = await axios.get(`${url}/ColorPiel`)
-    setColoresPiel(res.data)
-  }
-  const fetchCabellos = async () => {
-    const res = await axios.get(`${url}/ColorCabello`)
-    setCabellos(res.data)
-  }
-
 
   return (
     <React.Fragment>

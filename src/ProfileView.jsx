@@ -110,9 +110,6 @@ const ProfileView = () => {
                 <Typography variant="h5">Color de ojos: {profileDetails?.detallePerfil.colorOjos.color}</Typography>
               </Grid>
               <Grid item xs={12} md={6}>
-                <Typography variant="h5">Tez: {profileDetails?.detallePerfil.tipoPiel.descripcion}</Typography>
-              </Grid>
-              <Grid item xs={12} md={6}>
                 <Typography variant="h5">Tatuajes: {profileDetails?.detallePerfil.tatuajes ? "Si" : "No"}</Typography>
               </Grid>
               <Grid item xs={12} md={6}>
