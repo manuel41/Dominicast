@@ -105,10 +105,10 @@ const UserProvider = ({ children }) => {
         colorCabello: { ...colorCabello },
         colorOjos: { ...colorOjos },
       },
-      tipoUsuario: 3,
       tipoActors: addTipoActores(),
       tipoModelos: addTipoModelos(),
-      habilidad: addHabilidades()
+      habilidad: addHabilidades(),
+      tipoUsuario: determineTipoUsuario(),
     }
     const res = await axios.post(`${url}/Persons`, newUser)
   }
@@ -131,6 +131,18 @@ const UserProvider = ({ children }) => {
   const addHabilidades = () => {
     return listaHabilidades.filter((type) => type.isChecked)
   }
+
+  const determineTipoUsuario = () => {
+    const lista1 = listaTipoActores.filter((type) => type.isChecked)
+    const lista2 = listaTipoModelos.filter((type) => type.isChecked)
+    console.log(lista1);
+    console.log(lista2);
+    if (lista1.length > 0 && lista2.length > 0) return 3
+    else if (lista1.length > 0) return 1
+    else if (lista2.length > 0) return 2
+    else return 0
+  }
+
 
 
 
