@@ -82,9 +82,9 @@ const UserProvider = ({ children }) => {
       },
       detallePerfil: {
         ...detallesPerfil,
-        colorPiel: { colorPielId: detallesPerfil.colorPielId },
-        colorCabello: { colorCabelloId: detallesPerfil.colorCabelloId },
-        colorOjos: { colorOjosId: detallesPerfil.colorOjosId },
+        colorPiel: { ...colorPiel },
+        colorCabello: { colorCabello },
+        colorOjos: { colorOjos },
       },
       tipoUsuario: 3,
       tipoActor: addTipoActores(),
@@ -99,9 +99,9 @@ const UserProvider = ({ children }) => {
   // }
 
 
-  const [tipoActor, setTipoActor] = useState([]);
-  const [tipoModelo, setTipoModelo] = useState([]);
-  const [habilidades, setHabilidades] = useState([]);
+  // const [tipoActor, setTipoActor] = useState([]);
+  // const [tipoModelo, setTipoModelo] = useState([]);
+  // const [habilidades, setHabilidades] = useState([]);
 
   const addTipoActores = () => {
     return listaTipoActores.filter((type) => type.isChecked)
@@ -123,11 +123,13 @@ const UserProvider = ({ children }) => {
   })
 
   const [ciudad, setCiudad] = useState({
-    ciudadId: undefined
+    ciudadId: undefined,
+    nombre: ""
   })
 
   const [provincia, setProvincia] = useState({
-    provinciaId: undefined
+    provinciaId: undefined,
+    nombre: ""
   })
 
   const [detallesPerfil, setDetallesPerfil] = useState({
@@ -135,9 +137,6 @@ const UserProvider = ({ children }) => {
     apellido: "",
     genero: "",
     foto: "",
-    colorOjosId: undefined,
-    colorCabelloId: undefined,
-    colorPielId: undefined,
     edad: undefined,
     peso: undefined,
     altura: undefined,
@@ -148,6 +147,20 @@ const UserProvider = ({ children }) => {
     bracers: false,
     lentes: false,
     disposicion: false,
+    url: "https://bit.ly/prosper-baba"
+  })
+
+  const [colorOjos, setColorOjos] = useState({
+    colorOjosId: undefined,
+    color: ""
+  })
+  const [colorPiel, setColorPiel] = useState({
+    colorPielId: undefined,
+    color: ""
+  })
+  const [colorCabello, setColorCabello] = useState({
+    colorCabelloId: undefined,
+    color: ""
   })
 
   const onChangeUser = (e) => {
@@ -178,6 +191,27 @@ const UserProvider = ({ children }) => {
       [name]: value
     });
   }
+  const onChangeColorOjos = (e) => {
+    const { name, value, label } = e.target
+    setColorOjos({
+      [name]: value,
+      color: label
+    });
+  }
+  const onChangeColorPiel = (e) => {
+    const { name, value, label } = e.target
+    setColorPiel({
+      [name]: value,
+      color: label
+    });
+  }
+  const onChangeColorCabello = (e) => {
+    const { name, value, label } = e.target
+    setColorCabello({
+      [name]: value,
+      color: label
+    });
+  }
   const onChangeDetallesPerfilCheckbox = (e) => {
     const { name, checked } = e.target
     setDetallesPerfil({
@@ -206,11 +240,11 @@ const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider value={{
-      user, ciudad, provincia,
+      user, ciudad, provincia, colorOjos, colorPiel, colorCabello,
       detallesPerfil, listaTipoActores, listaTipoModelos, listaHabilidades
     }}>
       <UserUpdateContext.Provider value={{
-        onChangeUser, onChangeCiudad, onChangeProvincia
+        onChangeUser, onChangeCiudad, onChangeProvincia, onChangeColorOjos, onChangeColorPiel, onChangeColorCabello
         , onChangeDetallesPerfil, onChangeDetallesPerfilCheckbox, onChangeTipoActorCheckbox,
         onChangeTipoModeloCheckbox, onChangeHabilidadesCheckbox, registerNewUser
       }}>

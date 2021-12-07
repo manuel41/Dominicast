@@ -10,8 +10,8 @@ import axios from 'axios';
 
 export default function CreateProfile2() {
 
-  const { detallesPerfil } = useUser()
-  const { onChangeDetallesPerfil, onChangeDetallesPerfilCheckbox } = useUserUpdate()
+  const { detallesPerfil, colorOjos, colorPiel, colorCabello } = useUser()
+  const { onChangeDetallesPerfil, onChangeDetallesPerfilCheckbox, onChangeColorOjos, onChangeColorPiel, onChangeColorCabello } = useUserUpdate()
 
   const url = "http://localhost:5000"
 
@@ -129,8 +129,8 @@ export default function CreateProfile2() {
             <RadioGroup
               aria-label="eyes"
               name="colorOjosId"
-              value={detallesPerfil.colorOjosId || ""}
-              onChange={onChangeDetallesPerfil}
+              value={colorOjos.colorOjosId || ""}
+              onChange={onChangeColorOjos}
             >
               {ojos?.map((option) => (
                 <FormControlLabel key={option.id} value={option.id} control={<Radio />} label={option.nombre} />
@@ -144,8 +144,8 @@ export default function CreateProfile2() {
             <RadioGroup
               aria-label="eyes"
               name="colorPielId"
-              value={detallesPerfil.colorPielId || ""}
-              onChange={onChangeDetallesPerfil}
+              value={colorPiel.colorPielId || ""}
+              onChange={onChangeColorPiel}
             >
               {coloresPiel?.map((option) => (
                 <FormControlLabel key={option.id} value={option.id} control={<Radio />} label={option.nombre} />
@@ -159,8 +159,8 @@ export default function CreateProfile2() {
             <RadioGroup
               aria-label="eyes"
               name="colorCabelloId"
-              value={detallesPerfil.colorCabelloId || ""}
-              onChange={onChangeDetallesPerfil}
+              value={colorCabello.colorCabelloId || ""}
+              onChange={onChangeColorCabello}
             >
               {cabellos?.map((option) => (
                 <FormControlLabel key={option.id} value={option.id} control={<Radio />} label={option.nombre} />
