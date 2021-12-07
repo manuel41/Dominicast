@@ -33,7 +33,7 @@
         },
         "tipoPiel": {
           "tipoPielId": 1,
-          "descripcion": "string"
+          "nombre": "string"
         },
         "nombre": "Luis",
         "apellido": "Perez",
@@ -55,41 +55,41 @@
       "tipoModelos": [
         {
           "tipoModeloId": 1,
-          "descripcion": "General"
+          "nombre": "General"
         },
         {
           "tipoModeloId": 2,
-          "descripcion": "Manos"
+          "nombre": "Manos"
         },
         {
           "tipoModeloId": 3,
-          "descripcion": "Piernas/Pies"
+          "nombre": "Piernas/Pies"
         },
         {
           "tipoModeloId": 4,
-          "descripcion": "Dientes"
+          "nombre": "Dientes"
         },
         {
           "tipoModeloId": 5,
-          "descripcion": "Codos"
+          "nombre": "Codos"
         }
       ],
       "tipoActors": [
         {
           "tipoActorId": 1,
-          "descripcion": "Cine"
+          "nombre": "Cine"
         },
         {
           "tipoActorId": 2,
-          "descripcion": "Teatro"
+          "nombre": "Teatro"
         },
         {
           "tipoActorId": 3,
-          "descripcion": "Comercial"
+          "nombre": "Comercial"
         },
         {
           "tipoActorId": 4,
-          "descripcion": "Actor de Voz"
+          "nombre": "Actor de Voz"
         }
       ],
       "habilidad": []
@@ -127,7 +127,7 @@
         },
         "tipoPiel": {
           "tipoPielId": 1,
-          "descripcion": "string"
+          "nombre": "string"
         },
         "nombre": "Raul",
         "apellido": "Jose",
@@ -149,63 +149,63 @@
       "tipoModelos": [
         {
           "tipoModeloId": 1,
-          "descripcion": "General"
+          "nombre": "General"
         },
         {
           "tipoModeloId": 2,
-          "descripcion": "Manos"
+          "nombre": "Manos"
         },
         {
           "tipoModeloId": 3,
-          "descripcion": "Piernas/Pies"
+          "nombre": "Piernas/Pies"
         },
         {
           "tipoModeloId": 4,
-          "descripcion": "Dientes"
+          "nombre": "Dientes"
         },
         {
           "tipoModeloId": 5,
-          "descripcion": "Codos"
+          "nombre": "Codos"
         }
       ],
       "tipoActors": [
         {
           "tipoActorId": 1,
-          "descripcion": "Cine"
+          "nombre": "Cine"
         },
         {
           "tipoActorId": 2,
-          "descripcion": "Teatro"
+          "nombre": "Teatro"
         },
         {
           "tipoActorId": 3,
-          "descripcion": "Comercial"
+          "nombre": "Comercial"
         },
         {
           "tipoActorId": 4,
-          "descripcion": "Actor de Voz"
+          "nombre": "Actor de Voz"
         }
       ],
       "habilidad": [
         {
           "habilidadId": 1,
-          "descripcion": "canto"
+          "nombre": "canto"
         },
         {
           "habilidadId": 2,
-          "descripcion": "baile"
+          "nombre": "baile"
         },
         {
           "habilidadId": 3,
-          "descripcion": "string"
+          "nombre": "string"
         },
         {
           "habilidadId": 4,
-          "descripcion": "string"
+          "nombre": "string"
         },
         {
           "habilidadId": 5,
-          "descripcion": "string"
+          "nombre": "string"
         }
       ]
     },
@@ -242,7 +242,7 @@
         },
         "tipoPiel": {
           "tipoPielId": 1,
-          "descripcion": "string"
+          "nombre": "string"
         },
         "nombre": "Luis",
         "apellido": "Perez",
@@ -264,63 +264,63 @@
       "tipoModelos": [
         {
           "tipoModeloId": 1,
-          "descripcion": "General"
+          "nombre": "General"
         },
         {
           "tipoModeloId": 2,
-          "descripcion": "Manos"
+          "nombre": "Manos"
         },
         {
           "tipoModeloId": 3,
-          "descripcion": "Piernas/Pies"
+          "nombre": "Piernas/Pies"
         },
         {
           "tipoModeloId": 4,
-          "descripcion": "Dientes"
+          "nombre": "Dientes"
         },
         {
           "tipoModeloId": 5,
-          "descripcion": "Codos"
+          "nombre": "Codos"
         }
       ],
       "tipoActors": [
         {
           "tipoActorId": 1,
-          "descripcion": "Cine"
+          "nombre": "Cine"
         },
         {
           "tipoActorId": 2,
-          "descripcion": "Teatro"
+          "nombre": "Teatro"
         },
         {
           "tipoActorId": 3,
-          "descripcion": "Comercial"
+          "nombre": "Comercial"
         },
         {
           "tipoActorId": 4,
-          "descripcion": "Actor de Voz"
+          "nombre": "Actor de Voz"
         }
       ],
       "habilidad": [
         {
           "habilidadId": 1,
-          "descripcion": "canto"
+          "nombre": "canto"
         },
         {
           "habilidadId": 2,
-          "descripcion": "baile"
+          "nombre": "baile"
         },
         {
           "habilidadId": 3,
-          "descripcion": "string"
+          "nombre": "string"
         },
         {
           "habilidadId": 4,
-          "descripcion": "string"
+          "nombre": "string"
         },
         {
           "habilidadId": 5,
-          "descripcion": "string"
+          "nombre": "string"
         }
       ]
     },
@@ -357,7 +357,7 @@
         },
         "tipoPiel": {
           "tipoPielId": 1,
-          "descripcion": "string"
+          "nombre": "string"
         },
         "nombre": "Marcos",
         "apellido": "Perez",
@@ -379,63 +379,63 @@
       "tipoModelos": [
         {
           "tipoModeloId": 1,
-          "descripcion": "General"
+          "nombre": "General"
         },
         {
           "tipoModeloId": 2,
-          "descripcion": "Manos"
+          "nombre": "Manos"
         },
         {
           "tipoModeloId": 3,
-          "descripcion": "Piernas/Pies"
+          "nombre": "Piernas/Pies"
         },
         {
           "tipoModeloId": 4,
-          "descripcion": "Dientes"
+          "nombre": "Dientes"
         },
         {
           "tipoModeloId": 5,
-          "descripcion": "Codos"
+          "nombre": "Codos"
         }
       ],
       "tipoActors": [
         {
           "tipoActorId": 1,
-          "descripcion": "Cine"
+          "nombre": "Cine"
         },
         {
           "tipoActorId": 2,
-          "descripcion": "Teatro"
+          "nombre": "Teatro"
         },
         {
           "tipoActorId": 3,
-          "descripcion": "Comercial"
+          "nombre": "Comercial"
         },
         {
           "tipoActorId": 4,
-          "descripcion": "Actor de Voz"
+          "nombre": "Actor de Voz"
         }
       ],
       "habilidad": [
         {
           "habilidadId": 1,
-          "descripcion": "canto"
+          "nombre": "canto"
         },
         {
           "habilidadId": 2,
-          "descripcion": "baile"
+          "nombre": "baile"
         },
         {
           "habilidadId": 3,
-          "descripcion": "string"
+          "nombre": "string"
         },
         {
           "habilidadId": 4,
-          "descripcion": "string"
+          "nombre": "string"
         },
         {
           "habilidadId": 5,
-          "descripcion": "string"
+          "nombre": "string"
         }
       ]
     },
@@ -472,7 +472,7 @@
         },
         "tipoPiel": {
           "tipoPielId": 1,
-          "descripcion": "string"
+          "nombre": "string"
         },
         "nombre": "Luisa",
         "apellido": "Morillo",
@@ -494,63 +494,63 @@
       "tipoModelos": [
         {
           "tipoModeloId": 1,
-          "descripcion": "General"
+          "nombre": "General"
         },
         {
           "tipoModeloId": 2,
-          "descripcion": "Manos"
+          "nombre": "Manos"
         },
         {
           "tipoModeloId": 3,
-          "descripcion": "Piernas/Pies"
+          "nombre": "Piernas/Pies"
         },
         {
           "tipoModeloId": 4,
-          "descripcion": "Dientes"
+          "nombre": "Dientes"
         },
         {
           "tipoModeloId": 5,
-          "descripcion": "Codos"
+          "nombre": "Codos"
         }
       ],
       "tipoActors": [
         {
           "tipoActorId": 1,
-          "descripcion": "Cine"
+          "nombre": "Cine"
         },
         {
           "tipoActorId": 2,
-          "descripcion": "Teatro"
+          "nombre": "Teatro"
         },
         {
           "tipoActorId": 3,
-          "descripcion": "Comercial"
+          "nombre": "Comercial"
         },
         {
           "tipoActorId": 4,
-          "descripcion": "Actor de Voz"
+          "nombre": "Actor de Voz"
         }
       ],
       "habilidad": [
         {
           "habilidadId": 1,
-          "descripcion": "canto"
+          "nombre": "canto"
         },
         {
           "habilidadId": 2,
-          "descripcion": "baile"
+          "nombre": "baile"
         },
         {
           "habilidadId": 3,
-          "descripcion": "string"
+          "nombre": "string"
         },
         {
           "habilidadId": 4,
-          "descripcion": "string"
+          "nombre": "string"
         },
         {
           "habilidadId": 5,
-          "descripcion": "string"
+          "nombre": "string"
         }
       ]
     },
@@ -587,7 +587,7 @@
         },
         "tipoPiel": {
           "tipoPielId": 1,
-          "descripcion": "string"
+          "nombre": "string"
         },
         "nombre": ":Lucas",
         "apellido": "Suriel",
@@ -609,63 +609,63 @@
       "tipoModelos": [
         {
           "tipoModeloId": 1,
-          "descripcion": "General"
+          "nombre": "General"
         },
         {
           "tipoModeloId": 2,
-          "descripcion": "Manos"
+          "nombre": "Manos"
         },
         {
           "tipoModeloId": 3,
-          "descripcion": "Piernas/Pies"
+          "nombre": "Piernas/Pies"
         },
         {
           "tipoModeloId": 4,
-          "descripcion": "Dientes"
+          "nombre": "Dientes"
         },
         {
           "tipoModeloId": 5,
-          "descripcion": "Codos"
+          "nombre": "Codos"
         }
       ],
       "tipoActors": [
         {
           "tipoActorId": 1,
-          "descripcion": "Cine"
+          "nombre": "Cine"
         },
         {
           "tipoActorId": 2,
-          "descripcion": "Teatro"
+          "nombre": "Teatro"
         },
         {
           "tipoActorId": 3,
-          "descripcion": "Comercial"
+          "nombre": "Comercial"
         },
         {
           "tipoActorId": 4,
-          "descripcion": "Actor de Voz"
+          "nombre": "Actor de Voz"
         }
       ],
       "habilidad": [
         {
           "habilidadId": 1,
-          "descripcion": "canto"
+          "nombre": "canto"
         },
         {
           "habilidadId": 2,
-          "descripcion": "baile"
+          "nombre": "baile"
         },
         {
           "habilidadId": 3,
-          "descripcion": "string"
+          "nombre": "string"
         },
         {
           "habilidadId": 4,
-          "descripcion": "string"
+          "nombre": "string"
         },
         {
           "habilidadId": 5,
-          "descripcion": "string"
+          "nombre": "string"
         }
       ]
     },
@@ -702,7 +702,7 @@
         },
         "tipoPiel": {
           "tipoPielId": 1,
-          "descripcion": "string"
+          "nombre": "string"
         },
         "nombre": "Miguel",
         "apellido": "Batista",
@@ -724,63 +724,63 @@
       "tipoModelos": [
         {
           "tipoModeloId": 1,
-          "descripcion": "General"
+          "nombre": "General"
         },
         {
           "tipoModeloId": 2,
-          "descripcion": "Manos"
+          "nombre": "Manos"
         },
         {
           "tipoModeloId": 3,
-          "descripcion": "Piernas/Pies"
+          "nombre": "Piernas/Pies"
         },
         {
           "tipoModeloId": 4,
-          "descripcion": "Dientes"
+          "nombre": "Dientes"
         },
         {
           "tipoModeloId": 5,
-          "descripcion": "Codos"
+          "nombre": "Codos"
         }
       ],
       "tipoActors": [
         {
           "tipoActorId": 1,
-          "descripcion": "Cine"
+          "nombre": "Cine"
         },
         {
           "tipoActorId": 2,
-          "descripcion": "Teatro"
+          "nombre": "Teatro"
         },
         {
           "tipoActorId": 3,
-          "descripcion": "Comercial"
+          "nombre": "Comercial"
         },
         {
           "tipoActorId": 4,
-          "descripcion": "Actor de Voz"
+          "nombre": "Actor de Voz"
         }
       ],
       "habilidad": [
         {
           "habilidadId": 1,
-          "descripcion": "canto"
+          "nombre": "canto"
         },
         {
           "habilidadId": 2,
-          "descripcion": "baile"
+          "nombre": "baile"
         },
         {
           "habilidadId": 3,
-          "descripcion": "string"
+          "nombre": "string"
         },
         {
           "habilidadId": 4,
-          "descripcion": "string"
+          "nombre": "string"
         },
         {
           "habilidadId": 5,
-          "descripcion": "string"
+          "nombre": "string"
         }
       ]
     },
@@ -817,7 +817,7 @@
         },
         "tipoPiel": {
           "tipoPielId": 1,
-          "descripcion": "string"
+          "nombre": "string"
         },
         "nombre": "Isabel",
         "apellido": "Aquino",
@@ -839,63 +839,63 @@
       "tipoModelos": [
         {
           "tipoModeloId": 1,
-          "descripcion": "General"
+          "nombre": "General"
         },
         {
           "tipoModeloId": 2,
-          "descripcion": "Manos"
+          "nombre": "Manos"
         },
         {
           "tipoModeloId": 3,
-          "descripcion": "Piernas/Pies"
+          "nombre": "Piernas/Pies"
         },
         {
           "tipoModeloId": 4,
-          "descripcion": "Dientes"
+          "nombre": "Dientes"
         },
         {
           "tipoModeloId": 5,
-          "descripcion": "Codos"
+          "nombre": "Codos"
         }
       ],
       "tipoActors": [
         {
           "tipoActorId": 1,
-          "descripcion": "Cine"
+          "nombre": "Cine"
         },
         {
           "tipoActorId": 2,
-          "descripcion": "Teatro"
+          "nombre": "Teatro"
         },
         {
           "tipoActorId": 3,
-          "descripcion": "Comercial"
+          "nombre": "Comercial"
         },
         {
           "tipoActorId": 4,
-          "descripcion": "Actor de Voz"
+          "nombre": "Actor de Voz"
         }
       ],
       "habilidad": [
         {
           "habilidadId": 1,
-          "descripcion": "canto"
+          "nombre": "canto"
         },
         {
           "habilidadId": 2,
-          "descripcion": "baile"
+          "nombre": "baile"
         },
         {
           "habilidadId": 3,
-          "descripcion": "string"
+          "nombre": "string"
         },
         {
           "habilidadId": 4,
-          "descripcion": "string"
+          "nombre": "string"
         },
         {
           "habilidadId": 5,
-          "descripcion": "string"
+          "nombre": "string"
         }
       ]
     },
@@ -932,7 +932,7 @@
         },
         "tipoPiel": {
           "tipoPielId": 1,
-          "descripcion": "string"
+          "nombre": "string"
         },
         "nombre": "Laisa",
         "apellido": "Torres",
@@ -954,63 +954,63 @@
       "tipoModelos": [
         {
           "tipoModeloId": 1,
-          "descripcion": "General"
+          "nombre": "General"
         },
         {
           "tipoModeloId": 2,
-          "descripcion": "Manos"
+          "nombre": "Manos"
         },
         {
           "tipoModeloId": 3,
-          "descripcion": "Piernas/Pies"
+          "nombre": "Piernas/Pies"
         },
         {
           "tipoModeloId": 4,
-          "descripcion": "Dientes"
+          "nombre": "Dientes"
         },
         {
           "tipoModeloId": 5,
-          "descripcion": "Codos"
+          "nombre": "Codos"
         }
       ],
       "tipoActors": [
         {
           "tipoActorId": 1,
-          "descripcion": "Cine"
+          "nombre": "Cine"
         },
         {
           "tipoActorId": 2,
-          "descripcion": "Teatro"
+          "nombre": "Teatro"
         },
         {
           "tipoActorId": 3,
-          "descripcion": "Comercial"
+          "nombre": "Comercial"
         },
         {
           "tipoActorId": 4,
-          "descripcion": "Actor de Voz"
+          "nombre": "Actor de Voz"
         }
       ],
       "habilidad": [
         {
           "habilidadId": 1,
-          "descripcion": "canto"
+          "nombre": "canto"
         },
         {
           "habilidadId": 2,
-          "descripcion": "baile"
+          "nombre": "baile"
         },
         {
           "habilidadId": 3,
-          "descripcion": "string"
+          "nombre": "string"
         },
         {
           "habilidadId": 4,
-          "descripcion": "string"
+          "nombre": "string"
         },
         {
           "habilidadId": 5,
-          "descripcion": "string"
+          "nombre": "string"
         }
       ]
     },
@@ -1047,7 +1047,7 @@
         },
         "tipoPiel": {
           "tipoPielId": 1,
-          "descripcion": "string"
+          "nombre": "string"
         },
         "nombre": "Masiel",
         "apellido": "Cuello",
@@ -1069,63 +1069,63 @@
       "tipoModelos": [
         {
           "tipoModeloId": 1,
-          "descripcion": "General"
+          "nombre": "General"
         },
         {
           "tipoModeloId": 2,
-          "descripcion": "Manos"
+          "nombre": "Manos"
         },
         {
           "tipoModeloId": 3,
-          "descripcion": "Piernas/Pies"
+          "nombre": "Piernas/Pies"
         },
         {
           "tipoModeloId": 4,
-          "descripcion": "Dientes"
+          "nombre": "Dientes"
         },
         {
           "tipoModeloId": 5,
-          "descripcion": "Codos"
+          "nombre": "Codos"
         }
       ],
       "tipoActors": [
         {
           "tipoActorId": 1,
-          "descripcion": "Cine"
+          "nombre": "Cine"
         },
         {
           "tipoActorId": 2,
-          "descripcion": "Teatro"
+          "nombre": "Teatro"
         },
         {
           "tipoActorId": 3,
-          "descripcion": "Comercial"
+          "nombre": "Comercial"
         },
         {
           "tipoActorId": 4,
-          "descripcion": "Actor de Voz"
+          "nombre": "Actor de Voz"
         }
       ],
       "habilidad": [
         {
           "habilidadId": 1,
-          "descripcion": "canto"
+          "nombre": "canto"
         },
         {
           "habilidadId": 2,
-          "descripcion": "baile"
+          "nombre": "baile"
         },
         {
           "habilidadId": 3,
-          "descripcion": "string"
+          "nombre": "string"
         },
         {
           "habilidadId": 4,
-          "descripcion": "string"
+          "nombre": "string"
         },
         {
           "habilidadId": 5,
-          "descripcion": "string"
+          "nombre": "string"
         }
       ]
     },
@@ -1162,7 +1162,7 @@
         },
         "tipoPiel": {
           "tipoPielId": 1,
-          "descripcion": "string"
+          "nombre": "string"
         },
         "nombre": "Kiko",
         "apellido": "Quinonez",
@@ -1184,63 +1184,63 @@
       "tipoModelos": [
         {
           "tipoModeloId": 1,
-          "descripcion": "General"
+          "nombre": "General"
         },
         {
           "tipoModeloId": 2,
-          "descripcion": "Manos"
+          "nombre": "Manos"
         },
         {
           "tipoModeloId": 3,
-          "descripcion": "Piernas/Pies"
+          "nombre": "Piernas/Pies"
         },
         {
           "tipoModeloId": 4,
-          "descripcion": "Dientes"
+          "nombre": "Dientes"
         },
         {
           "tipoModeloId": 5,
-          "descripcion": "Codos"
+          "nombre": "Codos"
         }
       ],
       "tipoActors": [
         {
           "tipoActorId": 1,
-          "descripcion": "Cine"
+          "nombre": "Cine"
         },
         {
           "tipoActorId": 2,
-          "descripcion": "Teatro"
+          "nombre": "Teatro"
         },
         {
           "tipoActorId": 3,
-          "descripcion": "Comercial"
+          "nombre": "Comercial"
         },
         {
           "tipoActorId": 4,
-          "descripcion": "Actor de Voz"
+          "nombre": "Actor de Voz"
         }
       ],
       "habilidad": [
         {
           "habilidadId": 1,
-          "descripcion": "canto"
+          "nombre": "canto"
         },
         {
           "habilidadId": 2,
-          "descripcion": "baile"
+          "nombre": "baile"
         },
         {
           "habilidadId": 3,
-          "descripcion": "string"
+          "nombre": "string"
         },
         {
           "habilidadId": 4,
-          "descripcion": "string"
+          "nombre": "string"
         },
         {
           "habilidadId": 5,
-          "descripcion": "string"
+          "nombre": "string"
         }
       ]
     },
@@ -1304,6 +1304,119 @@
         "cartas": true
       },
       "id": 13
+    },
+    {
+      "user": {
+        "nombreUsuario": "rafaelMelo",
+        "contraseña": "12314",
+        "email": "melo@hotmail.com",
+        "telefono": "4542354235",
+        "ciudad": {
+          "ciudadId": 1,
+          "nombre": "",
+          "provincia": {
+            "provinciaId": 1,
+            "nombre": ""
+          }
+        }
+      },
+      "detallePerfil": {
+        "nombre": "Rafael",
+        "apellido": "Melo",
+        "genero": "Hombre",
+        "foto": "",
+        "edad": "22",
+        "peso": "190",
+        "altura": "174",
+        "tatuajes": false,
+        "piercings": false,
+        "bigote": true,
+        "barba": true,
+        "bracers": false,
+        "lentes": true,
+        "disposicion": false,
+        "url": "https://bit.ly/prosper-baba",
+        "colorPiel": {
+          "colorPielId": "3",
+          "color": "Mestizo"
+        },
+        "colorCabello": {
+          "colorCabelloId": "3",
+          "color": "Marron"
+        },
+        "colorOjos": {
+          "colorOjosId": "1",
+          "color": "Marron"
+        }
+      },
+      "tipoUsuario": 3,
+      "tipoActors": [
+        {
+          "id": 1,
+          "nombre": "Cine",
+          "isChecked": true
+        },
+        {
+          "id": 2,
+          "nombre": "Teatro",
+          "isChecked": true
+        },
+        {
+          "id": 3,
+          "nombre": "Comercial",
+          "isChecked": true
+        },
+        {
+          "id": 4,
+          "nombre": "Actor de Voz",
+          "isChecked": true
+        }
+      ],
+      "tipoModelos": [
+        {
+          "id": 1,
+          "nombre": "General",
+          "isChecked": true
+        },
+        {
+          "id": 2,
+          "nombre": "Manos",
+          "isChecked": true
+        },
+        {
+          "id": 3,
+          "nombre": "Piernas/Pies",
+          "isChecked": true
+        },
+        {
+          "id": 4,
+          "nombre": "Dientes",
+          "isChecked": true
+        },
+        {
+          "id": 5,
+          "nombre": "Codos",
+          "isChecked": true
+        }
+      ],
+      "habilidad": [
+        {
+          "id": 1,
+          "nombre": "Canto",
+          "isChecked": true
+        },
+        {
+          "id": 2,
+          "nombre": "Baile",
+          "isChecked": true
+        },
+        {
+          "id": 3,
+          "nombre": "Maestro de Cartas",
+          "isChecked": true
+        }
+      ],
+      "id": 14
     }
   ],
   "Ciudades": [

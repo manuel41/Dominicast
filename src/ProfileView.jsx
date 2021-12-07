@@ -60,7 +60,7 @@ const ProfileView = () => {
 
   return (
     <>
-      {/* <Typography variant="h1">{profileDetails.tipoModelos[0].descripcion}</Typography> */}
+      {/* <Typography variant="h1">{profileDetails.tipoModelos[0].nombre}</Typography> */}
       <Container className={classes.container}>
         {/* <Box sx={{ textAlign: 'center' }}>
           <Typography variant="h1" className={classes.header}>Página de Perfil</Typography>
@@ -140,7 +140,7 @@ const ProfileView = () => {
                   </Grid>
                   {profileDetails?.tipoActors.map((tipoActor) => (
                     <Grid item xs={12} md={6} key={tipoActor.tipoActorId}>
-                      <Typography variant="h5">{tipoActor.descripcion}</Typography>
+                      <Typography variant="h5">{tipoActor.nombre}</Typography>
                     </Grid>
                   ))}
                 </Grid>}
@@ -154,7 +154,7 @@ const ProfileView = () => {
                   </Grid>
                   {profileDetails?.tipoModelos.map((tipoModelo) => (
                     <Grid item xs={12} md={6} key={tipoModelo.tipoModeloId}>
-                      <Typography variant="h5">{tipoModelo.descripcion}</Typography>
+                      <Typography variant="h5">{tipoModelo.nombre}</Typography>
                     </Grid>
                   ))}
                 </Grid>}
@@ -167,7 +167,7 @@ const ProfileView = () => {
                 </Grid>
                 {profileDetails?.habilidad.map((habilidad) => (
                   <Grid item xs={12} md={6} key={habilidad.habilidadId}>
-                    <Typography variant="h5">{habilidad.descripcion}</Typography>
+                    <Typography variant="h5">{habilidad.nombre}</Typography>
                   </Grid>
                 ))}
               </Grid>
