@@ -155,7 +155,7 @@ const UserProvider = ({ children }) => {
     nombre: "",
     apellido: "",
     genero: "",
-    foto: "",
+    url: "",
     edad: undefined,
     peso: undefined,
     altura: undefined,
@@ -166,7 +166,7 @@ const UserProvider = ({ children }) => {
     bracers: false,
     lentes: false,
     disposicion: false,
-    url: "https://bit.ly/prosper-baba"
+    url: ""
   })
 
   const [colorOjos, setColorOjos] = useState({

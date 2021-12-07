@@ -1246,67 +1246,6 @@
     },
     {
       "user": {
-        "nombreUsuario": "manuel",
-        "contraseña": "fdsaf",
-        "email": "fdsfa",
-        "telefono": "fdsafads",
-        "ciudad": {
-          "ciudadId": 1,
-          "provincia": {
-            "provinciaId": 2
-          }
-        }
-      },
-      "detallePerfil": {
-        "nombre": "fdasfdas",
-        "apellido": "fdsafas",
-        "genero": "Hombre",
-        "foto": "",
-        "colorOjosId": "2",
-        "colorCabelloId": "1",
-        "colorPielId": "1",
-        "edad": "22",
-        "peso": "218",
-        "altura": "176",
-        "tatuajes": false,
-        "piercings": false,
-        "bigote": true,
-        "barba": true,
-        "bracers": false,
-        "lentes": false,
-        "disposicion": false,
-        "colorPiel": {
-          "colorPielId": "1"
-        },
-        "colorCabello": {
-          "colorCabelloId": "1"
-        },
-        "colorOjos": {
-          "colorOjosId": "2"
-        }
-      },
-      "tipoActor": {
-        "cine": true,
-        "teatro": true,
-        "comercial": true,
-        "voz": true
-      },
-      "tipoModelo": {
-        "general": true,
-        "manos": true,
-        "piernas": true,
-        "dientes": true,
-        "codos": true
-      },
-      "habilidades": {
-        "canto": true,
-        "baile": true,
-        "cartas": true
-      },
-      "id": 13
-    },
-    {
-      "user": {
         "nombreUsuario": "rafaelMelo",
         "contraseña": "12314",
         "email": "melo@hotmail.com",
@@ -1413,6 +1352,73 @@
         {
           "id": 3,
           "nombre": "Maestro de Cartas",
+          "isChecked": true
+        }
+      ],
+      "id": 13
+    },
+    {
+      "user": {
+        "nombreUsuario": "man",
+        "contraseña": "eere",
+        "email": "rfqwe",
+        "telefono": "3413",
+        "ciudad": {
+          "ciudadId": 1,
+          "nombre": "",
+          "provincia": {
+            "provinciaId": 1,
+            "nombre": ""
+          }
+        }
+      },
+      "detallePerfil": {
+        "nombre": "Manuel Edmundo",
+        "apellido": "Gonzalez Arias",
+        "genero": "Hombre",
+        "url": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "edad": "22",
+        "peso": "22",
+        "altura": "174",
+        "tatuajes": false,
+        "piercings": false,
+        "bigote": false,
+        "barba": false,
+        "bracers": true,
+        "lentes": false,
+        "disposicion": false,
+        "colorPiel": {
+          "colorPielId": "3",
+          "color": "Mestizo"
+        },
+        "colorCabello": {
+          "colorCabelloId": "1",
+          "color": "Negro"
+        },
+        "colorOjos": {
+          "colorOjosId": "1",
+          "color": "Marron"
+        }
+      },
+      "tipoUsuario": 3,
+      "tipoActors": [
+        {
+          "id": 4,
+          "nombre": "Actor de Voz",
+          "isChecked": true
+        }
+      ],
+      "tipoModelos": [
+        {
+          "id": 2,
+          "nombre": "Manos",
+          "isChecked": true
+        }
+      ],
+      "habilidad": [
+        {
+          "id": 2,
+          "nombre": "Baile",
           "isChecked": true
         }
       ],

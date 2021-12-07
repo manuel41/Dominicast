@@ -83,6 +83,19 @@ export default function CreateProfile2() {
             onChange={onChangeDetallesPerfil}
           />
         </Grid>
+        <Grid item xs={12} md={6}>
+          <TextField
+            required
+            id="url"
+            name="url"
+            label="Foto"
+            helperText="Pegar URL de imagen"
+            fullWidth
+            variant="standard"
+            value={detallesPerfil.url || ""}
+            onChange={onChangeDetallesPerfil}
+          />
+        </Grid>
         <Grid item xs={12}>
           <FormControl component="fieldset">
             <FormLabel component="legend">Genero</FormLabel>
