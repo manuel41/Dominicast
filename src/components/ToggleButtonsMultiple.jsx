@@ -1,22 +1,13 @@
 import * as React from 'react';
-// import FormatBoldIcon from '@mui/icons-material/FormatBold';
-// import FormatItalicIcon from '@mui/icons-material/FormatItalic';
-// import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
-// import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
-// import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-// import theme from '../theme';
-// import { makeStyles } from '@mui/styles';
+import DeleteOutlineTwoToneIcon from '@mui/icons-material/DeleteOutlineTwoTone';
+import Typography from '@mui/material/Typography';
 
-
-// const useStyles = makeStyles((theme) => ({
-//     filters: {
-//         marginBottom: '20px',
-//     },
-// }));
-
-
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
 export default function ToggleButtonsMultiple(props) {
@@ -28,46 +19,168 @@ export default function ToggleButtonsMultiple(props) {
     };
 
     return (
-        <ToggleButtonGroup
-            size="small"
-            orientation="horizontal"
-            value={props.filter}
-            onChange={handleFormat}
-            aria-label="text formatting"
-            sx='object'
-            className='filters'
-            fullWidth
-        >
-            <ToggleButton value="Limpiar">
-                Limpiar
-            </ToggleButton>
-            <ToggleButton value="sinBarba">
-                Sin Barba
-            </ToggleButton>
-            <ToggleButton value="conBarba">
-                Con Barba
-            </ToggleButton>
-            <ToggleButton value="sinTatuajes">
-                Sin Tatuajes
-            </ToggleButton>
-            <ToggleButton value="conTatuajes">
-                Con Tatuajes
-            </ToggleButton>
-            <ToggleButton value="Menor">
-                Menor de edad
-            </ToggleButton>
-            <ToggleButton value="edad18a25">
-                18 a 25 años
-            </ToggleButton>
-            <ToggleButton value="edad26a45">
-                26 a 45 años
-            </ToggleButton>
-            <ToggleButton value="edad46a60">
-                46 a 60 años
-            </ToggleButton>
-            <ToggleButton value="edad60+">
-                60+ años
-            </ToggleButton>
-        </ToggleButtonGroup>
+        <div>
+
+            <div>
+                <Accordion>
+                    <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                    >
+                        <Typography>Categorías generales</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <ToggleButtonGroup
+                            size="small"
+                            orientation="horizontal"
+                            value={props.filter}
+                            onChange={handleFormat}
+                            aria-label="text formatting"
+                            sx='object'
+                            className='filters'
+                            fullWidth
+                        >
+                            <ToggleButton color="primary" value="cine">
+                                Cine
+                            </ToggleButton>
+                            <ToggleButton color="primary" value="teatro">
+                                Teatro
+                            </ToggleButton>
+                            <ToggleButton color="primary" value="voz">
+                                Voz
+                            </ToggleButton>
+                            <ToggleButton color="primary" value="modelo">
+                                Modelo
+                            </ToggleButton>
+                            <ToggleButton color="primary" value="otros">
+                                Otros
+                            </ToggleButton>
+                        </ToggleButtonGroup>
+                    </AccordionDetails>
+                </Accordion>
+                <Accordion>
+                    <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                    >
+                        <Typography>Edad</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <ToggleButtonGroup
+                            size="small"
+                            orientation="horizontal"
+                            value={props.filter}
+                            onChange={handleFormat}
+                            aria-label="text formatting"
+                            sx='object'
+                            className='filters'
+                            fullWidth
+                        >
+                            <ToggleButton color="primary" value="Menor">
+                                Menor de edad
+                            </ToggleButton>
+                            <ToggleButton color="primary" value="edad18a25">
+                                18 a 25 años
+                            </ToggleButton>
+                            <ToggleButton color="primary" value="edad26a45">
+                                26 a 45 años
+                            </ToggleButton>
+                            <ToggleButton color="primary" value="edad46a60">
+                                46 a 60 años
+                            </ToggleButton>
+                            <ToggleButton color="primary" value="edad60+">
+                                60+ años
+                            </ToggleButton>
+                        </ToggleButtonGroup>
+                    </AccordionDetails>
+                </Accordion>
+                <Accordion>
+                    <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel2a-content"
+                        id="panel2a-header"
+                    >
+                        <Typography>Estatura</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <ToggleButtonGroup
+                            size="small"
+                            orientation="horizontal"
+                            value={props.filter}
+                            onChange={handleFormat}
+                            aria-label="text formatting"
+                            sx='object'
+                            className='filters'
+                            fullWidth
+                        >
+                            <ToggleButton color="primary" value="150cm">
+                                Menor de 150cm
+                            </ToggleButton>
+                            <ToggleButton color="primary" value="151a170cm">
+                                151 a 170cm
+                            </ToggleButton>
+                            <ToggleButton color="primary" value="171a190cm">
+                                171 a 190cm
+                            </ToggleButton>
+                            <ToggleButton color="primary" value="210a230cm">
+                                210 a 230cm
+                            </ToggleButton>
+                            <ToggleButton color="primary" value="231cm+">
+                                231cm+
+                            </ToggleButton>
+                        </ToggleButtonGroup>
+                    </AccordionDetails>
+                </Accordion>
+                <Accordion>
+                    <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel2a-content"
+                        id="panel2a-header"
+                    >
+                        <Typography>Otros</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <ToggleButtonGroup
+                            size="small"
+                            orientation="horizontal"
+                            value={props.filter}
+                            onChange={handleFormat}
+                            aria-label="text formatting"
+                            sx='object'
+                            className='filters'
+                            fullWidth
+                        >
+
+                            <ToggleButton color="primary" value="sinBarba">
+                                Sin Barba
+                            </ToggleButton>
+                            <ToggleButton color="primary" value="conBarba">
+                                Con Barba
+                            </ToggleButton>
+                            <ToggleButton color="primary" value="sinTatuajes">
+                                Sin Tatuajes
+                            </ToggleButton>
+                            <ToggleButton color="primary" value="conTatuajes">
+                                Con Tatuajes
+                            </ToggleButton>
+                            <ToggleButton value="Limpiar">
+                                <DeleteOutlineTwoToneIcon /> Limpiar
+                            </ToggleButton>
+                        </ToggleButtonGroup>
+                    </AccordionDetails>
+                </Accordion>
+            </div>
+
+
+
+
+
+
+
+
+
+        </div >
     );
 }

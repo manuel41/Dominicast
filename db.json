@@ -189,7 +189,7 @@
       "habilidad": [
         {
           "habilidadId": 1,
-          "descripcion": "canto"
+          "descripcion": "gimnasia"
         },
         {
           "habilidadId": 2,
@@ -589,13 +589,13 @@
           "tipoPielId": 1,
           "descripcion": "string"
         },
-        "nombre": ":Lucas",
+        "nombre": "Lucas",
         "apellido": "Suriel",
         "genero": "string",
         "foto": "binary",
         "edad": 18,
         "peso": 200,
-        "altura": 185,
+        "altura": 140,
         "tatuajes": true,
         "piercings": false,
         "bigote": false,
