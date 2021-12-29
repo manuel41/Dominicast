@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Typography, Card, CardContent, CardMedia, CardActionArea, CssBaseline, Grid, Container, Pagination, TextField } from '@mui/material';
 import ToggleButtonsMultiple from './components/ToggleButtonsMultiple';
 //import { RouterLink } from 'react-router-dom';
@@ -43,8 +42,7 @@ const Discover = () => {
     const [personsPerPage, setPersonsPerPage] = useState(12);
     const [filter, setFilter] = useState([]);
     const [searchTerm, setSearhTerm] = useState("");
-
-
+      
     const totalPages = Math.ceil(persons.length / personsPerPage);
 
     const paginate = (event, value) => {
@@ -54,8 +52,23 @@ const Discover = () => {
     useEffect(() => {
         const fetchPersons = async () => {
             //setLoading(true);
-            const res = await axios.get('http://localhost:5000/Persons');
-            setPersons(res.data);
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+            var graphql = JSON.stringify({
+                query: "query {\n getAllProfileDetails {\n id\n foto\n nombre\n apellido\n habilidades\n tatuajes\n barba\n edad\n altura\n}\n}",
+                variables: {}
+            })
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: graphql,
+                redirect: 'follow'
+              };
+
+            const res = await fetch("http://localhost:3001/graphql", requestOptions)
+            .then(res => res.json())
+            console.log(res)
+            setPersons(res.data.getAllProfileDetails);
             //setLoading(false);
         }
         fetchPersons();
@@ -86,36 +99,41 @@ const Discover = () => {
                         {currentPersons
                             .filter((person => {
                                 let isHabilityFound = false;
-                                isHabilityFound = person.habilidad.find((habilidad) => {
-                                    if (habilidad.descripcion === searchTerm.toLowerCase())
-                                        return true;
-                                })
+                                if (person.habilidades)
+                                {
+                                    isHabilityFound = person.habilidades.find((habilidad) => {
+                                        if (habilidad.descripcion === searchTerm.toLowerCase())
+                                            return true;
+                                        return false;
+                                    });
+                                }
                                 if (searchTerm === "")
                                     return person;
                                 else if (person.user.nombreUsuario.toLowerCase().includes(searchTerm.toLowerCase()))
                                     return person;
-                                else if (person.detallePerfil.nombre.toLowerCase().includes(searchTerm.toLowerCase()))
+                                else if (person.nombre.toLowerCase().includes(searchTerm.toLowerCase()))
                                     return person;
-                                else if (person.detallePerfil.apellido.toLowerCase().includes(searchTerm.toLowerCase()))
+                                else if (person.apellido.toLowerCase().includes(searchTerm.toLowerCase()))
                                     return person;
                                 else if (isHabilityFound)
                                     return person;
+                                else return null
                             }))
                             .filter((person) => {
-                                if ((person.detallePerfil.tatuajes && filter.includes('sinTatuajes')) ||
-                                    (!person.detallePerfil.tatuajes && filter.includes('conTatuajes')) ||
-                                    (person.detallePerfil.barba && filter.includes('sinBarba')) ||
-                                    (!person.detallePerfil.barba && filter.includes('conBarba')) ||
-                                    (!(person.detallePerfil.edad < 18) && filter.includes('Menor')) ||
-                                    (!(person.detallePerfil.edad >= 18 && person.detallePerfil.edad <= 25) && filter.includes('edad18a25')) ||
-                                    (!(person.detallePerfil.edad >= 26 && person.detallePerfil.edad <= 45) && filter.includes('edad26a45')) ||
-                                    (!(person.detallePerfil.edad >= 46 && person.detallePerfil.edad <= 60) && filter.includes('edad46a60')) ||
-                                    (!(person.detallePerfil.edad >= 60) && filter.includes('edad60+')) ||
-                                    (!(person.detallePerfil.altura < 150) && filter.includes('150cm')) ||
-                                    (!(person.detallePerfil.altura >= 151 && person.detallePerfil.altura <= 170) && filter.includes('151a170cm')) ||
-                                    (!(person.detallePerfil.altura >= 171 && person.detallePerfil.altura <= 190) && filter.includes('171a190cm')) ||
-                                    (!(person.detallePerfil.altura >= 210 && person.detallePerfil.altura <= 230) && filter.includes('210a230cm')) ||
-                                    (!(person.detallePerfil.altura >= 231) && filter.includes('231cm+')))
+                                if ((person.tatuajes && filter.includes('sinTatuajes')) ||
+                                    (!person.tatuajes && filter.includes('conTatuajes')) ||
+                                    (person.barba && filter.includes('sinBarba')) ||
+                                    (!person.barba && filter.includes('conBarba')) ||
+                                    (!(person.edad < 18) && filter.includes('Menor')) ||
+                                    (!(person.edad >= 18 && person.edad <= 25) && filter.includes('edad18a25')) ||
+                                    (!(person.edad >= 26 && person.edad <= 45) && filter.includes('edad26a45')) ||
+                                    (!(person.edad >= 46 && person.edad <= 60) && filter.includes('edad46a60')) ||
+                                    (!(person.edad >= 60) && filter.includes('edad60+')) ||
+                                    (!(person.altura < 150) && filter.includes('150cm')) ||
+                                    (!(person.altura >= 151 && person.altura <= 170) && filter.includes('151a170cm')) ||
+                                    (!(person.altura >= 171 && person.altura <= 190) && filter.includes('171a190cm')) ||
+                                    (!(person.altura >= 210 && person.altura <= 230) && filter.includes('210a230cm')) ||
+                                    (!(person.altura >= 231) && filter.includes('231cm+')))
                                     return false;
                                 else
                                     return true;
@@ -124,9 +142,9 @@ const Discover = () => {
                                 <Grid item key={person.id} xs={12} sm={6} md={4} lg={3}>
                                     <Card className={classes.card}>
                                         <CardActionArea href={`/profile/${person.id}`}>
-                                            <CardMedia className={classes.cardMedia} image={person.detallePerfil.url} title="image title" />
+                                            <CardMedia className={classes.cardMedia} image={person.foto} title="image title" />
                                             <CardContent className={classes.cardMedia}>
-                                                <Typography align="center" variant="h5">{`${person.detallePerfil.nombre} ${person.detallePerfil.apellido}`}</Typography>
+                                                <Typography align="center" variant="h5">{`${person.nombre} ${person.apellido}`}</Typography>
                                             </CardContent>
                                         </CardActionArea>
                                     </Card>
