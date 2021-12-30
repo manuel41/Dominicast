@@ -1423,6 +1423,140 @@
         }
       ],
       "id": 14
+    },
+    {
+      "user": {
+        "nombreUsuario": "eminaya",
+        "contraseña": "123456789",
+        "email": "enmanuelminaya@gmail.com",
+        "telefono": "8298075283",
+        "ciudad": {
+          "ciudadId": 2,
+          "nombre": "",
+          "provincia": {
+            "provinciaId": 2,
+            "nombre": ""
+          }
+        }
+      },
+      "detallePerfil": {
+        "nombre": "ENMANUEL",
+        "apellido": "MINAYA",
+        "genero": "Hombre",
+        "url": "https://www.pexels.com/photo/man-in-black-jacket-771742/",
+        "edad": "28",
+        "peso": "170",
+        "altura": "185",
+        "tatuajes": false,
+        "piercings": false,
+        "bigote": false,
+        "barba": true,
+        "bracers": false,
+        "lentes": false,
+        "disposicion": false,
+        "colorPiel": {
+          "colorPielId": "3",
+          "color": "Mestizo"
+        },
+        "colorCabello": {
+          "colorCabelloId": "1",
+          "color": "Negro"
+        },
+        "colorOjos": {
+          "colorOjosId": "1",
+          "color": "Marron"
+        }
+      },
+      "tipoUsuario": 3,
+      "tipoActors": [
+        {
+          "id": 1,
+          "nombre": "Cine",
+          "isChecked": true
+        }
+      ],
+      "tipoModelos": [
+        {
+          "id": 1,
+          "nombre": "General",
+          "isChecked": true
+        }
+      ],
+      "habilidad": [
+        {
+          "id": 1,
+          "nombre": "Canto",
+          "isChecked": true
+        }
+      ],
+      "id": 15
+    },
+    {
+      "user": {
+        "nombreUsuario": "eminaya",
+        "contraseña": "123456789",
+        "email": "enmanuelminaya@gmail.com",
+        "telefono": "8298075283",
+        "ciudad": {
+          "ciudadId": 1,
+          "nombre": "",
+          "provincia": {
+            "provinciaId": 3,
+            "nombre": ""
+          }
+        }
+      },
+      "detallePerfil": {
+        "nombre": "ENMANUEL",
+        "apellido": "MINAYA",
+        "genero": "Hombre",
+        "url": "https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "edad": "28",
+        "peso": "170",
+        "altura": "185",
+        "tatuajes": false,
+        "piercings": false,
+        "bigote": false,
+        "barba": true,
+        "bracers": false,
+        "lentes": false,
+        "disposicion": false,
+        "colorPiel": {
+          "colorPielId": "2",
+          "color": "Negro"
+        },
+        "colorCabello": {
+          "colorCabelloId": "2",
+          "color": "Rojo"
+        },
+        "colorOjos": {
+          "colorOjosId": "1",
+          "color": "Marron"
+        }
+      },
+      "tipoUsuario": 3,
+      "tipoActors": [
+        {
+          "id": 2,
+          "nombre": "Teatro",
+          "isChecked": true
+        }
+      ],
+      "tipoModelos": [
+        {
+          "id": 2,
+          "nombre": "Manos",
+          "isChecked": true
+        }
+      ],
+      "habilidad": [
+        {
+          "id": 2,
+          "nombre": "Baile",
+          "isChecked": true
+        }
+      ],
+      "id": 16
     }
   ],
   "Ciudades": [

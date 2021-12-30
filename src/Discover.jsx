@@ -77,7 +77,7 @@ const Discover = () => {
 
             <Container className={classes.cardGrid} maxWidth="lg" >
 
-                <TextField fullWidth id="outlined-search" margin="normal" label="Buscar" type="search" color='secondary' onChange={(event) => {
+                <TextField fullWidth id="outlined-search" margin="normal" label="Buscar por nombres, apodos o habilidades" type="search" color='secondary' onChange={(event) => {
                     setSearhTerm(event.target.value);
                 }} />
                 <ToggleButtonsMultiple filter={filter} setFilter={setFilter} />
@@ -87,7 +87,7 @@ const Discover = () => {
                             .filter((person => {
                                 let isHabilityFound = false;
                                 isHabilityFound = person.habilidad.find((habilidad) => {
-                                    if (habilidad.descripcion === searchTerm.toLowerCase())
+                                    if (habilidad.nombre === searchTerm.toLowerCase())
                                         return true;
                                 })
                                 if (searchTerm === "")
