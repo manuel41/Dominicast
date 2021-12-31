@@ -12,7 +12,8 @@ export function useUserUpdate() {
 }
 
 const UserProvider = ({ children }) => {
-  const usuarioExistente = undefined
+  let usuarioExistente = undefined
+  const [idUsuarioExistente, setIdUsuarioExistente] = useState(14)
   const [listaTipoActores, setListaTipoActores] = useState([])
   const [listaTipoModelos, setListaTipoModelos] = useState([])
   const [listaHabilidades, setListaHabilidades] = useState([])
@@ -23,11 +24,7 @@ const UserProvider = ({ children }) => {
   const url = "http://localhost:5000"
 
   useEffect(() => {
-    const fetchExistingUser = async () => {
-      const res = await axios.get(`${url}/Persons/${usuarioExistente}`);
-      setDatosUsuario(res.data)
-    }
-    if (usuarioExistente) {
+    if (idUsuarioExistente) {
       fetchExistingUser();
     }
     fetchTipoModelos();
@@ -36,12 +33,55 @@ const UserProvider = ({ children }) => {
     fetchOjos();
     fetchCabellos();
     fetchPieles();
-  }, [usuarioExistente])
+  }, [])
+
+  const fetchExistingUser = async () => {
+    const res = await axios.get(`${url}/Persons/${idUsuarioExistente}`);
+    const existingUser = res.data;
+    console.log(existingUser);
+    setUser({
+      nombreUsuario: existingUser.user.nombreUsuario,
+      contraseña: existingUser.user.contraseña,
+      email: existingUser.user.email,
+      telefono: existingUser.user.telefono
+    })
+    setDetallesPerfil({
+      // ...detallesPerfil,
+      nombre: existingUser.detallePerfil.nombre,
+      apellido: existingUser.detallePerfil.apellido,
+      genero: existingUser.detallePerfil.genero,
+      url: existingUser.detallePerfil.url,
+      edad: existingUser.detallePerfil.edad,
+      peso: existingUser.detallePerfil.peso,
+      altura: existingUser.detallePerfil.altura,
+      tatuajes: existingUser.detallePerfil.tatuajes,
+      piercings: existingUser.detallePerfil.piercings,
+      bigote: existingUser.detallePerfil.bigote,
+      barba: existingUser.detallePerfil.barba,
+      bracers: existingUser.detallePerfil.bracers,
+      lentes: existingUser.detallePerfil.lentes,
+      disposicion: existingUser.detallePerfil.disposicion
+    })
+    setColorPiel({ ...existingUser.detallePerfil.colorPiel })
+    setColorCabello({ ...existingUser.detallePerfil.colorCabello })
+    setColorOjos({ ...existingUser.detallePerfil.colorOjos })
+    setCiudad({
+      ciudadId: existingUser.user.ciudad.ciudadId,
+      nombre: existingUser.user.ciudad.nombre,
+    })
+    setProvincia({ ...existingUser.user.ciudad.provincia })
+    setListaTipoActores([...existingUser.tipoActors])
+    console.log(listaTipoActores)
+  }
+
 
   const fetchTipoActores = async () => {
     const res = await axios.get(`${url}/TipoActores`);
     let resArray = res.data;
     resArray = resArray.map((obj) => {
+      if (obj.id === listaTipoActores[obj.id - 1]?.id) {
+        return { ...listaTipoActores[obj.id - 1] }
+      }
       return {
         ...obj,
         isChecked: false
@@ -84,11 +124,6 @@ const UserProvider = ({ children }) => {
     const res = await axios.get(`${url}/ColorCabello`)
     setCabellos(res.data)
   }
-
-
-
-  const [datosUsuario, setDatosUsuario] = useState({})
-  const [usuario, setUsuario] = useState({})
 
   const registerNewUser = async () => {
     const newUser = {
