@@ -12,7 +12,7 @@ export function useUserUpdate() {
 }
 
 const UserProvider = ({ children }) => {
-  const usuarioExistente = undefined
+  const [idUsuarioExistente, setIdUsuarioExistente] = useState(13)
   const [listaTipoActores, setListaTipoActores] = useState([])
   const [listaTipoModelos, setListaTipoModelos] = useState([])
   const [listaHabilidades, setListaHabilidades] = useState([])
@@ -23,20 +23,52 @@ const UserProvider = ({ children }) => {
   const url = "http://localhost:5000"
 
   useEffect(() => {
-    const fetchExistingUser = async () => {
-      const res = await axios.get(`${url}/Persons/${usuarioExistente}`);
-      setDatosUsuario(res.data)
-    }
-    if (usuarioExistente) {
+    fetchTipoActores();
+    fetchTipoModelos();
+    fetchHabilidades();
+    if (idUsuarioExistente) {
       fetchExistingUser();
     }
-    fetchTipoModelos();
-    fetchTipoActores();
-    fetchHabilidades();
     fetchOjos();
     fetchCabellos();
     fetchPieles();
-  }, [usuarioExistente])
+  }, [])
+
+  const fetchExistingUser = async () => {
+    const res = await axios.get(`${url}/Persons/${idUsuarioExistente}`);
+    const existingUser = res.data;
+    console.log(existingUser);
+    setUser({
+      nombreUsuario: existingUser.user.nombreUsuario,
+      contraseña: existingUser.user.contraseña,
+      email: existingUser.user.email,
+      telefono: existingUser.user.telefono
+    })
+    setDetallesPerfil({
+      nombre: existingUser.detallePerfil.nombre,
+      apellido: existingUser.detallePerfil.apellido,
+      genero: existingUser.detallePerfil.genero,
+      url: existingUser.detallePerfil.url,
+      edad: existingUser.detallePerfil.edad,
+      peso: existingUser.detallePerfil.peso,
+      altura: existingUser.detallePerfil.altura,
+      tatuajes: existingUser.detallePerfil.tatuajes,
+      piercings: existingUser.detallePerfil.piercings,
+      bigote: existingUser.detallePerfil.bigote,
+      barba: existingUser.detallePerfil.barba,
+      bracers: existingUser.detallePerfil.bracers,
+      lentes: existingUser.detallePerfil.lentes,
+      disposicion: existingUser.detallePerfil.disposicion
+    })
+    setColorPiel({ ...existingUser.detallePerfil.colorPiel })
+    setColorCabello({ ...existingUser.detallePerfil.colorCabello })
+    setColorOjos({ ...existingUser.detallePerfil.colorOjos })
+    setCiudad({
+      ciudadId: existingUser.user.ciudad.ciudadId,
+      nombre: existingUser.user.ciudad.nombre,
+    })
+    setProvincia({ ...existingUser.user.ciudad.provincia })
+  }
 
   const fetchTipoActores = async () => {
     const res = await axios.get(`${url}/TipoActores`);
@@ -85,11 +117,6 @@ const UserProvider = ({ children }) => {
     setCabellos(res.data)
   }
 
-
-
-  const [datosUsuario, setDatosUsuario] = useState({})
-  const [usuario, setUsuario] = useState({})
-
   const registerNewUser = async () => {
     const newUser = {
       user: {
@@ -112,15 +139,28 @@ const UserProvider = ({ children }) => {
     }
     const res = await axios.post(`${url}/Persons`, newUser)
   }
-
-  // const determineTipoUsuario = (params) => {
-
-  // }
-
-
-  // const [tipoActor, setTipoActor] = useState([]);
-  // const [tipoModelo, setTipoModelo] = useState([]);
-  // const [habilidades, setHabilidades] = useState([]);
+  const updateUser = async () => {
+    const existingUser = {
+      user: {
+        ...user,
+        ciudad: {
+          ...ciudad,
+          provincia: { ...provincia }
+        }
+      },
+      detallePerfil: {
+        ...detallesPerfil,
+        colorPiel: { ...colorPiel },
+        colorCabello: { ...colorCabello },
+        colorOjos: { ...colorOjos },
+      },
+      tipoActors: addTipoActores(),
+      tipoModelos: addTipoModelos(),
+      habilidad: addHabilidades(),
+      tipoUsuario: determineTipoUsuario(),
+    }
+    const res = await axios.put(`${url}/Persons/${idUsuarioExistente}`, existingUser)
+  }
 
   const addTipoActores = () => {
     return listaTipoActores.filter((type) => type.isChecked)
@@ -277,7 +317,7 @@ const UserProvider = ({ children }) => {
       <UserUpdateContext.Provider value={{
         onChangeUser, onChangeCiudad, onChangeProvincia, onChangeColorOjos, onChangeColorPiel, onChangeColorCabello
         , onChangeDetallesPerfil, onChangeDetallesPerfilCheckbox, onChangeTipoActorCheckbox,
-        onChangeTipoModeloCheckbox, onChangeHabilidadesCheckbox, registerNewUser
+        onChangeTipoModeloCheckbox, onChangeHabilidadesCheckbox, registerNewUser, updateUser
       }}>
         {children}
       </UserUpdateContext.Provider>
