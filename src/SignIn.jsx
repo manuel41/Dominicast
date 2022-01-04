@@ -9,9 +9,15 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { useAppContext, useAppContextUpdate } from './components/AppContext';
 
 
 const SignIn = () => {
+
+    const { currentUserName, currentUserPassword } = useAppContext();
+    const { onChangeUserName, onChangeUserPassword, onClickLogin } = useAppContextUpdate();
+
+
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -31,11 +37,12 @@ const SignIn = () => {
                         margin="normal"
                         required
                         fullWidth
-                        id="email"
-                        label="Correo electrónico"
-                        name="email"
-                        autoComplete="email"
+                        id="username"
+                        label="Nombre de Usuario"
+                        name="username"
                         autoFocus
+                        value={currentUserName}
+                        onChange={onChangeUserName}
                     />
                     <TextField
                         margin="normal"
@@ -45,26 +52,28 @@ const SignIn = () => {
                         label="Contraseña"
                         type="password"
                         id="password"
-                        autoComplete="current-password"
+                        value={currentUserPassword}
+                        onChange={onChangeUserPassword}
                     />
-                    <FormControlLabel
+                    {/* <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}
                         label="Recordar mis datos"
-                    />
+                    /> */}
                     <Button
-                        type="submit"
+                        type="button"
                         fullWidth
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
+                        onClick={onClickLogin}
                     >
                         Iniciar sesión
                     </Button>
                     <Grid container>
-                        <Grid item xs>
+                        {/* <Grid item xs>
                             <Link href="#" variant="body2">
                                 Olvidé mi contraseña
                             </Link>
-                        </Grid>
+                        </Grid> */}
                         <Grid item>
                             <Link href="#" variant="body2">
                                 {"Crear una cuenta nueva"}
