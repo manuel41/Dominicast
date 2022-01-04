@@ -2,6 +2,7 @@ import * as React from 'react';
 import { CssBaseline } from '@mui/material';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Discover from './Discover';
+import AppContextProvider from './components/AppContext';
 import UserProvider from './components/UserContext';
 import Home from './Home';
 import ProfileView from './ProfileView'
@@ -11,7 +12,7 @@ import SignIn from './SignIn'
 
 const App = () => {
   return (
-    <>
+    <AppContextProvider>
       <CssBaseline />
       <Router>
         <Layout>
@@ -26,7 +27,7 @@ const App = () => {
           </Switch>
         </Layout>
       </Router>
-    </>
+    </AppContextProvider>
   );
 }
 
