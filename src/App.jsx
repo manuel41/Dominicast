@@ -9,6 +9,27 @@ import Layout from './components/Layout';
 import CreateProfile from './CreateProfile';
 import SignIn from './SignIn'
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDPGfxdJ9rbNI0ODyQrwuMG33Q_jFlzB8w",
+  authDomain: "dominicast-intec.firebaseapp.com",
+  projectId: "dominicast-intec",
+  storageBucket: "dominicast-intec.appspot.com",
+  messagingSenderId: "217852767939",
+  appId: "1:217852767939:web:d80cccc804e3c74bf73c76",
+  measurementId: "G-16KXLQF7DX"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 const App = () => {
   return (
     <>
