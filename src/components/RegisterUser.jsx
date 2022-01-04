@@ -73,6 +73,7 @@ const RegisterUser = () => {
               name="contraseña"
               label="Contraseña"
               fullWidth
+              disabled
               autoComplete="current-password"
               variant="standard"
               value={user.contraseña}

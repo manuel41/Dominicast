@@ -74,6 +74,9 @@ const UserProvider = ({ children }) => {
     const res = await axios.get(`${url}/TipoActores`);
     let resArray = res.data;
     resArray = resArray.map((obj) => {
+      if (obj.id === listaTipoActores[obj.id - 1]?.id) {
+        return { ...listaTipoActores[obj.id - 1] }
+      }
       return {
         ...obj,
         isChecked: false
