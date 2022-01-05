@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
 
   return (
     <div className={classes.root}>
-      <NavBar />
+      {/* <NavBar /> */}
       <div className={classes.page}>
         {children}
       </div>
