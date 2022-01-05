@@ -37,7 +37,6 @@ const App = () => {
     <AppContextProvider>
       <CssBaseline />
       <Router>
-        <NavBar />
         <Layout>
           <Switch>
             <Route exact path="/" component={Home} />
