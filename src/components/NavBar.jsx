@@ -2,7 +2,7 @@ import React from 'react'
 import { AppBar, Toolbar, Stack, Button, Container } from '@mui/material'
 // import { makeStyles } from '@mui/styles';
 import logo from './logo.png';
-
+import { useAppContext, useAppContextUpdate } from './AppContext';
 
 
 
@@ -15,6 +15,9 @@ import logo from './logo.png';
 
 const NavBar = () => {
   // const classes = useStyles();
+  const { currentProfileId } = useAppContext();
+  const { onClickLogout } = useAppContextUpdate();
+
 
   return (
     <>
@@ -26,8 +29,13 @@ const NavBar = () => {
               <Button size='large' color="primary" href="/">Inicio</Button>
               <Button size='large' color="primary" href="/Discover">Explorar</Button>
               <Button size='large' color="primary" href="/">Nosotros</Button>
-              <Button size='large' color="primary" href="create-profile">Regístrate</Button>
-              <Button size='large' color="primary" href="login">Login</Button>
+              <Button size='large' color="primary" href="create-profile">{currentProfileId > 0 ? "Editar Perfil" : "Regístrate"}</Button>
+              {(currentProfileId === 0) &&
+                <Button size='large' color="primary" href="login">Login</Button>
+              }
+              {(currentProfileId > 0) &&
+                <Button size='large' color="primary" onClick={onClickLogout}>Logout</Button>
+              }
             </Stack>
           </Toolbar>
         </Container>
