@@ -9,12 +9,14 @@ import ProfileView from './ProfileView'
 import Layout from './components/Layout';
 import CreateProfile from './CreateProfile';
 import SignIn from './SignIn'
+import NavBar from './components/NavBar';
 
 const App = () => {
   return (
     <AppContextProvider>
       <CssBaseline />
       <Router>
+        <NavBar />
         <Layout>
           <Switch>
             <Route exact path="/" component={Home} />
