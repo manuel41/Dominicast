@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
+import { useAppContext } from './AppContext';
 
 const UserContext = React.createContext()
 const UserUpdateContext = React.createContext()
@@ -12,7 +13,8 @@ export function useUserUpdate() {
 }
 
 const UserProvider = ({ children }) => {
-  const [idUsuarioExistente, setIdUsuarioExistente] = useState(13)
+  const { currentProfileId } = useAppContext();
+
   const [listaTipoActores, setListaTipoActores] = useState([])
   const [listaTipoModelos, setListaTipoModelos] = useState([])
   const [listaHabilidades, setListaHabilidades] = useState([])
@@ -26,7 +28,7 @@ const UserProvider = ({ children }) => {
     fetchTipoActores();
     fetchTipoModelos();
     fetchHabilidades();
-    if (idUsuarioExistente) {
+    if (currentProfileId) {
       fetchExistingUser();
     }
     fetchOjos();
@@ -35,7 +37,7 @@ const UserProvider = ({ children }) => {
   }, [])
 
   const fetchExistingUser = async () => {
-    const res = await axios.get(`${url}/Persons/${idUsuarioExistente}`);
+    const res = await axios.get(`${url}/Persons/${currentProfileId}`);
     const existingUser = res.data;
     console.log(existingUser);
     setUser({
@@ -162,7 +164,7 @@ const UserProvider = ({ children }) => {
       habilidad: addHabilidades(),
       tipoUsuario: determineTipoUsuario(),
     }
-    const res = await axios.put(`${url}/Persons/${idUsuarioExistente}`, existingUser)
+    const res = await axios.put(`${url}/Persons/${currentProfileId}`, existingUser)
   }
 
   const addTipoActores = () => {

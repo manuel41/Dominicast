@@ -5,28 +5,7 @@ import CreateProfile2 from "./components/CreateProfile2";
 import DetallesPerfil from "./components/DetallesPerfil";
 import RegisterUser from "./components/RegisterUser";
 import { useUserUpdate } from "./components/UserContext";
-
-// const useStyles = makeStyles((theme) => ({
-//   paperRoot: {
-//     padding: theme.spacing(3)
-//   },
-//   mainGrid: {
-//     marginBottom: theme.spacing(3),
-//   }
-// }))
-
-// function Copyright() {
-//   return (
-//     <Typography variant="body2" color="text.secondary" align="center">
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://mui.com/">
-//         Your Website
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
+import { useAppContext } from './components/AppContext';
 
 const steps = ['Detalles Usuario', 'Perfil', 'Destrezas'];
 
@@ -44,7 +23,8 @@ function getStepContent(step) {
 }
 
 const CreateProfile = () => {
-  // const classes = useStyles();
+  const { currentProfileId } = useAppContext();
+
   const { registerNewUser, updateUser } = useUserUpdate()
   const [activeStep, setActiveStep] = useState(0);
 
@@ -52,8 +32,12 @@ const CreateProfile = () => {
     setActiveStep(activeStep + 1);
     console.log(activeStep);
     if (activeStep === 2) {
-      // registerNewUser();
-      updateUser();
+      if (currentProfileId > 0) {
+        updateUser();
+      }
+      else {
+        registerNewUser();
+      }
     }
   };
 
@@ -104,7 +88,6 @@ const CreateProfile = () => {
             )}
           </>
         </Paper>
-        {/* <Copyright /> */}
       </Container>
     </>
   )
