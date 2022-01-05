@@ -1,3 +1,4 @@
+import { Alert, AlertTitle } from '@mui/material'
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 
@@ -24,6 +25,8 @@ const AppContextProvider = ({ children }) => {
     for (let i = 0; i < profiles.length; i++) {
       if (currentUserName === profiles[i].user.nombreUsuario && currentUserPassword === profiles[i].user.contraseña) {
         setCurrentProfileId(profiles[i].id);
+        setCurrentUserName('');
+        setCurrentUserPassword('');
         break;
       }
     }
@@ -31,6 +34,8 @@ const AppContextProvider = ({ children }) => {
 
   const onClickLogout = () => {
     setCurrentProfileId(0);
+    setCurrentUserName('');
+    setCurrentUserPassword('');
   }
 
 
