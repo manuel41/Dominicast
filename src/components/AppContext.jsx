@@ -12,7 +12,7 @@ export function useAppContextUpdate() {
 }
 
 const AppContextProvider = ({ children }) => {
-  const [currentUserId, setCurrentUserId] = useState(0)
+  const [currentProfileId, setCurrentProfileId] = useState(0)
   const [currentUserName, setCurrentUserName] = useState('')
   const [currentUserPassword, setCurrentUserPassword] = useState('')
 
@@ -20,16 +20,19 @@ const AppContextProvider = ({ children }) => {
 
   const onClickLogin = async () => {
     const res = await axios.get(`${url}/Persons`)
-    const users = res.data.map((obj) => {
-      return { ...obj.user }
-    })
-    for (let i = 0; i < users.length; i++) {
-      if (currentUserName === users[i].nombreUsuario && currentUserPassword === users[i].contraseña) {
-        console.log("Login successful");
+    const profiles = res.data
+    for (let i = 0; i < profiles.length; i++) {
+      if (currentUserName === profiles[i].user.nombreUsuario && currentUserPassword === profiles[i].user.contraseña) {
+        setCurrentProfileId(profiles[i].id);
         break;
       }
     }
   }
+
+  const onClickLogout = () => {
+    setCurrentProfileId(0);
+  }
+
 
   const onChangeUserName = (e) => {
     setCurrentUserName(e.target.value)
@@ -42,8 +45,8 @@ const AppContextProvider = ({ children }) => {
 
 
   return (
-    <AppContext.Provider value={{ currentUserId, currentUserName, currentUserPassword }}>
-      <AppUpdateContext.Provider value={{ onChangeUserName, onChangeUserPassword, onClickLogin }}>
+    <AppContext.Provider value={{ currentProfileId, currentUserName, currentUserPassword }}>
+      <AppUpdateContext.Provider value={{ onChangeUserName, onChangeUserPassword, onClickLogin, onClickLogout }}>
         {children}
       </AppUpdateContext.Provider>
     </AppContext.Provider>
