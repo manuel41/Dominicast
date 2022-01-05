@@ -10,6 +10,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { useAppContext, useAppContextUpdate } from './components/AppContext';
+import { Link as RouterLink } from 'react-router-dom';
 
 
 const SignIn = () => {
@@ -65,17 +66,14 @@ const SignIn = () => {
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
                         onClick={onClickLogin}
+                        component={RouterLink}
+                        to={"/"}
                     >
                         Iniciar sesión
                     </Button>
                     <Grid container>
-                        {/* <Grid item xs>
-                            <Link href="#" variant="body2">
-                                Olvidé mi contraseña
-                            </Link>
-                        </Grid> */}
                         <Grid item>
-                            <Link href="#" variant="body2">
+                            <Link href="/create-profile" variant="body2">
                                 {"Crear una cuenta nueva"}
                             </Link>
                         </Grid>
