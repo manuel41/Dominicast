@@ -13,12 +13,11 @@ export function useUserUpdate() {
 }
 
 const UserProvider = ({ children }) => {
-  const { currentProfileId } = useAppContext();
+  const { currentProfileId, ojos } = useAppContext();
 
   const [listaTipoActores, setListaTipoActores] = useState([])
   const [listaTipoModelos, setListaTipoModelos] = useState([])
   const [listaHabilidades, setListaHabilidades] = useState([])
-  const [ojos, setOjos] = useState([])
   const [coloresPiel, setColoresPiel] = useState([])
   const [cabellos, setCabellos] = useState([])
 
@@ -31,7 +30,6 @@ const UserProvider = ({ children }) => {
     if (currentProfileId) {
       fetchExistingUser();
     }
-    fetchOjos();
     fetchCabellos();
     fetchPieles();
   }, [])
@@ -64,7 +62,7 @@ const UserProvider = ({ children }) => {
     })
     setColorPiel({ ...existingUser.detallePerfil.colorPiel })
     setColorCabello({ ...existingUser.detallePerfil.colorCabello })
-    setColorOjos({ ...existingUser.detallePerfil.colorOjos })
+    setColorOjosId({ ...existingUser.detallePerfil.colorOjosId })
     setCiudad({
       ciudadId: existingUser.user.ciudad.ciudadId,
       nombre: existingUser.user.ciudad.nombre,
@@ -109,10 +107,6 @@ const UserProvider = ({ children }) => {
     setListaHabilidades(resArray);
   }
 
-  const fetchOjos = async () => {
-    const res = await axios.get(`${url}/ColorOjos`)
-    setOjos(res.data)
-  }
   const fetchPieles = async () => {
     const res = await axios.get(`${url}/ColorPiel`)
     setColoresPiel(res.data)
@@ -135,7 +129,7 @@ const UserProvider = ({ children }) => {
         ...detallesPerfil,
         colorPiel: { ...colorPiel },
         colorCabello: { ...colorCabello },
-        colorOjos: { ...colorOjos },
+        colorOjosId: colorOjosId,
       },
       tipoActors: addTipoActores(),
       tipoModelos: addTipoModelos(),
@@ -157,7 +151,7 @@ const UserProvider = ({ children }) => {
         ...detallesPerfil,
         colorPiel: { ...colorPiel },
         colorCabello: { ...colorCabello },
-        colorOjos: { ...colorOjos },
+        colorOjosId: colorOjosId,
       },
       tipoActors: addTipoActores(),
       tipoModelos: addTipoModelos(),
@@ -225,10 +219,7 @@ const UserProvider = ({ children }) => {
     disposicion: false,
   })
 
-  const [colorOjos, setColorOjos] = useState({
-    colorOjosId: undefined,
-    color: ""
-  })
+  const [colorOjosId, setColorOjosId] = useState(0)
   const [colorPiel, setColorPiel] = useState({
     colorPielId: undefined,
     color: ""
@@ -266,12 +257,10 @@ const UserProvider = ({ children }) => {
       [name]: value
     });
   }
-  const onChangeColorOjos = (e) => {
-    const { name, value } = e.target
-    setColorOjos({
-      [name]: value,
-      color: ojos[value - 1].nombre
-    });
+  const onChangeColorOjosId = (e) => {
+    const { value } = e.target
+    console.log(value);
+    setColorOjosId(value);
   }
   const onChangeColorPiel = (e) => {
     const { name, value } = e.target
@@ -315,12 +304,12 @@ const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider value={{
-      user, ciudad, provincia, colorOjos, colorPiel, colorCabello,
+      user, ciudad, provincia, colorOjosId, colorPiel, colorCabello,
       detallesPerfil, listaTipoActores, listaTipoModelos, listaHabilidades,
       ojos, coloresPiel, cabellos
     }}>
       <UserUpdateContext.Provider value={{
-        onChangeUser, onChangeCiudad, onChangeProvincia, onChangeColorOjos, onChangeColorPiel, onChangeColorCabello
+        onChangeUser, onChangeCiudad, onChangeProvincia, onChangeColorOjosId, onChangeColorPiel, onChangeColorCabello
         , onChangeDetallesPerfil, onChangeDetallesPerfilCheckbox, onChangeTipoActorCheckbox,
         onChangeTipoModeloCheckbox, onChangeHabilidadesCheckbox, registerNewUser, updateUser
       }}>
