@@ -17,7 +17,7 @@ const AppContextProvider = ({ children }) => {
   const [currentUserName, setCurrentUserName] = useState('')
   const [currentUserPassword, setCurrentUserPassword] = useState('')
 
-  const url = "http://localhost:5000"
+  const url = "https://dominicast-backend.herokuapp.com/graphql"
 
   const onClickLogin = async () => {
     var myHeaders = new Headers();
@@ -33,7 +33,7 @@ const AppContextProvider = ({ children }) => {
       redirect: 'follow'
     };
 
-    const res = await fetch("https://dominicast-backend.herokuapp.com/graphql", requestOptions)
+    const res = await fetch(`${url}`, requestOptions)
       .then(res => res.json())
     setCurrentProfileId(res.data.login.data);
     setCurrentUserName('');
