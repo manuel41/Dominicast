@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Container, Divider, Grid, Typography } from '@mui/material'
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -43,7 +42,6 @@ const useStyles = makeStyles((theme) => ({
 
 const ProfileView = () => {
   const classes = useStyles()
-  const url = "http://localhost:5000/Persons"
   let { id } = useParams();
 
   const [profileDetails, setProfileDetails] = useState()
@@ -52,8 +50,24 @@ const ProfileView = () => {
 
   useEffect(() => {
     const fetchProfileDetail = async () => {
-      const res = await axios.get(`${url}/${id}`);
-      setProfileDetails(res.data);
+      // const res = await axios.get(`${url}/${id}`);
+      // setProfileDetails(res.data);
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      var graphql = JSON.stringify({
+        query: `{\r\n  getDetailsById(id: ${1}){\r\n    nombre,\r\n    apellido,\r\n    foto,\r\n    edad,\r\n    peso,\r\n    altura,\r\n    colorPielId,\r\n    colorOjosId,\r\n    colorCabelloId,\r\n    tatuajes,\r\n    bigote,\r\n    barba,\r\n    bracers,\r\n    lentes,\r\n    disposicion,\r\n    tipoUsuario,\r\n    tiposactor,\r\n    tiposmodelos,\r\n    habilidades\r\n  }\r\n}`,
+        variables: {}
+      })
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: graphql,
+        redirect: 'follow'
+      };
+
+      const res = await fetch("https://dominicast-backend.herokuapp.com/graphql", requestOptions)
+        .then(res => res.json())
+      setProfileDetails(res.data.getDetailsById);
     }
     fetchProfileDetail();
   }, [id])
@@ -68,28 +82,28 @@ const ProfileView = () => {
         <Paper className={classes.paperRoot}>
           <Grid container className={classes.mainProfileDetailsGrid} spacing={2}>
             <Grid item xs={12} md={6} className={classes.imgGrid}>
-              <Box component="img" className={classes.img} src={profileDetails?.detallePerfil.url} />
+              <Box component="img" className={classes.img} src={profileDetails?.foto} />
             </Grid>
             <Grid container item xs={12} md={6} className={classes.mainDetails}>
               <Paper className={classes.paper} elevation={3}>
                 <Grid item className={classes.detailText}>
-                  <Typography variant="h4">Nombres: {profileDetails?.detallePerfil.nombre}</Typography>
+                  <Typography variant="h4">Nombres: {profileDetails?.nombre}</Typography>
                 </Grid>
                 <Divider />
                 <Grid item className={classes.detailText}>
-                  <Typography variant="h4">Apellidos: {profileDetails?.detallePerfil.apellido}</Typography>
+                  <Typography variant="h4">Apellidos: {profileDetails?.apellido}</Typography>
                 </Grid>
                 <Divider />
                 <Grid item className={classes.detailText}>
-                  <Typography variant="h4">Edad: {profileDetails?.detallePerfil.edad}</Typography>
+                  <Typography variant="h4">Edad: {profileDetails?.edad}</Typography>
                 </Grid>
                 <Divider />
                 <Grid item className={classes.detailText}>
-                  <Typography variant="h4">Peso: {profileDetails?.detallePerfil.peso}lb</Typography>
+                  <Typography variant="h4">Peso: {profileDetails?.peso}lb</Typography>
                 </Grid>
                 <Divider />
                 <Grid item className={classes.detailText}>
-                  <Typography variant="h4">Altura: {profileDetails?.detallePerfil.altura}cm</Typography>
+                  <Typography variant="h4">Altura: {profileDetails?.altura}cm</Typography>
                 </Grid>
               </Paper>
             </Grid>
@@ -100,37 +114,37 @@ const ProfileView = () => {
           <Divider />
           <Paper className={classes.paper} sx={{ marginTop: 2 }} elevation={4}>
             <Grid container spacing={2}>
-              <Grid item xs={12} md={6}>
-                <Typography variant="h5">Color de piel: {profileDetails?.detallePerfil.colorPiel.color}</Typography>
+              {/* <Grid item xs={12} md={6}>
+                <Typography variant="h5">Color de piel: {profileDetails?.colorPiel.color}</Typography>
               </Grid>
               <Grid item xs={12} md={6}>
-                <Typography variant="h5">Color de cabello: {profileDetails?.detallePerfil.colorCabello.color}</Typography>
+                <Typography variant="h5">Color de cabello: {profileDetails?.colorCabello.color}</Typography>
               </Grid>
               <Grid item xs={12} md={6}>
-                <Typography variant="h5">Color de ojos: {profileDetails?.detallePerfil.colorOjos.color}</Typography>
+                <Typography variant="h5">Color de ojos: {profileDetails?.colorOjos.color}</Typography>
+              </Grid> */}
+              <Grid item xs={12} md={6}>
+                <Typography variant="h5">Tatuajes: {profileDetails?.tatuajes ? "Si" : "No"}</Typography>
               </Grid>
               <Grid item xs={12} md={6}>
-                <Typography variant="h5">Tatuajes: {profileDetails?.detallePerfil.tatuajes ? "Si" : "No"}</Typography>
+                <Typography variant="h5">Piercings: {profileDetails?.piercings ? "Si" : "No"}</Typography>
               </Grid>
               <Grid item xs={12} md={6}>
-                <Typography variant="h5">Piercings: {profileDetails?.detallePerfil.piercings ? "Si" : "No"}</Typography>
+                <Typography variant="h5">Bigote: {profileDetails?.bigote ? "Si" : "No"}</Typography>
               </Grid>
               <Grid item xs={12} md={6}>
-                <Typography variant="h5">Bigote: {profileDetails?.detallePerfil.bigote ? "Si" : "No"}</Typography>
+                <Typography variant="h5">Barba: {profileDetails?.barba ? "Si" : "No"}</Typography>
               </Grid>
               <Grid item xs={12} md={6}>
-                <Typography variant="h5">Barba: {profileDetails?.detallePerfil.barba ? "Si" : "No"}</Typography>
+                <Typography variant="h5">Ortodoncia: {profileDetails?.bracers ? "Si" : "No"}</Typography>
               </Grid>
               <Grid item xs={12} md={6}>
-                <Typography variant="h5">Ortodoncia: {profileDetails?.detallePerfil.bracers ? "Si" : "No"}</Typography>
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <Typography variant="h5">Lentes: {profileDetails?.detallePerfil.lentes ? "Si" : "No"}</Typography>
+                <Typography variant="h5">Lentes: {profileDetails?.lentes ? "Si" : "No"}</Typography>
               </Grid>
               <Grid item xs={12}>
-                <Typography variant="h5">Dispocición a cambios de apariencia radicales: {profileDetails?.detallePerfil.disposicion ? "Si" : "No"}</Typography>
+                <Typography variant="h5">Dispocición a cambios de apariencia radicales: {profileDetails?.disposicion ? "Si" : "No"}</Typography>
               </Grid>
-              {(profileDetails?.tipoUsuario === 1 || profileDetails?.tipoUsuario === 3) &&
+              {/* {(profileDetails?.tipoUsuario === 1 || profileDetails?.tipoUsuario === 3) &&
                 <Grid container item spacing={2}>
                   <Grid item sx={{ marginTop: 0 }} xs={12}>
                     <Typography variant="h2" sx={{ textAlign: 'center' }}>Detalles de Actor</Typography>
@@ -138,7 +152,7 @@ const ProfileView = () => {
                   <Grid item xs={12}>
                     <Divider />
                   </Grid>
-                  {profileDetails?.tipoActors.map((tipoActor) => (
+                  {profileDetails?.tiposactor.map((tipoActor) => (
                     <Grid item xs={12} md={6} key={tipoActor.tipoActorId}>
                       <Typography variant="h5">{tipoActor.nombre}</Typography>
                     </Grid>
@@ -152,7 +166,7 @@ const ProfileView = () => {
                   <Grid item xs={12}>
                     <Divider />
                   </Grid>
-                  {profileDetails?.tipoModelos.map((tipoModelo) => (
+                  {profileDetails?.tiposmodelos.map((tipoModelo) => (
                     <Grid item xs={12} md={6} key={tipoModelo.tipoModeloId}>
                       <Typography variant="h5">{tipoModelo.nombre}</Typography>
                     </Grid>
@@ -165,12 +179,12 @@ const ProfileView = () => {
                 <Grid item xs={12}>
                   <Divider />
                 </Grid>
-                {profileDetails?.habilidad.map((habilidad) => (
+                {profileDetails?.habilidades.map((habilidad) => (
                   <Grid item xs={12} md={6} key={habilidad.habilidadId}>
                     <Typography variant="h5">{habilidad.nombre}</Typography>
                   </Grid>
                 ))}
-              </Grid>
+              </Grid> */}
             </Grid>
           </Paper>
         </Paper>
