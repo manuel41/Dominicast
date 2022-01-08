@@ -55,7 +55,7 @@ const ProfileView = () => {
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
       var graphql = JSON.stringify({
-        query: `{\r\n  getDetailsById(id: ${1}){\r\n    nombre,\r\n    apellido,\r\n    foto,\r\n    edad,\r\n    peso,\r\n    altura,\r\n    colorPielId,\r\n    colorOjosId,\r\n    colorCabelloId,\r\n    tatuajes,\r\n    bigote,\r\n    barba,\r\n    bracers,\r\n    lentes,\r\n    disposicion,\r\n    tipoUsuario,\r\n    tiposactor,\r\n    tiposmodelos,\r\n    habilidades\r\n  }\r\n}`,
+        query: `{\r\n  getDetailsById(id: ${id}){\r\n    nombre,\r\n    apellido,\r\n    foto,\r\n    edad,\r\n    peso,\r\n    altura,\r\n    colorPielId,\r\n    colorOjosId,\r\n    colorCabelloId,\r\n    tatuajes,\r\n    bigote,\r\n    barba,\r\n    bracers,\r\n    lentes,\r\n    disposicion,\r\n    tipoUsuario,\r\n    tiposactor,\r\n    tiposmodelos,\r\n    habilidades\r\n  }\r\n}`,
         variables: {}
       })
       var requestOptions = {
