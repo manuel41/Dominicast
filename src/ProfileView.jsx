@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles'
 import { useParams } from 'react-router';
 import { useAppContext } from './components/AppContext';
+import apiRequest from './api/Requests';
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -52,23 +53,7 @@ const ProfileView = () => {
 
   useEffect(() => {
     const fetchProfileDetail = async () => {
-      // const res = await axios.get(`${url}/${id}`);
-      // setProfileDetails(res.data);
-      var myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
-      var graphql = JSON.stringify({
-        query: `{\r\n  getDetailsById(id: ${id}){\r\n    nombre,\r\n    apellido,\r\n    foto,\r\n    edad,\r\n    peso,\r\n    altura,\r\n    colorPielId,\r\n    colorOjosId,\r\n    colorCabelloId,\r\n    tatuajes,\r\n    bigote,\r\n    barba,\r\n    bracers,\r\n    lentes,\r\n    disposicion,\r\n    tipoUsuario,\r\n    tiposactor,\r\n    tiposmodelos,\r\n    habilidades\r\n  }\r\n}`,
-        variables: {}
-      })
-      var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: graphql,
-        redirect: 'follow'
-      };
-
-      const res = await fetch("https://dominicast-backend.herokuapp.com/graphql", requestOptions)
-        .then(res => res.json())
+      const res = await apiRequest(`{\r\n  getDetailsById(id: ${id}){\r\n    nombre,\r\n    apellido,\r\n    foto,\r\n    edad,\r\n    peso,\r\n    altura,\r\n    colorPielId,\r\n    colorOjosId,\r\n    colorCabelloId,\r\n    tatuajes,\r\n    bigote,\r\n    barba,\r\n    bracers,\r\n    lentes,\r\n    disposicion,\r\n    tipoUsuario,\r\n    tiposactor,\r\n    tiposmodelos,\r\n    habilidades\r\n  }\r\n}`)
       setProfileDetails(res.data.getDetailsById);
     }
     fetchProfileDetail();

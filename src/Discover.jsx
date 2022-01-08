@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import apiRequest from './api/Requests';
 import { Typography, Card, CardContent, CardMedia, CardActionArea, CssBaseline, Grid, Container, Pagination, TextField } from '@mui/material';
 import ToggleButtonsMultiple from './components/ToggleButtonsMultiple';
 import { Link as RouterLink } from 'react-router-dom';
@@ -52,21 +53,7 @@ const Discover = () => {
     useEffect(() => {
         const fetchPersons = async () => {
             //setLoading(true);
-            var myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/json");
-            var graphql = JSON.stringify({
-                query: "query {\n getAllProfileDetails {\n id\n foto\n nombre\n apellido\n habilidades\n tatuajes\n barba\n edad\n altura\n}\n}",
-                variables: {}
-            })
-            var requestOptions = {
-                method: 'POST',
-                headers: myHeaders,
-                body: graphql,
-                redirect: 'follow'
-            };
-
-            const res = await fetch("https://dominicast-backend.herokuapp.com/graphql", requestOptions)
-                .then(res => res.json())
+            const res = await apiRequest("{\n getAllProfileDetails {\n id\n foto\n nombre\n apellido\n habilidades\n tatuajes\n barba\n edad\n altura\n}\n}");
             setPersons(res.data.getAllProfileDetails);
             //setLoading(false);
         }

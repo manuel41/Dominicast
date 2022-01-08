@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import apiRequest from '../api/Requests'
 
 const AppContext = React.createContext()
 const AppUpdateContext = React.createContext()
@@ -23,27 +24,6 @@ const AppContextProvider = ({ children }) => {
     fetchPieles();
     fetchCabellos();
   }, [])
-
-  const url = "https://dominicast-backend.herokuapp.com/graphql"
-
-  const apiRequest = (params) => {
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    var graphql = JSON.stringify({
-      query: params,
-      variables: {}
-    })
-    var requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: graphql,
-      redirect: 'follow'
-    };
-
-    return fetch(`${url}`, requestOptions)
-      .then(res => res.json())
-  }
-
 
   const fetchOjos = async () => {
     const res = await apiRequest("{\r\n  getAllEyeColors{\r\n    id,\r\n    color\r\n  }\r\n}")
