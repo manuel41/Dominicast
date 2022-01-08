@@ -20,16 +20,24 @@ const AppContextProvider = ({ children }) => {
   const url = "http://localhost:5000"
 
   const onClickLogin = async () => {
-    const res = await axios.get(`${url}/Persons`)
-    const profiles = res.data
-    for (let i = 0; i < profiles.length; i++) {
-      if (currentUserName === profiles[i].user.nombreUsuario && currentUserPassword === profiles[i].user.contraseña) {
-        setCurrentProfileId(profiles[i].id);
-        setCurrentUserName('');
-        setCurrentUserPassword('');
-        break;
-      }
-    }
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var graphql = JSON.stringify({
+      query: `mutation{\r\n  login(nombreUsuario:\"${currentUserName}\", password:\"${currentUserPassword}\"){\r\n    successful\r\n    message\r\n    data\r\n  }\r\n}`,
+      variables: {}
+    })
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: graphql,
+      redirect: 'follow'
+    };
+
+    const res = await fetch("https://dominicast-backend.herokuapp.com/graphql", requestOptions)
+      .then(res => res.json())
+    setCurrentProfileId(res.data.login.data);
+    setCurrentUserName('');
+    setCurrentUserPassword('');
   }
 
   const onClickLogout = () => {
