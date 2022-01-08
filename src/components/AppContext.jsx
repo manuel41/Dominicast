@@ -1,5 +1,3 @@
-import { Alert, AlertTitle } from '@mui/material'
-import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 
 const AppContext = React.createContext()
@@ -16,14 +14,19 @@ const AppContextProvider = ({ children }) => {
   const [currentProfileId, setCurrentProfileId] = useState(0)
   const [currentUserName, setCurrentUserName] = useState('')
   const [currentUserPassword, setCurrentUserPassword] = useState('')
+  const [ojos, setOjos] = useState([])
+
+  useEffect(() => {
+
+  }, [])
 
   const url = "https://dominicast-backend.herokuapp.com/graphql"
 
-  const onClickLogin = async () => {
+  const apiRequest = (params) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     var graphql = JSON.stringify({
-      query: `mutation{\r\n  login(nombreUsuario:\"${currentUserName}\", password:\"${currentUserPassword}\"){\r\n    successful\r\n    message\r\n    data\r\n  }\r\n}`,
+      query: params,
       variables: {}
     })
     var requestOptions = {
@@ -33,8 +36,18 @@ const AppContextProvider = ({ children }) => {
       redirect: 'follow'
     };
 
-    const res = await fetch(`${url}`, requestOptions)
+    return fetch(`${url}`, requestOptions)
       .then(res => res.json())
+  }
+
+
+  const fetchOjos = async () => {
+    // const res = await axios.get(`${url}/ColorOjos`)
+    // setOjos(res.data)
+  }
+
+  const onClickLogin = async () => {
+    const res = await apiRequest(`mutation{\r\n  login(nombreUsuario:\"${currentUserName}\", password:\"${currentUserPassword}\"){\r\n    successful\r\n    message\r\n    data\r\n  }\r\n}`)
     setCurrentProfileId(res.data.login.data);
     setCurrentUserName('');
     setCurrentUserPassword('');
