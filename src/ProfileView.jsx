@@ -4,6 +4,7 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles'
 import { useParams } from 'react-router';
+import { useAppContext } from './components/AppContext';
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -43,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
 const ProfileView = () => {
   const classes = useStyles()
   let { id } = useParams();
+  const { ojos, coloresPiel, cabellos } = useAppContext();
 
   const [profileDetails, setProfileDetails] = useState()
   // const [loading, setLoading] = useState(false)
@@ -114,15 +116,15 @@ const ProfileView = () => {
           <Divider />
           <Paper className={classes.paper} sx={{ marginTop: 2 }} elevation={4}>
             <Grid container spacing={2}>
-              {/* <Grid item xs={12} md={6}>
-                <Typography variant="h5">Color de piel: {profileDetails?.colorPiel.color}</Typography>
+              <Grid item xs={12} md={6}>
+                <Typography variant="h5">Color de piel: {coloresPiel[profileDetails?.colorPielId]}</Typography>
               </Grid>
               <Grid item xs={12} md={6}>
-                <Typography variant="h5">Color de cabello: {profileDetails?.colorCabello.color}</Typography>
+                <Typography variant="h5">Color de cabello: {cabellos[profileDetails?.colorCabelloId]}</Typography>
               </Grid>
               <Grid item xs={12} md={6}>
-                <Typography variant="h5">Color de ojos: {profileDetails?.colorOjos.color}</Typography>
-              </Grid> */}
+                <Typography variant="h5">Color de ojos: {ojos[profileDetails?.colorOjosId]}</Typography>
+              </Grid>
               <Grid item xs={12} md={6}>
                 <Typography variant="h5">Tatuajes: {profileDetails?.tatuajes ? "Si" : "No"}</Typography>
               </Grid>
