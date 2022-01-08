@@ -15,9 +15,11 @@ const AppContextProvider = ({ children }) => {
   const [currentUserName, setCurrentUserName] = useState('')
   const [currentUserPassword, setCurrentUserPassword] = useState('')
   const [ojos, setOjos] = useState({})
+  const [coloresPiel, setColoresPiel] = useState({})
 
   useEffect(() => {
-    fetchOjos();
+    // fetchOjos();
+    // fetchPieles();
   }, [])
 
   const url = "https://dominicast-backend.herokuapp.com/graphql"
@@ -46,6 +48,11 @@ const AppContextProvider = ({ children }) => {
     const dic = res.data.getAllEyeColors.reduce((prev, current) => ({ ...prev, [current.id]: current.color }), {})
     setOjos(dic);
   }
+  const fetchPieles = async () => {
+    const res = await apiRequest("{\r\n  getAllSkinColors{\r\n    id,\r\n    color\r\n  }\r\n}")
+    const dic = res.data.getAllSkinColors.reduce((prev, current) => ({ ...prev, [current.id]: current.color }), {})
+    setColoresPiel(dic);
+  }
 
   const onClickLogin = async () => {
     const res = await apiRequest(`mutation{\r\n  login(nombreUsuario:\"${currentUserName}\", password:\"${currentUserPassword}\"){\r\n    successful\r\n    message\r\n    data\r\n  }\r\n}`)
@@ -72,7 +79,7 @@ const AppContextProvider = ({ children }) => {
 
 
   return (
-    <AppContext.Provider value={{ currentProfileId, currentUserName, currentUserPassword, ojos }}>
+    <AppContext.Provider value={{ currentProfileId, currentUserName, currentUserPassword, ojos, coloresPiel }}>
       <AppUpdateContext.Provider value={{ onChangeUserName, onChangeUserPassword, onClickLogin, onClickLogout }}>
         {children}
       </AppUpdateContext.Provider>

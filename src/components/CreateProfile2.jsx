@@ -8,8 +8,8 @@ import { Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Radio, R
 
 export default function CreateProfile2() {
 
-  const { detallesPerfil, colorOjosId, colorPiel, colorCabello, ojos, coloresPiel, cabellos } = useUser()
-  const { onChangeDetallesPerfil, onChangeDetallesPerfilCheckbox, onChangeColorOjosId, onChangeColorPiel, onChangeColorCabello } = useUserUpdate()
+  const { detallesPerfil, colorOjosId, colorPielId, colorCabello, ojos, coloresPiel, cabellos } = useUser()
+  const { onChangeDetallesPerfil, onChangeDetallesPerfilCheckbox, onChangeColorOjosId, onChangeColorPielId, onChangeColorCabello } = useUserUpdate()
 
   return (
     <React.Fragment>
@@ -129,11 +129,11 @@ export default function CreateProfile2() {
             <RadioGroup
               aria-label="eyes"
               name="colorPielId"
-              value={colorPiel.colorPielId || ""}
-              onChange={onChangeColorPiel}
+              value={colorPielId}
+              onChange={onChangeColorPielId}
             >
-              {coloresPiel?.map((option) => (
-                <FormControlLabel key={option.id} value={option.id} control={<Radio />} label={option.nombre} />
+              {Object.keys(coloresPiel).map((key) => (
+                <FormControlLabel key={key} value={key} control={<Radio />} label={coloresPiel[key]} />
               ))}
             </RadioGroup>
           </FormControl>
