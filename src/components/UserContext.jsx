@@ -13,7 +13,7 @@ export function useUserUpdate() {
 }
 
 const UserProvider = ({ children }) => {
-  const { currentProfileId, ojos, coloresPiel, cabellos, tipoActores, tipoModelos } = useAppContext();
+  const { currentProfileId, ojos, coloresPiel, cabellos, tipoActores, tipoModelos, habilidades } = useAppContext();
 
   const [listaTipoActores, setListaTipoActores] = useState([])
   const [listaTipoModelos, setListaTipoModelos] = useState([])
@@ -24,7 +24,7 @@ const UserProvider = ({ children }) => {
   useEffect(() => {
     getTipoActores();
     getTipoModelos();
-    fetchHabilidades();
+    getHabilidades();
     if (currentProfileId) {
       fetchExistingUser();
     }
@@ -88,16 +88,16 @@ const UserProvider = ({ children }) => {
       }
     }));
   }
-  const fetchHabilidades = async () => {
-    const res = await axios.get(`${url}/Habilidades`);
-    let resArray = res.data;
-    resArray = resArray.map((obj) => {
+  const getHabilidades = async () => {
+    const arr = Object.keys(habilidades).reduce((array, key) => {
+      return [...array, { id: key, nombre: habilidades[key] }]
+    }, [])
+    setListaHabilidades(arr.map((obj) => {
       return {
         ...obj,
         isChecked: false
       }
-    })
-    setListaHabilidades(resArray);
+    }));
   }
 
   const registerNewUser = async () => {
@@ -153,7 +153,7 @@ const UserProvider = ({ children }) => {
     const checkedList = listaTipoModelos.filter((type) => type.isChecked)
   }
   const addHabilidades = () => {
-    return listaHabilidades.filter((type) => type.isChecked)
+    const checkedList = listaHabilidades.filter((type) => type.isChecked)
   }
 
   const determineTipoUsuario = () => {
