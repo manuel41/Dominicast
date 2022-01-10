@@ -13,7 +13,7 @@ export function useUserUpdate() {
 }
 
 const UserProvider = ({ children }) => {
-  const { currentProfileId, ojos, coloresPiel, cabellos } = useAppContext();
+  const { currentProfileId, ojos, coloresPiel, cabellos, tipoActores } = useAppContext();
 
   const [listaTipoActores, setListaTipoActores] = useState([])
   const [listaTipoModelos, setListaTipoModelos] = useState([])
@@ -22,7 +22,7 @@ const UserProvider = ({ children }) => {
   const url = "http://localhost:5000"
 
   useEffect(() => {
-    fetchTipoActores();
+    getTipoActores();
     fetchTipoModelos();
     fetchHabilidades();
     if (currentProfileId) {
@@ -66,19 +66,16 @@ const UserProvider = ({ children }) => {
     setProvincia({ ...existingUser.user.ciudad.provincia })
   }
 
-  const fetchTipoActores = async () => {
-    const res = await axios.get(`${url}/TipoActores`);
-    let resArray = res.data;
-    resArray = resArray.map((obj) => {
-      if (obj.id === listaTipoActores[obj.id - 1]?.id) {
-        return { ...listaTipoActores[obj.id - 1] }
-      }
+  const getTipoActores = async () => {
+    const arr = Object.keys(tipoActores).reduce((array, key) => {
+      return [...array, { id: key, nombre: tipoActores[key] }]
+    }, [])
+    setListaTipoActores(arr.map((obj) => {
       return {
         ...obj,
         isChecked: false
       }
-    })
-    setListaTipoActores(resArray)
+    }));
   }
   const fetchTipoModelos = async () => {
     const res = await axios.get(`${url}/TipoModelos`);
@@ -149,7 +146,8 @@ const UserProvider = ({ children }) => {
   }
 
   const addTipoActores = () => {
-    return listaTipoActores.filter((type) => type.isChecked)
+    const checkedList = listaTipoActores.filter((type) => type.isChecked)
+    // Change according to how Post request works
   }
   const addTipoModelos = () => {
     return listaTipoModelos.filter((type) => type.isChecked)
