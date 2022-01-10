@@ -24,13 +24,16 @@ const AppContextProvider = ({ children }) => {
   const [tipoModelos, setTipoModelos] = useState({})
   const [habilidades, setHabilidades] = useState({})
 
+  const [ciudades, setCiudades] = useState({})
+
   useEffect(() => {
-    // fetchOjos();
-    // fetchPieles();
-    // fetchCabellos();
-    // fetchTipoActores();
-    // fetchTipoModelos();
+    fetchOjos();
+    fetchPieles();
+    fetchCabellos();
+    fetchTipoActores();
+    fetchTipoModelos();
     fetchHabilidades();
+    fetchCities();
   }, [])
 
   const fetchOjos = async () => {
@@ -63,6 +66,11 @@ const AppContextProvider = ({ children }) => {
     const dic = res.data.getAllAbilities.reduce((prev, current) => ({ ...prev, [current.id]: current.descripcion }), {})
     setHabilidades(dic);
   }
+  const fetchCities = async () => {
+    const res = await apiRequest("{\r\n  getAllCities{\r\n    id,\r\n    provinciaId,\r\n    nombre\r\n  }\r\n}")
+    const dic = res.data.getAllCities.reduce((prev, current) => ({ ...prev, [current.id]: current.nombre }), {})
+    setCiudades(dic);
+  }
 
   const onClickLogin = async () => {
     const res = await apiRequest(`mutation{\r\n  login(nombreUsuario:\"${currentUserName}\", password:\"${currentUserPassword}\"){\r\n    successful\r\n    message\r\n    data\r\n  }\r\n}`)
@@ -91,7 +99,8 @@ const AppContextProvider = ({ children }) => {
   return (
     <AppContext.Provider value={{
       currentProfileId, currentUserName, currentUserPassword,
-      ojos, coloresPiel, cabellos, tipoActores, tipoModelos, habilidades
+      ojos, coloresPiel, cabellos, tipoActores, tipoModelos, habilidades,
+      ciudades
     }}>
       <AppUpdateContext.Provider value={{ onChangeUserName, onChangeUserPassword, onClickLogin, onClickLogout }}>
         {children}
