@@ -21,12 +21,14 @@ const AppContextProvider = ({ children }) => {
   const [cabellos, setCabellos] = useState({})
 
   const [tipoActores, setTipoActores] = useState({})
+  const [tipoModelos, setTipoModelos] = useState({})
 
   useEffect(() => {
     // fetchOjos();
     // fetchPieles();
     // fetchCabellos();
     // fetchTipoActores();
+    // fetchTipoModelos();
   }, [])
 
   const fetchOjos = async () => {
@@ -48,6 +50,11 @@ const AppContextProvider = ({ children }) => {
     const res = await apiRequest("{\r\n  getAllActorTypes{\r\n    id,\r\n    descripcion\r\n  }\r\n}")
     const dic = res.data.getAllActorTypes.reduce((prev, current) => ({ ...prev, [current.id]: current.descripcion }), {})
     setTipoActores(dic);
+  }
+  const fetchTipoModelos = async () => {
+    const res = await apiRequest("{\r\n  getAllModelTypes{\r\n    id,\r\n    descripcion\r\n  }\r\n}")
+    const dic = res.data.getAllModelTypes.reduce((prev, current) => ({ ...prev, [current.id]: current.descripcion }), {})
+    setTipoModelos(dic);
   }
 
   const onClickLogin = async () => {
@@ -77,7 +84,7 @@ const AppContextProvider = ({ children }) => {
   return (
     <AppContext.Provider value={{
       currentProfileId, currentUserName, currentUserPassword,
-      ojos, coloresPiel, cabellos, tipoActores
+      ojos, coloresPiel, cabellos, tipoActores, tipoModelos
     }}>
       <AppUpdateContext.Provider value={{ onChangeUserName, onChangeUserPassword, onClickLogin, onClickLogout }}>
         {children}

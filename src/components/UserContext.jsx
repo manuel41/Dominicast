@@ -13,7 +13,7 @@ export function useUserUpdate() {
 }
 
 const UserProvider = ({ children }) => {
-  const { currentProfileId, ojos, coloresPiel, cabellos, tipoActores } = useAppContext();
+  const { currentProfileId, ojos, coloresPiel, cabellos, tipoActores, tipoModelos } = useAppContext();
 
   const [listaTipoActores, setListaTipoActores] = useState([])
   const [listaTipoModelos, setListaTipoModelos] = useState([])
@@ -23,7 +23,7 @@ const UserProvider = ({ children }) => {
 
   useEffect(() => {
     getTipoActores();
-    fetchTipoModelos();
+    getTipoModelos();
     fetchHabilidades();
     if (currentProfileId) {
       fetchExistingUser();
@@ -77,16 +77,16 @@ const UserProvider = ({ children }) => {
       }
     }));
   }
-  const fetchTipoModelos = async () => {
-    const res = await axios.get(`${url}/TipoModelos`);
-    let resArray = res.data;
-    resArray = resArray.map((obj) => {
+  const getTipoModelos = async () => {
+    const arr = Object.keys(tipoModelos).reduce((array, key) => {
+      return [...array, { id: key, nombre: tipoModelos[key] }]
+    }, [])
+    setListaTipoModelos(arr.map((obj) => {
       return {
         ...obj,
         isChecked: false
       }
-    })
-    setListaTipoModelos(resArray)
+    }));
   }
   const fetchHabilidades = async () => {
     const res = await axios.get(`${url}/Habilidades`);
@@ -150,7 +150,7 @@ const UserProvider = ({ children }) => {
     // Change according to how Post request works
   }
   const addTipoModelos = () => {
-    return listaTipoModelos.filter((type) => type.isChecked)
+    const checkedList = listaTipoModelos.filter((type) => type.isChecked)
   }
   const addHabilidades = () => {
     return listaHabilidades.filter((type) => type.isChecked)
