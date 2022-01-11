@@ -100,7 +100,7 @@ const ProfileView = () => {
           <Paper className={classes.paper} sx={{ marginTop: 2 }} elevation={4}>
             <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
-                <Typography variant="h5">Color de piel: {coloresPiel[1]}</Typography>
+                <Typography variant="h5">Color de piel: {coloresPiel[profileDetails?.colorPielId]}</Typography>
               </Grid>
               <Grid item xs={12} md={6}>
                 <Typography variant="h5">Color de cabello: {cabellos[profileDetails?.colorCabelloId]}</Typography>
