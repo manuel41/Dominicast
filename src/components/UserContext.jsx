@@ -13,7 +13,7 @@ export function useUserUpdate() {
 }
 
 const UserProvider = ({ children }) => {
-  const { currentProfileId, ojos, coloresPiel, cabellos, tipoActores, tipoModelos, habilidades } = useAppContext();
+  const { currentProfileId, ojos, coloresPiel, cabellos, tipoActores, tipoModelos, tipoHabilidades } = useAppContext();
 
   const [listaTipoActores, setListaTipoActores] = useState([])
   const [listaTipoModelos, setListaTipoModelos] = useState([])
@@ -89,8 +89,8 @@ const UserProvider = ({ children }) => {
     }));
   }
   const getHabilidades = async () => {
-    const arr = Object.keys(habilidades).reduce((array, key) => {
-      return [...array, { id: key, nombre: habilidades[key] }]
+    const arr = Object.keys(tipoHabilidades).reduce((array, key) => {
+      return [...array, { id: key, nombre: tipoHabilidades[key] }]
     }, [])
     setListaHabilidades(arr.map((obj) => {
       return {

@@ -22,7 +22,7 @@ const AppContextProvider = ({ children }) => {
 
   const [tipoActores, setTipoActores] = useState({})
   const [tipoModelos, setTipoModelos] = useState({})
-  const [habilidades, setHabilidades] = useState({})
+  const [tipoHabilidades, setTipoHabilidades] = useState({})
 
   const [ciudades, setCiudades] = useState({})
 
@@ -64,7 +64,7 @@ const AppContextProvider = ({ children }) => {
   const fetchHabilidades = async () => {
     const res = await apiRequest("{\r\n  getAllAbilities{\r\n    id,\r\n    descripcion\r\n  }\r\n}")
     const dic = res.data.getAllAbilities.reduce((prev, current) => ({ ...prev, [current.id]: current.descripcion }), {})
-    setHabilidades(dic);
+    setTipoHabilidades(dic);
   }
   const fetchCities = async () => {
     const res = await apiRequest("{\r\n  getAllCities{\r\n    id,\r\n    provinciaId,\r\n    nombre\r\n  }\r\n}")
@@ -99,7 +99,7 @@ const AppContextProvider = ({ children }) => {
   return (
     <AppContext.Provider value={{
       currentProfileId, currentUserName, currentUserPassword,
-      ojos, coloresPiel, cabellos, tipoActores, tipoModelos, habilidades,
+      ojos, coloresPiel, cabellos, tipoActores, tipoModelos, tipoHabilidades,
       ciudades
     }}>
       <AppUpdateContext.Provider value={{ onChangeUserName, onChangeUserPassword, onClickLogin, onClickLogout }}>
