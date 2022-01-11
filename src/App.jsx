@@ -2,12 +2,14 @@ import * as React from 'react';
 import { CssBaseline } from '@mui/material';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Discover from './Discover';
+import AppContextProvider from './components/AppContext';
 import UserProvider from './components/UserContext';
 import Home from './Home';
 import ProfileView from './ProfileView'
 import Layout from './components/Layout';
 import CreateProfile from './CreateProfile';
 import SignIn from './SignIn'
+import NavBar from './components/NavBar';
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -32,7 +34,7 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const App = () => {
   return (
-    <>
+    <AppContextProvider>
       <CssBaseline />
       <Router>
         <Layout>
@@ -47,7 +49,7 @@ const App = () => {
           </Switch>
         </Layout>
       </Router>
-    </>
+    </AppContextProvider>
   );
 }
 

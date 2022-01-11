@@ -2,7 +2,8 @@ import React from 'react'
 import { AppBar, Toolbar, Stack, Button, Container } from '@mui/material'
 // import { makeStyles } from '@mui/styles';
 import logo from './logo.png';
-
+import { useAppContext, useAppContextUpdate } from './AppContext';
+import { Link } from 'react-router-dom';
 
 
 
@@ -15,6 +16,9 @@ import logo from './logo.png';
 
 const NavBar = () => {
   // const classes = useStyles();
+  const { currentUserId } = useAppContext();
+  const { onClickLogout } = useAppContextUpdate();
+
 
   return (
     <>
@@ -22,12 +26,26 @@ const NavBar = () => {
         <Container maxWidth="lg" >
           <Toolbar>
             <Stack direction="row" spacing={{ xs: 1, sm: 2, md: 8 }}>
+<<<<<<< HEAD
               <img src={logo} width="200" alt='' />
               <Button size='large' color="primary" href="/">Inicio</Button>
               <Button size='large' color="primary" href="/Discover">Explorar</Button>
               <Button size='large' color="primary" href="/">Nosotros</Button>
               <Button size='large' color="primary" href="create-profile">Regístrate</Button>
               <Button size='large' color="primary" href="login">Login</Button>
+=======
+              <img src={logo} width="200" />
+              <Button size='large' color="primary" component={Link} to="/">Inicio</Button>
+              <Button size='large' color="primary" component={Link} to={"/Discover"}>Explorar</Button>
+              <Button size='large' color="primary" component={Link} to={"/"}>Nosotros</Button>
+              <Button size='large' color="primary" component={Link} to={"/create-profile"}>{currentUserId > 0 ? "Editar Perfil" : "Regístrate"}</Button>
+              {(currentUserId === 0) &&
+                <Button size='large' color="primary" component={Link} to={"/login"}>Login</Button>
+              }
+              {(currentUserId > 0) &&
+                <Button size='large' color="primary" component={Link} to={"/"} onClick={onClickLogout}>Logout</Button>
+              }
+>>>>>>> feature-create-profile
             </Stack>
           </Toolbar>
         </Container>

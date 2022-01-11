@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import apiRequest from './api/Requests';
 import { Typography, Card, CardContent, CardMedia, CardActionArea, CssBaseline, Grid, Container, Pagination, TextField } from '@mui/material';
 import ToggleButtonsMultiple from './components/ToggleButtonsMultiple';
+<<<<<<< HEAD
+=======
+import { Link as RouterLink } from 'react-router-dom';
+
+>>>>>>> feature-create-profile
 import { makeStyles } from '@mui/styles';
 
 
@@ -54,21 +60,7 @@ const Discover = () => {
     useEffect(() => {
         const fetchPersons = async () => {
             //setLoading(true);
-            var myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/json");
-            var graphql = JSON.stringify({
-                query: "query {\n getAllProfileDetails { id foto nombre apellido genero habilidades tatuajes barba edad altura}}",
-                variables: {}
-            })
-            var requestOptions = {
-                method: 'POST',
-                headers: myHeaders,
-                body: graphql,
-                redirect: 'follow'
-            };
-
-            const res = await fetch("https://dominicast-backend.herokuapp.com/graphql", requestOptions)
-                .then(res => res.json())
+            const res = await apiRequest("{\n getAllProfileDetails {\n id\n foto\n nombre\n apellido\n habilidades\n tatuajes\n barba\n edad\n altura\n}\n}");
             setPersons(res.data.getAllProfileDetails);
             //setLoading(false);
         }
@@ -135,6 +127,7 @@ const Discover = () => {
                                         (!(person.altura >= 210 && person.altura <= 230) && filter.includes('210a230cm')) ||
                                         (!(person.altura >= 231) && filter.includes('231cm+')))
                                         return false;
+<<<<<<< HEAD
                                     else
                                         return true;
                                 })
@@ -155,6 +148,53 @@ const Discover = () => {
 
                     <Grid item xs={12} className={classes.paginationContainer}>
                         <Pagination count={totalPages} onChange={paginate} />
+=======
+                                    });
+                                }
+                                if (searchTerm === "")
+                                    return person;
+                                else if (person.user.nombreUsuario.toLowerCase().includes(searchTerm.toLowerCase()))
+                                    return person;
+                                else if (person.nombre.toLowerCase().includes(searchTerm.toLowerCase()))
+                                    return person;
+                                else if (person.apellido.toLowerCase().includes(searchTerm.toLowerCase()))
+                                    return person;
+                                else if (isHabilityFound)
+                                    return person;
+                                else return null
+                            }))
+                            .filter((person) => {
+                                if ((person.tatuajes && filter.includes('sinTatuajes')) ||
+                                    (!person.tatuajes && filter.includes('conTatuajes')) ||
+                                    (person.barba && filter.includes('sinBarba')) ||
+                                    (!person.barba && filter.includes('conBarba')) ||
+                                    (!(person.edad < 18) && filter.includes('Menor')) ||
+                                    (!(person.edad >= 18 && person.edad <= 25) && filter.includes('edad18a25')) ||
+                                    (!(person.edad >= 26 && person.edad <= 45) && filter.includes('edad26a45')) ||
+                                    (!(person.edad >= 46 && person.edad <= 60) && filter.includes('edad46a60')) ||
+                                    (!(person.edad >= 60) && filter.includes('edad60+')) ||
+                                    (!(person.altura < 150) && filter.includes('150cm')) ||
+                                    (!(person.altura >= 151 && person.altura <= 170) && filter.includes('151a170cm')) ||
+                                    (!(person.altura >= 171 && person.altura <= 190) && filter.includes('171a190cm')) ||
+                                    (!(person.altura >= 210 && person.altura <= 230) && filter.includes('210a230cm')) ||
+                                    (!(person.altura >= 231) && filter.includes('231cm+')))
+                                    return false;
+                                else
+                                    return true;
+                            })
+                            .map((person) => (
+                                <Grid item key={person.id} xs={12} sm={6} md={4} lg={3}>
+                                    <Card className={classes.card}>
+                                        <CardActionArea component={RouterLink} to={`/profile/${person.id}`}>
+                                            <CardMedia className={classes.cardMedia} image={person.foto} title="image title" />
+                                            <CardContent className={classes.cardMedia}>
+                                                <Typography align="center" variant="h5">{`${person.nombre} ${person.apellido}`}</Typography>
+                                            </CardContent>
+                                        </CardActionArea>
+                                    </Card>
+                                </Grid>
+                            ))}
+>>>>>>> feature-create-profile
                     </Grid>
                 </Grid>
             </Grid>

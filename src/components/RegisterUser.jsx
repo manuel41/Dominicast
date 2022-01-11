@@ -12,31 +12,16 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 // import Checkbox from '@mui/material/Checkbox';
 import { FormControl, Input, InputLabel, MenuItem } from '@mui/material';
 import axios from 'axios';
+import { useAppContext } from './AppContext';
 
 const RegisterUser = () => {
 
+  const { ciudades, currentUserId } = useAppContext();
   const { user, ciudad, provincia } = useUser()
   const { onChangeUser, onChangeCiudad, onChangeProvincia } = useUserUpdate()
 
-  const url = "http://localhost:5000"
-  const [ciudades, setCiudades] = useState([])
-  const [provincias, setProvincias] = useState([])
+  // const [provincias, setProvincias] = useState([])
   const [showPassword, setShowPassword] = useState(false)
-
-  useEffect(() => {
-    fetchCities();
-    fetchProvinces();
-  }, [])
-
-  const fetchCities = async () => {
-    const res = await axios.get(`${url}/Ciudades`)
-    setCiudades(res.data)
-  }
-
-  const fetchProvinces = async () => {
-    const res = await axios.get(`${url}/Provincias`)
-    setProvincias(res.data)
-  }
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword)
@@ -64,35 +49,49 @@ const RegisterUser = () => {
             onChange={onChangeUser}
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <FormControl variant="standard">
-            <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
-            <Input
-              required
-              id="contraseña"
-              name="contraseña"
-              label="Contraseña"
-              fullWidth
-              autoComplete="current-password"
-              variant="standard"
-              value={user.contraseña}
-              onChange={onChangeUser}
-              type={showPassword ? 'text' : 'password'}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-          </FormControl>
+        {(currentUserId === 0) &&
+          <Grid item xs={12} sm={6}>
+            <FormControl variant="standard">
+              <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+              <Input
+                required
+                id="contraseña"
+                name="contraseña"
+                label="Contraseña"
+                fullWidth
+                autoComplete="current-password"
+                variant="standard"
+                value={user.contraseña}
+                onChange={onChangeUser}
+                type={showPassword ? 'text' : 'password'}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+              />
+            </FormControl>
+          </Grid>
+        }
+        <Grid item xs={12}>
+          <TextField
+            id="telefono"
+            name="telefono"
+            label="Telefono"
+            fullWidth
+            autoComplete="tel"
+            variant="standard"
+            value={user.telefono}
+            onChange={onChangeUser}
+          />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12}>
           <TextField
             required
             id="email"
@@ -105,19 +104,7 @@ const RegisterUser = () => {
             onChange={onChangeUser}
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            id="telefono"
-            name="telefono"
-            label="Telefono"
-            fullWidth
-            autoComplete="tel"
-            variant="standard"
-            value={user.telefono}
-            onChange={onChangeUser}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12}>
           <TextField
             id="ciudad"
             select
@@ -127,14 +114,14 @@ const RegisterUser = () => {
             value={ciudad.ciudadId || ""}
             onChange={onChangeCiudad}
           >
-            {ciudades?.map((option) => (
-              <MenuItem key={option.id} value={option.id}>
-                {option.nombre}
+            {Object.keys(ciudades).map((key) => (
+              <MenuItem key={key} value={key}>
+                {ciudades[key]}
               </MenuItem>
             ))}
           </TextField>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        {/* <Grid item xs={12} sm={6}>
           <TextField
             id="provincia"
             name="provinciaId"
@@ -151,34 +138,6 @@ const RegisterUser = () => {
               </MenuItem>
             ))}
           </TextField>
-        </Grid>
-        {/* <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="zip"
-            name="zip"
-            label="Zip / Postal code"
-            fullWidth
-            autoComplete="shipping postal-code"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="country"
-            name="country"
-            label="Country"
-            fullWidth
-            autoComplete="shipping country"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <FormControlLabel
-            control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
-            label="Use this address for payment details"
-          />
         </Grid> */}
       </Grid>
     </React.Fragment>

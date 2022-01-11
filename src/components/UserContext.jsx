@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
+import { useAppContext } from './AppContext';
 
 const UserContext = React.createContext()
 const UserUpdateContext = React.createContext()
@@ -12,83 +13,92 @@ export function useUserUpdate() {
 }
 
 const UserProvider = ({ children }) => {
-  const usuarioExistente = undefined
+  const { currentProfileId, ojos, coloresPiel, cabellos, tipoActores, tipoModelos, tipoHabilidades } = useAppContext();
+
   const [listaTipoActores, setListaTipoActores] = useState([])
   const [listaTipoModelos, setListaTipoModelos] = useState([])
   const [listaHabilidades, setListaHabilidades] = useState([])
-  const [ojos, setOjos] = useState([])
-  const [coloresPiel, setColoresPiel] = useState([])
-  const [cabellos, setCabellos] = useState([])
 
   const url = "http://localhost:5000"
 
   useEffect(() => {
-    const fetchExistingUser = async () => {
-      const res = await axios.get(`${url}/Persons/${usuarioExistente}`);
-      setDatosUsuario(res.data)
-    }
-    if (usuarioExistente) {
+    getTipoActores();
+    getTipoModelos();
+    getHabilidades();
+    if (currentProfileId) {
       fetchExistingUser();
     }
-    fetchTipoModelos();
-    fetchTipoActores();
-    fetchHabilidades();
-    fetchOjos();
-    fetchCabellos();
-    fetchPieles();
-  }, [usuarioExistente])
+  }, [])
 
-  const fetchTipoActores = async () => {
-    const res = await axios.get(`${url}/TipoActores`);
-    let resArray = res.data;
-    resArray = resArray.map((obj) => {
+  const fetchExistingUser = async () => {
+    const res = await axios.get(`${url}/Persons/${currentProfileId}`);
+    const existingUser = res.data;
+    console.log(existingUser);
+    setUser({
+      nombreUsuario: existingUser.user.nombreUsuario,
+      contraseña: existingUser.user.contraseña,
+      email: existingUser.user.email,
+      telefono: existingUser.user.telefono
+    })
+    setDetallesPerfil({
+      nombre: existingUser.detallePerfil.nombre,
+      apellido: existingUser.detallePerfil.apellido,
+      genero: existingUser.detallePerfil.genero,
+      url: existingUser.detallePerfil.url,
+      edad: existingUser.detallePerfil.edad,
+      peso: existingUser.detallePerfil.peso,
+      altura: existingUser.detallePerfil.altura,
+      tatuajes: existingUser.detallePerfil.tatuajes,
+      piercings: existingUser.detallePerfil.piercings,
+      bigote: existingUser.detallePerfil.bigote,
+      barba: existingUser.detallePerfil.barba,
+      bracers: existingUser.detallePerfil.bracers,
+      lentes: existingUser.detallePerfil.lentes,
+      disposicion: existingUser.detallePerfil.disposicion
+    })
+    setColorPielId({ ...existingUser.detallePerfil.colorPiel })
+    setColorCabelloId({ ...existingUser.detallePerfil.colorCabello })
+    setColorOjosId({ ...existingUser.detallePerfil.colorOjosId })
+    setCiudad({
+      ciudadId: existingUser.user.ciudad.ciudadId,
+      nombre: existingUser.user.ciudad.nombre,
+    })
+    setProvincia({ ...existingUser.user.ciudad.provincia })
+  }
+
+  const getTipoActores = async () => {
+    const arr = Object.keys(tipoActores).reduce((array, key) => {
+      return [...array, { id: key, nombre: tipoActores[key] }]
+    }, [])
+    setListaTipoActores(arr.map((obj) => {
       return {
         ...obj,
         isChecked: false
       }
-    })
-    setListaTipoActores(resArray)
+    }));
   }
-  const fetchTipoModelos = async () => {
-    const res = await axios.get(`${url}/TipoModelos`);
-    let resArray = res.data;
-    resArray = resArray.map((obj) => {
+  const getTipoModelos = async () => {
+    const arr = Object.keys(tipoModelos).reduce((array, key) => {
+      return [...array, { id: key, nombre: tipoModelos[key] }]
+    }, [])
+    setListaTipoModelos(arr.map((obj) => {
       return {
         ...obj,
         isChecked: false
       }
-    })
-    setListaTipoModelos(resArray)
+    }));
   }
-  const fetchHabilidades = async () => {
-    const res = await axios.get(`${url}/Habilidades`);
-    let resArray = res.data;
-    resArray = resArray.map((obj) => {
+  const getHabilidades = async () => {
+    const arr = Object.keys(tipoHabilidades).reduce((array, key) => {
+      return [...array, { id: key, nombre: tipoHabilidades[key] }]
+    }, [])
+    setListaHabilidades(arr.map((obj) => {
       return {
         ...obj,
         isChecked: false
       }
-    })
-    setListaHabilidades(resArray);
+    }));
   }
-
-  const fetchOjos = async () => {
-    const res = await axios.get(`${url}/ColorOjos`)
-    setOjos(res.data)
-  }
-  const fetchPieles = async () => {
-    const res = await axios.get(`${url}/ColorPiel`)
-    setColoresPiel(res.data)
-  }
-  const fetchCabellos = async () => {
-    const res = await axios.get(`${url}/ColorCabello`)
-    setCabellos(res.data)
-  }
-
-
-
-  const [datosUsuario, setDatosUsuario] = useState({})
-  const [usuario, setUsuario] = useState({})
 
   const registerNewUser = async () => {
     const newUser = {
@@ -101,36 +111,62 @@ const UserProvider = ({ children }) => {
       },
       detallePerfil: {
         ...detallesPerfil,
-        colorPiel: { ...colorPiel },
-        colorCabello: { ...colorCabello },
-        colorOjos: { ...colorOjos },
+        colorPielId: colorPielId,
+        colorCabelloId: colorCabelloId,
+        colorOjosId: colorOjosId,
       },
-      tipoUsuario: 3,
       tipoActors: addTipoActores(),
       tipoModelos: addTipoModelos(),
-      habilidad: addHabilidades()
+      habilidad: addHabilidades(),
+      tipoUsuario: determineTipoUsuario(),
     }
     const res = await axios.post(`${url}/Persons`, newUser)
   }
-
-  // const determineTipoUsuario = (params) => {
-
-  // }
-
-
-  // const [tipoActor, setTipoActor] = useState([]);
-  // const [tipoModelo, setTipoModelo] = useState([]);
-  // const [habilidades, setHabilidades] = useState([]);
+  const updateUser = async () => {
+    const existingUser = {
+      user: {
+        ...user,
+        ciudad: {
+          ...ciudad,
+          provincia: { ...provincia }
+        }
+      },
+      detallePerfil: {
+        ...detallesPerfil,
+        colorPielId: colorPielId,
+        colorCabelloId: colorCabelloId,
+        colorOjosId: colorOjosId,
+      },
+      tipoActors: addTipoActores(),
+      tipoModelos: addTipoModelos(),
+      habilidad: addHabilidades(),
+      tipoUsuario: determineTipoUsuario(),
+    }
+    const res = await axios.put(`${url}/Persons/${currentProfileId}`, existingUser)
+  }
 
   const addTipoActores = () => {
-    return listaTipoActores.filter((type) => type.isChecked)
+    const checkedList = listaTipoActores.filter((type) => type.isChecked)
+    // Change according to how Post request works
   }
   const addTipoModelos = () => {
-    return listaTipoModelos.filter((type) => type.isChecked)
+    const checkedList = listaTipoModelos.filter((type) => type.isChecked)
   }
   const addHabilidades = () => {
-    return listaHabilidades.filter((type) => type.isChecked)
+    const checkedList = listaHabilidades.filter((type) => type.isChecked)
   }
+
+  const determineTipoUsuario = () => {
+    const lista1 = listaTipoActores.filter((type) => type.isChecked)
+    const lista2 = listaTipoModelos.filter((type) => type.isChecked)
+    console.log(lista1);
+    console.log(lista2);
+    if (lista1.length > 0 && lista2.length > 0) return 3
+    else if (lista1.length > 0) return 1
+    else if (lista2.length > 0) return 2
+    else return 0
+  }
+
 
 
 
@@ -168,18 +204,9 @@ const UserProvider = ({ children }) => {
     disposicion: false,
   })
 
-  const [colorOjos, setColorOjos] = useState({
-    colorOjosId: undefined,
-    color: ""
-  })
-  const [colorPiel, setColorPiel] = useState({
-    colorPielId: undefined,
-    color: ""
-  })
-  const [colorCabello, setColorCabello] = useState({
-    colorCabelloId: undefined,
-    color: ""
-  })
+  const [colorOjosId, setColorOjosId] = useState(0)
+  const [colorPielId, setColorPielId] = useState(0)
+  const [colorCabelloId, setColorCabelloId] = useState(0)
 
   const onChangeUser = (e) => {
     const { id, value } = e.target
@@ -209,26 +236,17 @@ const UserProvider = ({ children }) => {
       [name]: value
     });
   }
-  const onChangeColorOjos = (e) => {
-    const { name, value } = e.target
-    setColorOjos({
-      [name]: value,
-      color: ojos[value - 1].nombre
-    });
+  const onChangeColorOjosId = (e) => {
+    const { value } = e.target
+    setColorOjosId(value);
   }
-  const onChangeColorPiel = (e) => {
-    const { name, value } = e.target
-    setColorPiel({
-      [name]: value,
-      color: coloresPiel[value - 1].nombre
-    });
+  const onChangeColorPielId = (e) => {
+    const { value } = e.target
+    setColorPielId(value);
   }
-  const onChangeColorCabello = (e) => {
-    const { name, value } = e.target
-    setColorCabello({
-      [name]: value,
-      color: cabellos[value - 1].nombre
-    });
+  const onChangeColorCabelloId = (e) => {
+    const { value } = e.target
+    setColorCabelloId(value);
   }
   const onChangeDetallesPerfilCheckbox = (e) => {
     const { name, checked } = e.target
@@ -258,14 +276,14 @@ const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider value={{
-      user, ciudad, provincia, colorOjos, colorPiel, colorCabello,
+      user, ciudad, provincia, colorOjosId, colorPielId, colorCabelloId,
       detallesPerfil, listaTipoActores, listaTipoModelos, listaHabilidades,
       ojos, coloresPiel, cabellos
     }}>
       <UserUpdateContext.Provider value={{
-        onChangeUser, onChangeCiudad, onChangeProvincia, onChangeColorOjos, onChangeColorPiel, onChangeColorCabello
+        onChangeUser, onChangeCiudad, onChangeProvincia, onChangeColorOjosId, onChangeColorPielId, onChangeColorCabelloId
         , onChangeDetallesPerfil, onChangeDetallesPerfilCheckbox, onChangeTipoActorCheckbox,
-        onChangeTipoModeloCheckbox, onChangeHabilidadesCheckbox, registerNewUser
+        onChangeTipoModeloCheckbox, onChangeHabilidadesCheckbox, registerNewUser, updateUser
       }}>
         {children}
       </UserUpdateContext.Provider>
