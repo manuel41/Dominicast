@@ -16,7 +16,7 @@ import { useAppContext } from './AppContext';
 
 const RegisterUser = () => {
 
-  const { ciudades } = useAppContext();
+  const { ciudades, currentUserId } = useAppContext();
   const { user, ciudad, provincia } = useUser()
   const { onChangeUser, onChangeCiudad, onChangeProvincia } = useUserUpdate()
 
@@ -49,36 +49,49 @@ const RegisterUser = () => {
             onChange={onChangeUser}
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <FormControl variant="standard">
-            <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
-            <Input
-              required
-              id="contraseña"
-              name="contraseña"
-              label="Contraseña"
-              fullWidth
-              disabled
-              autoComplete="current-password"
-              variant="standard"
-              value={user.contraseña}
-              onChange={onChangeUser}
-              type={showPassword ? 'text' : 'password'}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-          </FormControl>
+        {(currentUserId === 0) &&
+          <Grid item xs={12} sm={6}>
+            <FormControl variant="standard">
+              <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+              <Input
+                required
+                id="contraseña"
+                name="contraseña"
+                label="Contraseña"
+                fullWidth
+                autoComplete="current-password"
+                variant="standard"
+                value={user.contraseña}
+                onChange={onChangeUser}
+                type={showPassword ? 'text' : 'password'}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+              />
+            </FormControl>
+          </Grid>
+        }
+        <Grid item xs={12}>
+          <TextField
+            id="telefono"
+            name="telefono"
+            label="Telefono"
+            fullWidth
+            autoComplete="tel"
+            variant="standard"
+            value={user.telefono}
+            onChange={onChangeUser}
+          />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12}>
           <TextField
             required
             id="email"
@@ -88,18 +101,6 @@ const RegisterUser = () => {
             autoComplete="email"
             variant="standard"
             value={user.email}
-            onChange={onChangeUser}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            id="telefono"
-            name="telefono"
-            label="Telefono"
-            fullWidth
-            autoComplete="tel"
-            variant="standard"
-            value={user.telefono}
             onChange={onChangeUser}
           />
         </Grid>
