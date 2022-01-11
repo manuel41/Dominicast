@@ -67,9 +67,8 @@ const Discover = () => {
                 redirect: 'follow'
             };
 
-            const res = await fetch("http://localhost:3001/graphql", requestOptions)
+            const res = await fetch("https://dominicast-backend.herokuapp.com/graphql", requestOptions)
                 .then(res => res.json())
-            console.log(res)
             setPersons(res.data.getAllProfileDetails);
             //setLoading(false);
         }
