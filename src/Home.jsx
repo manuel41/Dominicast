@@ -1,11 +1,10 @@
-import { Typography, Container, Grid, Box, Paper, Link, Button } from '@mui/material'
+import { Typography, Container, Grid, Box, Paper, Button } from '@mui/material'
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@mui/styles';
 import FeaturedPost from './components/FeaturedPost';
 import Main from './components/Main';
+import Modal from './components/Modal';
 import post1 from './assests/blog-post.1.md';
-import post2 from './assests/blog-post.2.md';
-import post3 from './assests/blog-post.3.md';
+
 
 
 const featuredPosts = [
@@ -27,8 +26,6 @@ const featuredPosts = [
   },
 ];
 
-//const posts = [ post2, post3];
-//console.log(posts)
 
 const Home = () => {
 

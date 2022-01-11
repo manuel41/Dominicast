@@ -3,7 +3,9 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import DeleteOutlineTwoToneIcon from '@mui/icons-material/DeleteOutlineTwoTone';
 import Typography from '@mui/material/Typography';
-
+import FemaleIcon from '@mui/icons-material/Female';
+import MaleIcon from '@mui/icons-material/Male';
+import TransgenderIcon from '@mui/icons-material/Transgender';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -37,7 +39,7 @@ export default function ToggleButtonsMultiple(props) {
                             value={props.filter}
                             onChange={handleFormat}
                             aria-label="text formatting"
-                            sx='object'
+                            //sx={ }
                             className='filters'
                             fullWidth
                         >
@@ -65,6 +67,37 @@ export default function ToggleButtonsMultiple(props) {
                         aria-controls="panel1a-content"
                         id="panel1a-header"
                     >
+                        <Typography>Género</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <ToggleButtonGroup
+                            size="small"
+                            orientation="horizontal"
+                            value={props.filter}
+                            onChange={handleFormat}
+                            aria-label="text formatting"
+                            //sx={ }
+                            className='filters'
+                            fullWidth
+                        >
+                            <ToggleButton color="primary" value="female">
+                                Femenino
+                            </ToggleButton>
+                            <ToggleButton color="primary" value="male">
+                                Masculino
+                            </ToggleButton>
+                            <ToggleButton color="primary" value="other">
+                                Otros
+                            </ToggleButton>
+                        </ToggleButtonGroup>
+                    </AccordionDetails>
+                </Accordion>
+                <Accordion>
+                    <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                    >
                         <Typography>Edad</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
@@ -74,21 +107,21 @@ export default function ToggleButtonsMultiple(props) {
                             value={props.filter}
                             onChange={handleFormat}
                             aria-label="text formatting"
-                            sx='object'
+                            //sx={ }
                             className='filters'
                             fullWidth
                         >
-                            <ToggleButton color="primary" value="Menor">
-                                Menor de edad
+                            <ToggleButton color="primary" value="menor">
+                                Menor
                             </ToggleButton>
                             <ToggleButton color="primary" value="edad18a25">
-                                18 a 25 años
+                                18 a 25
                             </ToggleButton>
                             <ToggleButton color="primary" value="edad26a45">
-                                26 a 45 años
+                                26 a 45
                             </ToggleButton>
                             <ToggleButton color="primary" value="edad46a60">
-                                46 a 60 años
+                                46 a 60
                             </ToggleButton>
                             <ToggleButton color="primary" value="edad60+">
                                 60+ años
@@ -111,7 +144,7 @@ export default function ToggleButtonsMultiple(props) {
                             value={props.filter}
                             onChange={handleFormat}
                             aria-label="text formatting"
-                            sx='object'
+                            //sx={ }
                             className='filters'
                             fullWidth
                         >
@@ -148,7 +181,7 @@ export default function ToggleButtonsMultiple(props) {
                             value={props.filter}
                             onChange={handleFormat}
                             aria-label="text formatting"
-                            sx='object'
+                            //sx={ }
                             className='filters'
                             fullWidth
                         >
@@ -166,7 +199,7 @@ export default function ToggleButtonsMultiple(props) {
                                 Con Tatuajes
                             </ToggleButton>
                             <ToggleButton value="Limpiar">
-                                <DeleteOutlineTwoToneIcon /> Limpiar
+                                <DeleteOutlineTwoToneIcon />
                             </ToggleButton>
                         </ToggleButtonGroup>
                     </AccordionDetails>
