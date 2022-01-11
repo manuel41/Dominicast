@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 
 const NavBar = () => {
   // const classes = useStyles();
-  const { currentProfileId } = useAppContext();
+  const { currentUserId } = useAppContext();
   const { onClickLogout } = useAppContextUpdate();
 
 
@@ -30,11 +30,11 @@ const NavBar = () => {
               <Button size='large' color="primary" component={Link} to="/">Inicio</Button>
               <Button size='large' color="primary" component={Link} to={"/Discover"}>Explorar</Button>
               <Button size='large' color="primary" component={Link} to={"/"}>Nosotros</Button>
-              <Button size='large' color="primary" component={Link} to={"/create-profile"}>{currentProfileId > 0 ? "Editar Perfil" : "Regístrate"}</Button>
-              {(currentProfileId === 0) &&
+              <Button size='large' color="primary" component={Link} to={"/create-profile"}>{currentUserId > 0 ? "Editar Perfil" : "Regístrate"}</Button>
+              {(currentUserId === 0) &&
                 <Button size='large' color="primary" component={Link} to={"/login"}>Login</Button>
               }
-              {(currentProfileId > 0) &&
+              {(currentUserId > 0) &&
                 <Button size='large' color="primary" component={Link} to={"/"} onClick={onClickLogout}>Logout</Button>
               }
             </Stack>

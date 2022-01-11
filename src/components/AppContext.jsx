@@ -12,7 +12,7 @@ export function useAppContextUpdate() {
 }
 
 const AppContextProvider = ({ children }) => {
-  const [currentProfileId, setCurrentProfileId] = useState(0)
+  const [currentUserId, setCurrentUserId] = useState(0)
   const [currentUserName, setCurrentUserName] = useState('')
   const [currentUserPassword, setCurrentUserPassword] = useState('')
 
@@ -27,13 +27,13 @@ const AppContextProvider = ({ children }) => {
   const [ciudades, setCiudades] = useState({})
 
   useEffect(() => {
-    fetchOjos();
-    fetchPieles();
-    fetchCabellos();
-    fetchTipoActores();
-    fetchTipoModelos();
-    fetchHabilidades();
-    fetchCities();
+    // fetchOjos();
+    // fetchPieles();
+    // fetchCabellos();
+    // fetchTipoActores();
+    // fetchTipoModelos();
+    // fetchHabilidades();
+    // fetchCities();
   }, [])
 
   const fetchOjos = async () => {
@@ -73,14 +73,14 @@ const AppContextProvider = ({ children }) => {
   }
 
   const onClickLogin = async () => {
-    const res = await apiRequest(`mutation{\r\n  login(nombreUsuario:\"${currentUserName}\", password:\"${currentUserPassword}\"){\r\n    successful\r\n    message\r\n    data\r\n  }\r\n}`)
-    setCurrentProfileId(res.data.login.data);
+    let res = await apiRequest(`mutation{\r\n  login(nombreUsuario:\"${currentUserName}\", password:\"${currentUserPassword}\"){\r\n    successful\r\n    message\r\n    data\r\n  }\r\n}`)
+    setCurrentUserId(res.data.login.data);
     setCurrentUserName('');
     setCurrentUserPassword('');
   }
 
   const onClickLogout = () => {
-    setCurrentProfileId(0);
+    setCurrentUserId(0);
     setCurrentUserName('');
     setCurrentUserPassword('');
   }
@@ -98,7 +98,7 @@ const AppContextProvider = ({ children }) => {
 
   return (
     <AppContext.Provider value={{
-      currentProfileId, currentUserName, currentUserPassword,
+      currentUserId, currentUserName, currentUserPassword,
       ojos, coloresPiel, cabellos, tipoActores, tipoModelos, tipoHabilidades,
       ciudades
     }}>
