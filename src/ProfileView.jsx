@@ -45,15 +45,13 @@ const useStyles = makeStyles((theme) => ({
 const ProfileView = () => {
   const classes = useStyles()
   let { id } = useParams();
-  const { ojos, coloresPiel, cabellos } = useAppContext();
+  const { ojos, coloresPiel, cabellos, tipoActores, tipoModelos, tipoHabilidades } = useAppContext();
 
   const [profileDetails, setProfileDetails] = useState()
-  // const [loading, setLoading] = useState(false)
-  // let persona1 = {}
 
   useEffect(() => {
     const fetchProfileDetail = async () => {
-      const res = await apiRequest(`{\r\n  getDetailsById(id: ${id}){\r\n    nombre,\r\n    apellido,\r\n    foto,\r\n    edad,\r\n    peso,\r\n    altura,\r\n    colorPielId,\r\n    colorOjosId,\r\n    colorCabelloId,\r\n    tatuajes,\r\n    bigote,\r\n    barba,\r\n    bracers,\r\n    lentes,\r\n    disposicion,\r\n    tipoUsuario,\r\n    tiposactor,\r\n    tiposmodelos,\r\n    habilidades\r\n  }\r\n}`)
+      const res = await apiRequest(`{\r\n	getDetailsById(id: ${id}){\r\n    nombre,\r\n    apellido,\r\n    foto,\r\n    edad,\r\n    peso,\r\n    altura,\r\n    colorPielId,\r\n    colorOjosId,\r\n    colorCabelloId,\r\n    tatuajes,\r\n    bigote,\r\n    barba,\r\n    bracers,\r\n    lentes,\r\n    disposicion,\r\n    tipoUsuario,\r\n    tipoactores{\r\n      tipoActorId\r\n    }\r\n    tipomodelos{\r\n      tipoModeloId\r\n    }\r\n    habilidades{\r\n      habilidadId\r\n    }\r\n  }\r\n}`)
       setProfileDetails(res.data.getDetailsById);
     }
     fetchProfileDetail();
@@ -102,7 +100,7 @@ const ProfileView = () => {
           <Paper className={classes.paper} sx={{ marginTop: 2 }} elevation={4}>
             <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
-                <Typography variant="h5">Color de piel: {coloresPiel[profileDetails?.colorPielId]}</Typography>
+                <Typography variant="h5">Color de piel: {coloresPiel[1]}</Typography>
               </Grid>
               <Grid item xs={12} md={6}>
                 <Typography variant="h5">Color de cabello: {cabellos[profileDetails?.colorCabelloId]}</Typography>
@@ -131,7 +129,7 @@ const ProfileView = () => {
               <Grid item xs={12}>
                 <Typography variant="h5">Dispocición a cambios de apariencia radicales: {profileDetails?.disposicion ? "Si" : "No"}</Typography>
               </Grid>
-              {/* {(profileDetails?.tipoUsuario === 1 || profileDetails?.tipoUsuario === 3) &&
+              {(profileDetails?.tipoUsuario === 1 || profileDetails?.tipoUsuario === 3) &&
                 <Grid container item spacing={2}>
                   <Grid item sx={{ marginTop: 0 }} xs={12}>
                     <Typography variant="h2" sx={{ textAlign: 'center' }}>Detalles de Actor</Typography>
@@ -139,9 +137,9 @@ const ProfileView = () => {
                   <Grid item xs={12}>
                     <Divider />
                   </Grid>
-                  {profileDetails?.tiposactor.map((tipoActor) => (
+                  {profileDetails?.tipoactores.map((tipoActor) => (
                     <Grid item xs={12} md={6} key={tipoActor.tipoActorId}>
-                      <Typography variant="h5">{tipoActor.nombre}</Typography>
+                      <Typography variant="h5">{tipoActores[tipoActor.tipoActorId]}</Typography>
                     </Grid>
                   ))}
                 </Grid>}
@@ -153,9 +151,9 @@ const ProfileView = () => {
                   <Grid item xs={12}>
                     <Divider />
                   </Grid>
-                  {profileDetails?.tiposmodelos.map((tipoModelo) => (
+                  {profileDetails?.tipomodelos.map((tipoModelo) => (
                     <Grid item xs={12} md={6} key={tipoModelo.tipoModeloId}>
-                      <Typography variant="h5">{tipoModelo.nombre}</Typography>
+                      <Typography variant="h5">{tipoModelos[tipoModelo.tipoModeloId]}</Typography>
                     </Grid>
                   ))}
                 </Grid>}
@@ -168,10 +166,10 @@ const ProfileView = () => {
                 </Grid>
                 {profileDetails?.habilidades.map((habilidad) => (
                   <Grid item xs={12} md={6} key={habilidad.habilidadId}>
-                    <Typography variant="h5">{habilidad.nombre}</Typography>
+                    <Typography variant="h5">{tipoHabilidades[habilidad.habilidadId]}</Typography>
                   </Grid>
                 ))}
-              </Grid> */}
+              </Grid>
             </Grid>
           </Paper>
         </Paper>
