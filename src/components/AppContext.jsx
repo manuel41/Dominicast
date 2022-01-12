@@ -27,13 +27,13 @@ const AppContextProvider = ({ children }) => {
   const [ciudades, setCiudades] = useState({})
 
   useEffect(() => {
-    // fetchOjos();
-    // fetchPieles();
-    // fetchCabellos();
-    // fetchTipoActores();
-    // fetchTipoModelos();
-    // fetchHabilidades();
-    // fetchCities();
+    fetchOjos();
+    fetchPieles();
+    fetchCabellos();
+    fetchTipoActores();
+    fetchTipoModelos();
+    fetchHabilidades();
+    fetchCities();
   }, [])
 
   const fetchOjos = async () => {

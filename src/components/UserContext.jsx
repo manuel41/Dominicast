@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
+import apiRequest from '../api/Requests';
 import { useAppContext } from './AppContext';
 
 const UserContext = React.createContext()
@@ -13,8 +14,9 @@ export function useUserUpdate() {
 }
 
 const UserProvider = ({ children }) => {
-  const { currentProfileId, ojos, coloresPiel, cabellos, tipoActores, tipoModelos, tipoHabilidades } = useAppContext();
+  const { currentUserId, ojos, coloresPiel, cabellos, tipoActores, tipoModelos, tipoHabilidades } = useAppContext();
 
+  const [currentProfileId, setCurrentProfileId] = useState(0)
   const [listaTipoActores, setListaTipoActores] = useState([])
   const [listaTipoModelos, setListaTipoModelos] = useState([])
   const [listaHabilidades, setListaHabilidades] = useState([])
@@ -25,45 +27,44 @@ const UserProvider = ({ children }) => {
     getTipoActores();
     getTipoModelos();
     getHabilidades();
-    if (currentProfileId) {
+    if (currentUserId) {
       fetchExistingUser();
     }
+    console.log("Use effect ran.");
   }, [])
 
   const fetchExistingUser = async () => {
-    const res = await axios.get(`${url}/Persons/${currentProfileId}`);
-    const existingUser = res.data;
-    console.log(existingUser);
+    const userDetails = await apiRequest(`{\r\n	getUserById(id: ${currentUserId}){\r\n    nombreUsuario,\r\n    email,\r\n    telefono,\r\n    ciudadId\r\n    detallePerfilId\r\n  }\r\n}`)
+    setCurrentProfileId(userDetails.data.getUserById.detallePerfilId);
+    const profileDetails = await apiRequest(`{\r\n	getDetailsById(id: ${userDetails.data.getUserById.detallePerfilId}){\r\n    nombre,\r\n    apellido,\r\n    foto,\r\n    edad,\r\n    peso,\r\n    piercings,\r\n    altura,\r\n    colorPielId,\r\n    colorOjosId,\r\n    colorCabelloId,\r\n    tatuajes,\r\n    bigote,\r\n    barba,\r\n    bracers,\r\n    lentes,\r\n    disposicion,\r\n    tipoUsuario,\r\n    tipoactores{\r\n      tipoActorId\r\n    }\r\n    tipomodelos{\r\n      tipoModeloId\r\n    }\r\n    habilidades{\r\n      habilidadId\r\n    }\r\n  }\r\n}`)
     setUser({
-      nombreUsuario: existingUser.user.nombreUsuario,
-      contraseña: existingUser.user.contraseña,
-      email: existingUser.user.email,
-      telefono: existingUser.user.telefono
+      nombreUsuario: userDetails.data.getUserById.nombreUsuario,
+      contraseña: "",
+      email: userDetails.data.getUserById.email,
+      telefono: userDetails.data.getUserById.telefono
     })
     setDetallesPerfil({
-      nombre: existingUser.detallePerfil.nombre,
-      apellido: existingUser.detallePerfil.apellido,
-      genero: existingUser.detallePerfil.genero,
-      url: existingUser.detallePerfil.url,
-      edad: existingUser.detallePerfil.edad,
-      peso: existingUser.detallePerfil.peso,
-      altura: existingUser.detallePerfil.altura,
-      tatuajes: existingUser.detallePerfil.tatuajes,
-      piercings: existingUser.detallePerfil.piercings,
-      bigote: existingUser.detallePerfil.bigote,
-      barba: existingUser.detallePerfil.barba,
-      bracers: existingUser.detallePerfil.bracers,
-      lentes: existingUser.detallePerfil.lentes,
-      disposicion: existingUser.detallePerfil.disposicion
+      nombre: profileDetails.data.getDetailsById.nombre,
+      apellido: profileDetails.data.getDetailsById.apellido,
+      genero: "Hombre",
+      url: profileDetails.data.getDetailsById.foto,
+      edad: profileDetails.data.getDetailsById.edad,
+      peso: profileDetails.data.getDetailsById.peso,
+      altura: profileDetails.data.getDetailsById.altura,
+      tatuajes: profileDetails.data.getDetailsById.tatuajes,
+      piercings: profileDetails.data.getDetailsById.piercings,
+      bigote: profileDetails.data.getDetailsById.bigote,
+      barba: profileDetails.data.getDetailsById.barba,
+      bracers: profileDetails.data.getDetailsById.bracers,
+      lentes: profileDetails.data.getDetailsById.lentes,
+      disposicion: profileDetails.data.getDetailsById.disposicion
     })
-    setColorPielId({ ...existingUser.detallePerfil.colorPiel })
-    setColorCabelloId({ ...existingUser.detallePerfil.colorCabello })
-    setColorOjosId({ ...existingUser.detallePerfil.colorOjosId })
+    setColorPielId(profileDetails.data.getDetailsById.colorPielId)
+    setColorCabelloId(profileDetails.data.getDetailsById.colorCabelloId)
+    setColorOjosId(profileDetails.data.getDetailsById.colorOjosId)
     setCiudad({
-      ciudadId: existingUser.user.ciudad.ciudadId,
-      nombre: existingUser.user.ciudad.nombre,
+      ciudadId: userDetails.data.getUserById.ciudadId
     })
-    setProvincia({ ...existingUser.user.ciudad.provincia })
   }
 
   const getTipoActores = async () => {
@@ -101,26 +102,8 @@ const UserProvider = ({ children }) => {
   }
 
   const registerNewUser = async () => {
-    const newUser = {
-      user: {
-        ...user,
-        ciudad: {
-          ...ciudad,
-          provincia: { ...provincia }
-        }
-      },
-      detallePerfil: {
-        ...detallesPerfil,
-        colorPielId: colorPielId,
-        colorCabelloId: colorCabelloId,
-        colorOjosId: colorOjosId,
-      },
-      tipoActors: addTipoActores(),
-      tipoModelos: addTipoModelos(),
-      habilidad: addHabilidades(),
-      tipoUsuario: determineTipoUsuario(),
-    }
-    const res = await axios.post(`${url}/Persons`, newUser)
+    const newProfile = await apiRequest(`mutation {\r\n  createDetails( \r\n    tipoUsuario: ${determineTipoUsuario()}, \r\n    colorPielId: ${colorPielId}, \r\n    colorCabelloId: ${colorCabelloId}, \r\n    colorOjosId: ${colorOjosId}, \r\n    tipoCabelloId: 1,\r\n    nombre: \"${detallesPerfil.nombre}\",\r\n    apellido: \"${detallesPerfil.apellido}\"\r\n    foto: \"${detallesPerfil.url}\",\r\n    edad: ${detallesPerfil.edad},\r\n    altura: ${detallesPerfil.altura},\r\n    peso: ${detallesPerfil.peso}\r\n    tatuajes: ${detallesPerfil.tatuajes},\r\n    bigote: ${detallesPerfil.bigote},\r\n    piercings: ${detallesPerfil.piercings},\r\n    barba: ${detallesPerfil.barba},\r\n    bracers: ${detallesPerfil.bracers},\r\n    lentes: ${detallesPerfil.lentes},\r\n    genero: ${Number(detallesPerfil.genero)},\r\n    disposicion: ${detallesPerfil.disposicion},\r\n    tipoactores: [${addTipoActores()}],\r\n    tipomodelos: [${addTipoModelos()}],\r\n    habilidades: [${addHabilidades()}]\r\n  ){,\r\n    id\r\n    nombre,\r\n    apellido,\r\n    foto,\r\n    edad,\r\n    peso,\r\n    altura,\r\n    genero,\r\n    colorPielId,\r\n    colorOjosId,\r\n    colorCabelloId,\r\n    tatuajes,\r\n    bigote,\r\n    barba,\r\n    bracers,\r\n    piercings,\r\n    lentes,\r\n    disposicion,\r\n    tipoUsuario,\r\n    tipoactores{\r\n        id,\r\n        detallesPerfilId,\r\n        tipoActorId\r\n    }\r\n    tipomodelos{\r\n        id,\r\n        detallesPerfilId,\r\n        tipoModeloId\r\n    }\r\n    habilidades{\r\n        id,\r\n        detallesPerfilId,\r\n        habilidadId\r\n    }\r\n  }\r\n}\r\n`)
+    const newUser = await apiRequest(`mutation{\r\n  createUser(\r\n    nombreUsuario: \"${user.nombreUsuario}\",\r\n    password: \"${user.contraseña}\"\r\n    email: \"${user.email}\",\r\n    telefono: \"${user.telefono}\",\r\n    ciudadId: ${ciudad.ciudadId}\r\n    detallePerfilId: ${newProfile.data.createDetails.id}\r\n  ){\r\n    id,\r\n    nombreUsuario,\r\n    password,\r\n    email,\r\n    telefono,\r\n    ciudadId\r\n    detallePerfilId,\r\n  }\r\n}`)
   }
   const updateUser = async () => {
     const existingUser = {
@@ -147,20 +130,27 @@ const UserProvider = ({ children }) => {
 
   const addTipoActores = () => {
     const checkedList = listaTipoActores.filter((type) => type.isChecked)
-    // Change according to how Post request works
+    const arr = checkedList.map((obj) => {
+      return `{tipoActorId:"${obj.id}"}`
+    })
+    return arr
   }
   const addTipoModelos = () => {
     const checkedList = listaTipoModelos.filter((type) => type.isChecked)
+    return checkedList.map((obj) => {
+      return `{tipoModeloId:"${obj.id}"}`
+    })
   }
   const addHabilidades = () => {
     const checkedList = listaHabilidades.filter((type) => type.isChecked)
+    return checkedList.map((obj) => {
+      return `{habilidadId:"${obj.id}"}`
+    })
   }
 
   const determineTipoUsuario = () => {
     const lista1 = listaTipoActores.filter((type) => type.isChecked)
     const lista2 = listaTipoModelos.filter((type) => type.isChecked)
-    console.log(lista1);
-    console.log(lista2);
     if (lista1.length > 0 && lista2.length > 0) return 3
     else if (lista1.length > 0) return 1
     else if (lista2.length > 0) return 2
@@ -190,7 +180,7 @@ const UserProvider = ({ children }) => {
   const [detallesPerfil, setDetallesPerfil] = useState({
     nombre: "",
     apellido: "",
-    genero: "",
+    genero: undefined,
     url: "",
     edad: undefined,
     peso: undefined,
