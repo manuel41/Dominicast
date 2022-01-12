@@ -81,7 +81,7 @@ const Discover = () => {
                 </Grid>
 
                 <Grid container item xs={7} maxWidth='xs' >
-                    <TextField fullWidth id="outlined-search" margin="normal" label="Buscar por nombres, apodos o habilidades" type="search" color='secondary' onChange={(event) => {
+                    <TextField fullWidth id="outlined-search" margin="normal" label="Buscar" type="search" color='secondary' onChange={(event) => {
                         setSearhTerm(event.target.value);
                     }} />
                     <Grid item xs={12} maxWidth='lg'>
@@ -111,9 +111,11 @@ const Discover = () => {
                                         (!person.tatuajes && filter.includes('conTatuajes')) ||
                                         (person.barba && filter.includes('sinBarba')) ||
                                         (!person.barba && filter.includes('conBarba')) ||
-                                        (person.genero === 1 && filter.includes('male')) ||
+                                        (person.piercings && filter.includes('piercings')) ||
+                                        (person.disposicion && filter.includes('disposicion')) ||
+                                        (person.genero === 1 && filter.includes('other')) ||
                                         (person.genero === 0 && filter.includes('female')) ||
-                                        (person.genero === 2 && filter.includes('other')) ||
+                                        (person.genero === 2 && filter.includes('male')) ||
                                         (!(person.edad < 18) && filter.includes('menor')) ||
                                         (!(person.edad >= 18 && person.edad <= 25) && filter.includes('edad18a25')) ||
                                         (!(person.edad >= 26 && person.edad <= 45) && filter.includes('edad26a45')) ||

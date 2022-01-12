@@ -15,8 +15,30 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 export default function ToggleButtonsMultiple(props) {
 
     const handleFormat = (event, newFormats) => {
+        if (newFormats.includes('male') && newFormats.includes('female')) {
+            let toDelete = Math.min(newFormats.indexOf('male'), newFormats.indexOf('female'))
+            newFormats.splice(toDelete, 1);
+        }
+        if (newFormats.includes('other') && newFormats.includes('female')) {
+            let toDelete = Math.min(newFormats.indexOf('other'), newFormats.indexOf('female'))
+            newFormats.splice(toDelete, 1);
+        }
+        if (newFormats.includes('other') && newFormats.includes('male')) {
+            let toDelete = Math.min(newFormats.indexOf('other'), newFormats.indexOf('male'))
+            newFormats.splice(toDelete, 1);
+        }
+        if (newFormats.includes('sinBarba') && newFormats.includes('conBarba')) {
+            let toDelete = Math.min(newFormats.indexOf('sinBarba'), newFormats.indexOf('conBarba'))
+            newFormats.splice(toDelete, 1);
+        }
+        if (newFormats.includes('sinTatuajes') && newFormats.includes('conTatuajes')) {
+            let toDelete = Math.min(newFormats.indexOf('sinTatuajes'), newFormats.indexOf('conTatuajes'))
+            newFormats.splice(toDelete, 1);
+        }
         if (newFormats.includes('Limpiar'))
             newFormats = [];
+
+
         props.setFilter(newFormats);
     };
 
@@ -24,43 +46,6 @@ export default function ToggleButtonsMultiple(props) {
         <div>
 
             <div>
-                <Accordion>
-                    <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                    >
-                        <Typography>Categorías generales</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <ToggleButtonGroup
-                            size="small"
-                            orientation="horizontal"
-                            value={props.filter}
-                            onChange={handleFormat}
-                            aria-label="text formatting"
-                            //sx={ }
-                            className='filters'
-                            fullWidth
-                        >
-                            <ToggleButton color="primary" value="cine">
-                                Cine
-                            </ToggleButton>
-                            <ToggleButton color="primary" value="teatro">
-                                Teatro
-                            </ToggleButton>
-                            <ToggleButton color="primary" value="voz">
-                                Voz
-                            </ToggleButton>
-                            <ToggleButton color="primary" value="modelo">
-                                Modelo
-                            </ToggleButton>
-                            <ToggleButton color="primary" value="otros">
-                                Otros
-                            </ToggleButton>
-                        </ToggleButtonGroup>
-                    </AccordionDetails>
-                </Accordion>
                 <Accordion>
                     <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}
@@ -198,12 +183,34 @@ export default function ToggleButtonsMultiple(props) {
                             <ToggleButton color="primary" value="conTatuajes">
                                 Con Tatuajes
                             </ToggleButton>
-                            <ToggleButton value="Limpiar">
-                                <DeleteOutlineTwoToneIcon />
+                        </ToggleButtonGroup>
+                        <ToggleButtonGroup
+                            size="small"
+                            orientation="horizontal"
+                            value={props.filter}
+                            onChange={handleFormat}
+                            aria-label="text formatting"
+                            //sx={ }
+                            className='filters'
+                            fullWidth
+                        >
+
+                            <ToggleButton color="primary" value="piercings">
+                                Piercings
+                            </ToggleButton>
+                            <ToggleButton color="primary" value="disposicion">
+                                Dispocición a cambios físicos
                             </ToggleButton>
                         </ToggleButtonGroup>
                     </AccordionDetails>
                 </Accordion>
+                <ToggleButtonGroup
+                    value={props.filter}
+                    onChange={handleFormat}>
+                    <ToggleButton value="Limpiar">
+                        Limpiar filtros<DeleteOutlineTwoToneIcon />
+                    </ToggleButton>
+                </ToggleButtonGroup>
             </div>
 
 
