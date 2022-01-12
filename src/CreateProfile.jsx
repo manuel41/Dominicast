@@ -30,7 +30,6 @@ const CreateProfile = () => {
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
-    console.log(activeStep);
     if (activeStep === 2) {
       if (currentUserId > 0) {
         updateUser();

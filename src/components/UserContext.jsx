@@ -30,7 +30,6 @@ const UserProvider = ({ children }) => {
     if (currentUserId) {
       fetchExistingUser();
     }
-    console.log("Use effect ran.");
   }, [])
 
   const fetchExistingUser = async () => {
