@@ -2,8 +2,6 @@ import { Typography, Container, Grid, Box, Paper, Button } from '@mui/material'
 import React, { useState, useEffect } from 'react';
 import FeaturedPost from './components/FeaturedPost';
 import Main from './components/Main';
-import Modal from './components/Modal';
-import post1 from './assests/blog-post.1.md';
 
 
 

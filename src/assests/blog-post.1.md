@@ -1,6 +1,6 @@
 # Página en construcción
 
-#### Noviembre 15, 2021 by [Enmanuel](/)
+#### Noviembre 15, 2021 by [Enmanuel](https://github.com/EnmanuelMinaya)
 
 La industria del cine está en desarrollo en la República Dominicana y no existe una plataforma
 que permita el descubrimiento de nuevos talentos y establecer una comunicación entre

@@ -26,7 +26,7 @@ const NavBar = () => {
         <Container maxWidth="lg" >
           <Toolbar>
             <Stack direction="row" spacing={{ xs: 1, sm: 2, md: 8 }}>
-              <img src={logo} width="200" />
+              <img src={logo} width="200" alt="logo" />
               <Button size='large' color="primary" component={Link} to="/">Inicio</Button>
               <Button size='large' color="primary" component={Link} to={"/Discover"}>Explorar</Button>
               <Button size='large' color="primary" component={Link} to={"/"}>Nosotros</Button>
