@@ -2,10 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardActionArea from '@mui/material/CardActionArea';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
+import { Card, Button, CardActionArea, CardActions, CardContent, CardMedia } from '@mui/material';
 
 function FeaturedPost(props) {
     const { post } = props;
@@ -24,9 +21,11 @@ function FeaturedPost(props) {
                         <Typography variant="subtitle1" paragraph>
                             {post.description}
                         </Typography>
-                        <Typography variant="subtitle1" color="primary">
-                            Continuar leyendo...
-                        </Typography>
+                        <CardActions>
+                            <Button size="small" color="primary">
+                                Continuar leyendo...
+                            </Button>
+                        </CardActions>
                     </CardContent>
                     <CardMedia
                         component="img"
@@ -36,6 +35,7 @@ function FeaturedPost(props) {
                     />
                 </Card>
             </CardActionArea>
+
         </Grid>
     );
 }
