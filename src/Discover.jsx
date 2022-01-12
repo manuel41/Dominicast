@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import apiRequest from './api/Requests';
 import { Typography, Card, CardContent, CardMedia, CardActionArea, Grid, Pagination, TextField } from '@mui/material';
 import ToggleButtonsMultiple from './components/ToggleButtonsMultiple';
-//import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 import { makeStyles } from '@mui/styles';
 
@@ -133,7 +133,7 @@ const Discover = () => {
                                 .map((person) => (
                                     <Grid item key={person.id} xs={12} sm={6} md={4} lg={3}>
                                         <Card className={classes.card}>
-                                            <CardActionArea href={`/profile/${person.id}`}>
+                                            <CardActionArea component={RouterLink} to={`/profile/${person.id}`}>
                                                 <CardMedia className={classes.cardMedia} image={person.foto} title="image title" />
                                                 <CardContent className={classes.cardMedia}>
                                                     <Typography align="center" variant="h5">{`${person.nombre} ${person.apellido}`}</Typography>
