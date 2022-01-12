@@ -27,13 +27,13 @@ const AppContextProvider = ({ children }) => {
   const [ciudades, setCiudades] = useState({})
 
   useEffect(() => {
-    // fetchOjos();
-    // fetchPieles();
-    // fetchCabellos();
-    // fetchTipoActores();
-    // fetchTipoModelos();
-    // fetchHabilidades();
-    // fetchCities();
+    fetchOjos();
+    fetchPieles();
+    fetchCabellos();
+    fetchTipoActores();
+    fetchTipoModelos();
+    fetchHabilidades();
+    fetchCities();
   }, [])
 
   const fetchOjos = async () => {
@@ -74,7 +74,9 @@ const AppContextProvider = ({ children }) => {
 
   const onClickLogin = async () => {
     let res = await apiRequest(`mutation{\r\n  login(nombreUsuario:\"${currentUserName}\", password:\"${currentUserPassword}\"){\r\n    successful\r\n    message\r\n    data\r\n  }\r\n}`)
-    setCurrentUserId(res.data.login.data);
+    if (res.data.login.successful) {
+      setCurrentUserId(res.data.login.data);
+    }
     setCurrentUserName('');
     setCurrentUserPassword('');
   }

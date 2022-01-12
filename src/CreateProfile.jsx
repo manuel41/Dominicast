@@ -23,7 +23,7 @@ function getStepContent(step) {
 }
 
 const CreateProfile = () => {
-  const { currentProfileId } = useAppContext();
+  const { currentUserId } = useAppContext();
 
   const { registerNewUser, updateUser } = useUserUpdate()
   const [activeStep, setActiveStep] = useState(0);
@@ -32,7 +32,7 @@ const CreateProfile = () => {
     setActiveStep(activeStep + 1);
     console.log(activeStep);
     if (activeStep === 2) {
-      if (currentProfileId > 0) {
+      if (currentUserId > 0) {
         updateUser();
       }
       else {

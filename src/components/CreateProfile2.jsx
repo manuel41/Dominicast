@@ -103,8 +103,9 @@ export default function CreateProfile2() {
               value={detallesPerfil.genero}
               onChange={onChangeDetallesPerfil}
             >
-              <FormControlLabel value="Hombre" control={<Radio />} label="Hombre" />
-              <FormControlLabel value="Mujer" control={<Radio />} label="Mujer" />
+              <FormControlLabel value="0" control={<Radio />} label="Hombre" id="0" />
+              <FormControlLabel value="1" control={<Radio />} label="Mujer" id="1" />
+              <FormControlLabel value="2" control={<Radio />} label="Otros" id="2" />
             </RadioGroup>
           </FormControl>
         </Grid>
