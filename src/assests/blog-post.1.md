@@ -1,4 +1,4 @@
-# Página en construcción
+# Dominicast versión beta
 
 #### Noviembre 15, 2021 by [Enmanuel](https://github.com/EnmanuelMinaya)
 
