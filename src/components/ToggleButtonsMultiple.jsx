@@ -187,10 +187,10 @@ export default function ToggleButtonsMultiple(props) {
                         >
 
                             <ToggleButton color="primary" value="sinBarba">
-                                Sin Barba
+                                Sin bello facial
                             </ToggleButton>
                             <ToggleButton color="primary" value="conBarba">
-                                Con Barba
+                                Con bello facial
                             </ToggleButton>
                             <ToggleButton color="primary" value="sinTatuajes">
                                 Sin Tatuajes

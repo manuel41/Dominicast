@@ -26,14 +26,6 @@ const NavBar = () => {
         <Container maxWidth="lg" >
           <Toolbar>
             <Stack direction="row" spacing={{ xs: 1, sm: 2, md: 8 }}>
-<<<<<<< HEAD
-              <img src={logo} width="200" alt='' />
-              <Button size='large' color="primary" href="/">Inicio</Button>
-              <Button size='large' color="primary" href="/Discover">Explorar</Button>
-              <Button size='large' color="primary" href="/">Nosotros</Button>
-              <Button size='large' color="primary" href="create-profile">Regístrate</Button>
-              <Button size='large' color="primary" href="login">Login</Button>
-=======
               <img src={logo} width="200" />
               <Button size='large' color="primary" component={Link} to="/">Inicio</Button>
               <Button size='large' color="primary" component={Link} to={"/Discover"}>Explorar</Button>
@@ -45,7 +37,6 @@ const NavBar = () => {
               {(currentUserId > 0) &&
                 <Button size='large' color="primary" component={Link} to={"/"} onClick={onClickLogout}>Logout</Button>
               }
->>>>>>> feature-create-profile
             </Stack>
           </Toolbar>
         </Container>
