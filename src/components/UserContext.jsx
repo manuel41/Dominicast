@@ -36,7 +36,7 @@ const UserProvider = ({ children }) => {
   const fetchExistingUser = async () => {
     const userDetails = await apiRequest(`{\r\n	getUserById(id: ${currentUserId}){\r\n    nombreUsuario,\r\n    email,\r\n    telefono,\r\n    ciudadId\r\n    detallePerfilId\r\n  }\r\n}`)
     setCurrentProfileId(userDetails.data.getUserById.detallePerfilId);
-    const profileDetails = await apiRequest(`{\r\n	getDetailsById(id: ${userDetails.data.getUserById.detallePerfilId}){\r\n    nombre,\r\n    apellido,\r\n    foto,\r\n    edad,\r\n    peso,\r\n    piercings,\r\n    altura,\r\n    colorPielId,\r\n    colorOjosId,\r\n    colorCabelloId,\r\n    tatuajes,\r\n    bigote,\r\n    barba,\r\n    bracers,\r\n    lentes,\r\n    disposicion,\r\n    tipoUsuario,\r\n    tipoactores{\r\n      tipoActorId\r\n    }\r\n    tipomodelos{\r\n      tipoModeloId\r\n    }\r\n    habilidades{\r\n      habilidadId\r\n    }\r\n  }\r\n}`)
+    const profileDetails = await apiRequest(`{\r\n	getDetailsById(id: ${userDetails.data.getUserById.detallePerfilId}){\r\n    nombre,\r\n    apellido,\r\n    foto,\r\n    edad,\r\n    peso,\r\n    genero,\r\n    piercings,\r\n    altura,\r\n    colorPielId,\r\n    colorOjosId,\r\n    colorCabelloId,\r\n    tatuajes,\r\n    bigote,\r\n    barba,\r\n    bracers,\r\n    lentes,\r\n    disposicion,\r\n    tipoUsuario,\r\n    tipoactores{\r\n      tipoActorId\r\n    }\r\n    tipomodelos{\r\n      tipoModeloId\r\n    }\r\n    habilidades{\r\n      habilidadId\r\n    }\r\n  }\r\n}`)
     setUser({
       nombreUsuario: userDetails.data.getUserById.nombreUsuario,
       contraseña: "",
@@ -46,7 +46,7 @@ const UserProvider = ({ children }) => {
     setDetallesPerfil({
       nombre: profileDetails.data.getDetailsById.nombre,
       apellido: profileDetails.data.getDetailsById.apellido,
-      genero: "Hombre",
+      genero: profileDetails.data.getDetailsById.genero,
       url: profileDetails.data.getDetailsById.foto,
       edad: profileDetails.data.getDetailsById.edad,
       peso: profileDetails.data.getDetailsById.peso,
@@ -106,26 +106,8 @@ const UserProvider = ({ children }) => {
     const newUser = await apiRequest(`mutation{\r\n  createUser(\r\n    nombreUsuario: \"${user.nombreUsuario}\",\r\n    password: \"${user.contraseña}\"\r\n    email: \"${user.email}\",\r\n    telefono: \"${user.telefono}\",\r\n    ciudadId: ${ciudad.ciudadId}\r\n    detallePerfilId: ${newProfile.data.createDetails.id}\r\n  ){\r\n    id,\r\n    nombreUsuario,\r\n    password,\r\n    email,\r\n    telefono,\r\n    ciudadId\r\n    detallePerfilId,\r\n  }\r\n}`)
   }
   const updateUser = async () => {
-    const existingUser = {
-      user: {
-        ...user,
-        ciudad: {
-          ...ciudad,
-          provincia: { ...provincia }
-        }
-      },
-      detallePerfil: {
-        ...detallesPerfil,
-        colorPielId: colorPielId,
-        colorCabelloId: colorCabelloId,
-        colorOjosId: colorOjosId,
-      },
-      tipoActors: addTipoActores(),
-      tipoModelos: addTipoModelos(),
-      habilidad: addHabilidades(),
-      tipoUsuario: determineTipoUsuario(),
-    }
-    const res = await axios.put(`${url}/Persons/${currentProfileId}`, existingUser)
+    const currentProfile = await apiRequest(`mutation {\r\n  updateDetailsById(detailsId: ${currentProfileId} \r\n    tipoUsuario: ${determineTipoUsuario()}, \r\n    colorPielId: ${colorPielId}, \r\n    colorCabelloId: ${colorCabelloId}, \r\n    colorOjosId: ${colorOjosId}, \r\n    tipoCabelloId: 1,\r\n    nombre: \"${detallesPerfil.nombre}\",\r\n    apellido: \"${detallesPerfil.apellido}\"\r\n    foto: \"${detallesPerfil.url}\",\r\n    edad: ${detallesPerfil.edad},\r\n    altura: ${detallesPerfil.altura},\r\n    peso: ${detallesPerfil.peso}\r\n    tatuajes: ${detallesPerfil.tatuajes},\r\n    bigote: ${detallesPerfil.bigote},\r\n    piercings: ${detallesPerfil.piercings},\r\n    barba: ${detallesPerfil.barba},\r\n    bracers: ${detallesPerfil.bracers},\r\n    lentes: ${detallesPerfil.lentes},\r\n    genero: ${Number(detallesPerfil.genero)},\r\n    disposicion: ${detallesPerfil.disposicion},\r\n    tipoactores: [${addTipoActoresUpdate()}],\r\n    tipomodelos: [${addTipoModelosUpdate()}],\r\n    habilidades: [${addHabilidadesUpdate()}]\r\n  ){,\r\n    message\r\n    data\r\n    successful\r\n  }\r\n}\r\n`)
+    const currentUser = await apiRequest(`mutation{\r\n  updateUser(userId: ${currentUserId}\r\n    nombreUsuario: \"${user.nombreUsuario}\",\r\n    email: \"${user.email}\",\r\n    telefono: \"${user.telefono}\",\r\n    ciudadId: ${ciudad.ciudadId}\r\n    detallePerfilId: ${currentProfileId}\r\n  ){\r\n    message\r\n    data\r\n    successful\r\n  }\r\n}`)
   }
 
   const addTipoActores = () => {
@@ -145,6 +127,25 @@ const UserProvider = ({ children }) => {
     const checkedList = listaHabilidades.filter((type) => type.isChecked)
     return checkedList.map((obj) => {
       return `{habilidadId:"${obj.id}"}`
+    })
+  }
+  const addTipoActoresUpdate = () => {
+    const checkedList = listaTipoActores.filter((type) => type.isChecked)
+    const arr = checkedList.map((obj) => {
+      return `{tipoActorId:"${obj.id}", detallesPerfilId:"${currentProfileId}"}`
+    })
+    return arr
+  }
+  const addTipoModelosUpdate = () => {
+    const checkedList = listaTipoModelos.filter((type) => type.isChecked)
+    return checkedList.map((obj) => {
+      return `{tipoModeloId:"${obj.id}", detallesPerfilId:"${currentProfileId}"}`
+    })
+  }
+  const addHabilidadesUpdate = () => {
+    const checkedList = listaHabilidades.filter((type) => type.isChecked)
+    return checkedList.map((obj) => {
+      return `{habilidadId:"${obj.id}", detallesPerfilId:"${currentProfileId}"}`
     })
   }
 
