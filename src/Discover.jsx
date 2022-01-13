@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import apiRequest from './api/Requests';
 import { Typography, Card, CardContent, CardMedia, CardActionArea, Grid, Pagination, TextField } from '@mui/material';
 import ToggleButtonsMultiple from './components/ToggleButtonsMultiple';
-//import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 import { makeStyles } from '@mui/styles';
 
@@ -59,7 +59,6 @@ const Discover = () => {
             //setLoading(true);
             const res = await apiRequest("{\r\n    getAllProfileDetails{\r\n    id,\r\n    nombre,\r\n    apellido,\r\n   genero,\r\n   foto,\r\n    edad,\r\n    peso,\r\n    altura,\r\n    colorPielId,\r\n    colorOjosId,\r\n    colorCabelloId,\r\n    tatuajes,\r\n    bigote,\r\n    piercings\r\n    barba,\r\n    bracers,\r\n    lentes,\r\n    disposicion,\r\n    tipoUsuario,\r\n    tipoactores{\r\n        id,\r\n        detallesPerfilId,\r\n      tipoActorId\r\n    }\r\n    tipomodelos{\r\n        id,\r\n        detallesPerfilId,\r\n      tipoModeloId\r\n    }\r\n    habilidades{\r\n        id,\r\n        detallesPerfilId,\r\n        habilidadId\r\n    }\r\n  }\r\n}");
             setPersons(res.data.getAllProfileDetails);
-            console.log(res.data.getAllProfileDetails)
             //setLoading(false);
         }
         fetchPersons();
@@ -133,7 +132,7 @@ const Discover = () => {
                                 .map((person) => (
                                     <Grid item key={person.id} xs={12} sm={6} md={4} lg={3}>
                                         <Card className={classes.card}>
-                                            <CardActionArea href={`/profile/${person.id}`}>
+                                            <CardActionArea component={RouterLink} to={`/profile/${person.id}`}>
                                                 <CardMedia className={classes.cardMedia} image={person.foto} title="image title" />
                                                 <CardContent className={classes.cardMedia}>
                                                     <Typography align="center" variant="h5">{`${person.nombre} ${person.apellido}`}</Typography>
