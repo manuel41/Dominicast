@@ -113,9 +113,9 @@ const Discover = () => {
                                         (!person.barba && filter.includes('conBarba')) ||
                                         (person.piercings && filter.includes('piercings')) ||
                                         (person.disposicion && filter.includes('disposicion')) ||
-                                        (person.genero === 1 && filter.includes('other')) ||
-                                        (person.genero === 0 && filter.includes('female')) ||
-                                        (person.genero === 2 && filter.includes('male')) ||
+                                        (!(person.genero == 1) && filter.includes('female')) ||
+                                        (!(person.genero == 2) && filter.includes('other')) ||
+                                        (!(person.genero == 0) && filter.includes('male')) ||
                                         (!(person.edad < 18) && filter.includes('menor')) ||
                                         (!(person.edad >= 18 && person.edad <= 25) && filter.includes('edad18a25')) ||
                                         (!(person.edad >= 26 && person.edad <= 45) && filter.includes('edad26a45')) ||
