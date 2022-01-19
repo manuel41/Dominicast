@@ -44,6 +44,15 @@ const Home = () => {
   const posts = [post1]
 
   return (
+    {/*
+      Raul Sanchez:    
+      Backend Dev 
+      https://github.com/raxdroid
+      
+      Manuel Gonzalez: 
+      Frontend Dev 
+      https://github.com/manuel41 
+    */},
     <div>
       <Container maxWidth="lg">
         <Paper
